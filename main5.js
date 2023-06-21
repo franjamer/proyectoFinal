@@ -73,49 +73,53 @@ const grupoFiguras=[
 }
 ]
 // variables para enlazar con las etiquetas img que hemos llamado tablero
-let imgTablero1=$("#imgn1");
-let imgTablero2=$("#imgn2");
-let imgTablero3=$("#imgn3");
-let imgTablero4=$("#imgn4");
+let imgTablero1 = $("#imgn1");
+let imgTablero2 = $("#imgn2");
+let imgTablero3 = $("#imgn3");
+let imgTablero4 = $("#imgn4");
+let rutaImgTablero1 = imgTablero1.attr("src");
+let rutaImgTablero2 = imgTablero2.attr("src");
+let rutaImgTablero3 = imgTablero3.attr("src");
+let rutaImgTablero4 = imgTablero4.attr("src");
 
 // creacion de objeto tablero. Consta de 4 cajas, donde iran rotando las imagenes que se muestran un tiempo t1 cada imagen,
 // durante un tiempo global t2, el cual cuando termina, se coge el valor de la imagen de cada casillero, y se suma, 
 // guardandose en una variable llamada puntuación, que se usará despues.
 let ObjTablero=[
   {
-    Id:1,
+    Id:"#imgn1",
     "posTablero" : "Posicion 1", 
-    "Nombre" : "juan",
-    "ruta": `imgTablero1.attr("src")`,
+    // "Nombre" : "juan",
+    "ruta":  rutaImgTablero1,
     "valor" : 5
   },
   {
-    Id:2,
+    Id:"#imgn2",
     "posTablero" : "Posicion 2", 
-    "Nombre" : "jose",
-    "ruta":  `imgTablero2.attr("src")`,
+    // "Nombre" : "jose",
+    "ruta":  rutaImgTablero2,
     "valor" : 5
   },
   {
-    Id:3,
+    Id:"#imgn3",
     "posTablero" : "Posicion 3", 
-    "Nombre" : "Paco",
-    "ruta": `mgTablero3.attr("src")`,
+    // "Nombre" : "Paco",
+    "ruta": rutaImgTablero3,
     "valor" : 5
   },
   {
-    Id:4,
+    Id:"#imgn4",
     "posTablero" : "Posicion 4", 
-    "Nombre" : "pedro",
-    "ruta": `mgTablero4.attr("src")`,
+    // "Nombre" : "pedro",
+    ruta: imgTablero4,
     "valor" : 5
   }
 ]
 
 //IDENTIFICADORES DE LAS ETIQUETA IMG QUE SE MUESTRAN.
-const Tablero=["#imgn1","#imgn2","#imgn3","#imgn4"];
+const Tablero=["#imgn1","#imgn2","#imgn3","#imgn4"]
 
-
+console.log("la imagen del tablero 0 es: " + ObjTablero[0].ruta)
 /*
 *  con esta funcion damos valores a las propiedades de ObjTablero en todas sus posiciones, 
 *  pero no todas las propiedades
@@ -132,16 +136,16 @@ etiqueta.value= 630;//provisionalmente en centimos de euro
 cabecera.appendChild(etiqueta);
 /* **************************Fin de creacion de html ******************************* */ 
 // Variable para almacenar el valor de la apuesta
-let laApuesta = 0; 
-const inputApuesta = document.getElementById("apuesta");
-inputApuesta.addEventListener("input", function() 
+// let laApuesta = 0; 
+let miApuesta = document.getElementById("apuesta");
+miApuesta.addEventListener("input", function() 
   {
-    laApuesta = parseInt(inputApuesta.value);
+    laApuesta = parseInt(miApuesta.value);
     console.log("Nuevo valor de la apuesta:", laApuesta.valueOf(laApuesta));
-    return laApuesta.valueOf(laApuesta);
+    return laApuesta.valueOf(miApuesta);
   });
 
-const miApuesta=inputApuesta;
+
 
 
 /** temporizadorCiclicoObjeto  tiene por parametros el tiempo que se muestra cada imagen, 
@@ -150,31 +154,42 @@ const miApuesta=inputApuesta;
 function temporizadorCiclicoObjeto(intervalo, duracionTotal){  
     let contador = 0;
     const interval = setInterval(() => {
-        let elqueatocado1 = ObjFiguras[numAleato()];
-        let elqueatocado2 = ObjFiguras[numAleato()];
-        let elqueatocado3 = ObjFiguras[numAleato()];
-        let elqueatocado4 = ObjFiguras[numAleato()];    
-        let otroquetocotambien1 = ObjTablero[0];
-        let otroquetocotambien2 = ObjTablero[1];
-        let otroquetocotambien3 = ObjTablero[2];
-        let otroquetocotambien4 = ObjTablero[3];
- 
-        otroquetocotambien1.ruta = $(Tablero[0]).attr("src",elqueatocado1.ruta);    
-        otroquetocotambien2.ruta = $(Tablero[1]).attr("src",elqueatocado2.ruta);
-        otroquetocotambien3.ruta = $(Tablero[2]).attr("src",elqueatocado3.ruta);
-        otroquetocotambien4.ruta = $(Tablero[3]).attr("src",elqueatocado4.ruta);
-        otroquetocotambien1.Nombre = elqueatocado1.nombre;
-        otroquetocotambien1.valor += elqueatocado1.valor;
+
+
+
+for(i=0;i<4;i++){ 
+  let comparacion=(ObjTablero[i].Id==Tablero[i]);
+  console.log(comparacion)
+if(comparacion){
+  ObjTablero[i].ruta =  $(Tablero[i]).attr("src",ObjFiguras[numAleato()].ruta); 
+
+ }
+
+
+
+
+}
+//  console.log(imgTablero1.attr("src", ObjFiguras[numAleato.ruta]))
+        // ObjTablero[0].ruta =  $(Tablero[0]).attr("src",ObjFiguras[numAleato()].ruta);    
+        // ObjTablero[1].ruta = 
+        // $(Tablero[1]).attr("src",elqueatocado2.ruta);
+        // ObjTablero[2].ruta = 
+        // $(Tablero[2]).attr("src",elqueatocado3.ruta);
+        // ObjTablero[3].ruta = 
+        // $(Tablero[3]).attr("src",elqueatocado4.ruta);
+        // otroquetocotambien1.Nombre = elqueatocado1.nombre;
+        // otroquetocotambien1.valor += elqueatocado1.valor;
         contador++;
-        console.log( "contador vale " + contador)    
+        // console.log( "contador vale " + contador)    
       if (contador * intervalo >= duracionTotal * 1000) 
         {
             clearInterval(interval);
-            Puntuacion();        
-            console.log(Puntuacion());
-            console.log("este es el valor de mi apuesta: "+ miApuesta);
-            console.log("Temporizador cíclico finalizado.");    
-            return (resultadoApuesta(Puntuacion(),miApuesta));               
+            miPuntuacion();        
+            console.log(miPuntuacion());
+            // console.log("este es el valor de mi apuesta: "+ laApuesta.valueOf(miApuesta.value));
+            // return (resultadoApuesta(miPuntuacion(),miApuesta));    
+            console.log("Temporizador cíclico finalizado.");   
+                       
         }
     }, intervalo * 10);
 
@@ -195,65 +210,76 @@ const resultadoApuesta = function (unNumero,ratio){
 
 /**Esta funcion hace la suma de la propiedad valor de cada una de la imagenes que han salido al final de la presentacion */
 
-let numeroy = 0;
-let Puntuacion = function (){ 
+let miPuntuacion = function (){ 
   // variables interiores de la funcion
-  let otroTableromas1=ObjTablero[0];
-  let otroTableromas2=ObjTablero[1];
-  let otroTableromas3=ObjTablero[2];
-  let otroTableromas4=ObjTablero[3];
+  // let otroTableromas1=ObjTablero[0];
+  // let otroTableromas2=ObjTablero[1];
+  // let otroTableromas3=ObjTablero[2];
+  // let otroTableromas4=ObjTablero[3];
 // variables para enlazar el atributo src de las etiquetas img del tablero con lo que se necesite.
-let rutaImgTablero1=$(imgTablero1).attr("src");
-let rutaImgTablero2=$(imgTablero2).attr("src");
-let rutaImgTablero3=$(imgTablero3).attr("src");
-let rutaImgTablero4=$(imgTablero4).attr("src");
+// let rutaImgTablero1=$(imgTablero1).attr("src");
+// let rutaImgTablero2=$(imgTablero2).attr("src");
+// let rutaImgTablero3=$(imgTablero3).attr("src");
+// let rutaImgTablero4=$(imgTablero4).attr("src");
 
 let puntuacion=0;
+/** la siguiente funcion es para coger los puntos de cada casillero del tablero.
+ *  tiene por parametros el indice del bucle padre, y la posicion del array de ObjTablero
+ */
+let resultadoTableroPuntos;
+
+console.log(imgTablero1.attr("src"));
+ function tableroPuntos (figIndice,posTablero){  
+  let comparacionTableroFiguras=ObjFiguras[figIndice].ruta==Tablero[posTablero].src;
+    if(comparacionTableroFiguras)
+    {
+      ObjTablero[posTablero].Nombre = ObjFiguras[figIndice].nombre 
+      console.log(ObjTablero[posTablero].valor = ObjFiguras[figIndice].valor)
+  //  console.log(otroTableromas[posicion].Nombre)
+   puntuacion = ObjTablero[posTablero].valor;
+      
+    }
+    return ("resultado de la suma de los puntos de los tableros" + puntuacion)
+    puntuacion+=ObjFiguras[figIndice].valor
+  console.log("este es el valor de la variable puntuacion " + puntuacion)
+  // return puntuacion;
+}
+
+
   /**con la siguiete iteracion, conseguimos ir dando valor a la variable puntuacion,
    *  para despues seguir la partida. */
-  for (i=0;i<8; i++){
-    
-    if(ObjFiguras[i].ruta==rutaImgTablero1){
+  function contador(){
+    for (j=0; j<4;j++){
+      for (i=0;i<8; i++){    
+        // tableroPuntos(i,j);
+        tableroPuntos(i,0);
+        // resultadoTableroPuntos(i,0);
+        // tableroPuntos(i,1);
+        // tableroPuntos(i,2);
+        // tableroPuntos(i,3);
+    resultadoTableroPuntos+=tableroPuntos(i,j);
+      }
 
-      ObjTablero[0].Nombre = ObjFiguras[i].nombre 
-      ObjTablero[0].valor = ObjFiguras[i].valor
-      console.log(otroTableromas1.Nombre)
-      puntuacion+=ObjTablero[0].valor;
     }
 
-    if(ObjFiguras[i].ruta==rutaImgTablero2){
-      ObjTablero[1].Nombre = ObjFiguras[i].nombre 
-      ObjTablero[1].valor = ObjFiguras[i].valor
-      console.log(otroTableromas2.Nombre)
-      puntuacion+=ObjTablero[1].valor;
-     
-    }
-
-    if(ObjFiguras[i].ruta==rutaImgTablero3){
-      ObjTablero[2].Nombre = ObjFiguras[i].nombre 
-      ObjTablero[2].valor = ObjFiguras[i].valor
-      console.log(otroTableromas3.Nombre)
-      puntuacion+=ObjTablero[2].valor;
-    }
-
-    if(ObjFiguras[i].ruta==rutaImgTablero4){
-      ObjTablero[3].Nombre = ObjFiguras[i].nombre 
-      ObjTablero[3].valor = ObjFiguras[i].valor
-      console.log(otroTableromas4.Nombre)
-      puntuacion+=ObjTablero[3].valor;
-    }
+  console.log("resultado de la suma de los valores de cada figura del tablero " + resultadoTableroPuntos)
+return resultadoTableroPuntos;
   }
+
+contador();
+
+
   // Con la siguiente linea, tenemos la puntuacion por tirada.
 
-console.log("la puntuacion de esta tirada es: " + puntuacion);
-let salidaPuntos= puntuacion/100;
+console.log("la puntuacion de esta tirada es: ");
+let salidaPuntos= resultadoTableroPuntos/100;
 return salidaPuntos;
 
 } 
 
 
-let miPuntuacion = Puntuacion();
-console.log(miPuntuacion);
+
+// console.log("variable miPuntuacion "+ miPuntuacion());
 // calculo despues de apostar.
 /* la idea es que si salen limones o figuras que estan por debajo, la apuesta es beneficiosa para la banca,
 si salen por encima, el apostante es el que gana.

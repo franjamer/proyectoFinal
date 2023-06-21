@@ -1,19 +1,19 @@
 window.addEventListener('DOMContentLoaded', function() {
   // Crear elementos del formulario
   var label1 = document.createElement('label');
-  label1.textContent = 'Número 1:';
+  label1.textContent = 'Número:';
 
   var input1 = document.createElement('input');
   input1.type = 'number';
 
   var label2 = document.createElement('label');
-  label2.textContent = 'Número 2:';
+  label2.textContent = 'Porcentaje:';
 
   var input2 = document.createElement('input');
   input2.type = 'number';
 
   var button = document.createElement('button');
-  button.textContent = 'Sumar';
+  button.textContent = 'Operar';
 
   var labelResultado = document.createElement('label');
   labelResultado.textContent = 'Resultado:';
@@ -43,7 +43,7 @@ window.addEventListener('DOMContentLoaded', function() {
   button.addEventListener('click', function() {
     var num1 = parseFloat(input1.value);
     var num2 = parseFloat(input2.value);
-    var resultado = num1 + num2;
+    var resultado = (num1 * num2)/100;
     inputResultado.value = resultado;
   });
 });
@@ -51,15 +51,15 @@ window.addEventListener('DOMContentLoaded', function() {
 window.addEventListener('load', function() {  
     // Arreglo de imágenes
     var imagenes = [
-      {nombre:"cereza",valor:"36",ruta:"./imagenes/cereza.svg"},
-      {nombre:"ciruela",valor:"33",ruta:"./imagenes/ciruela.svg"},
-      {nombre:"fresa",valor:"30",ruta:"./imagenes/fresa.svg"},
-      {nombre:"limon",valor:"27",ruta:"./imagenes/limon.svg"},
-      {nombre:"naranja",valor:"24",ruta:"./imagenes/naranja.svg"},
-      {nombre:"platanos",valor:"21",ruta:"./imagenes/platanos.svg"},
-      {nombre:"sandia",valor:"18",ruta:"./imagenes/sandia.svg"},
-      {nombre:"siete",valor:"15",ruta:"./imagenes/siete.svg"},     
-      {nombre:"Gran Premio",valor:"12",ruta:"./imagenes/granpremio.svg"}
+      {nombre:"cereza",valor:"36",ruta:"/imagenes/cereza.svg"},
+      {nombre:"ciruela",valor:"33",ruta:"/imagenes/ciruela.svg"},
+      {nombre:"fresa",valor:"30",ruta:"/imagenes/fresa.svg"},
+      {nombre:"limon",valor:"27",ruta:"/imagenes/limon.svg"},
+      {nombre:"naranja",valor:"24",ruta:"/imagenes/naranja.svg"},
+      {nombre:"platanos",valor:"21",ruta:"/imagenes/platanos.svg"},
+      {nombre:"sandia",valor:"18",ruta:"/imagenes/sandia.svg"},
+      {nombre:"siete",valor:"15",ruta:"/imagenes/siete.svg"},     
+      {nombre:"Gran Premio",valor:"12",ruta:"/imagenes/granpremio.svg"}
     ];
 
     // Carga las imágenes en el contenedor
