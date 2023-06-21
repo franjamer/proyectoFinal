@@ -1,0 +1,29 @@
+body{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.contenedor{
+    display:flex;
+    flex-direction: row;
+    width: 80%;
+    justify-content: space-between;
+
+    align-items:center;
+    flex-wrap: wrap;
+    
+    height: 600px;
+    background-color: beige;
+}
+img{
+    background-color: aqua;
+    padding: 3px;
+    width: 50px;
+    height: 50px;
+}
+p{
+    background-color: rgb(240, 240, 244);
+    font-size: small;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
