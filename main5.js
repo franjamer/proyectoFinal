@@ -119,7 +119,7 @@ let ObjTablero=[
 //IDENTIFICADORES DE LAS ETIQUETA IMG QUE SE MUESTRAN.
 const Tablero=["#imgn1","#imgn2","#imgn3","#imgn4"]
 
-console.log("la imagen del tablero 0 es: " + ObjTablero[0].ruta)
+
 /*
 *  con esta funcion damos valores a las propiedades de ObjTablero en todas sus posiciones, 
 *  pero no todas las propiedades
@@ -151,19 +151,36 @@ miApuesta.addEventListener("input", function()
 /** temporizadorCiclicoObjeto  tiene por parametros el tiempo que se muestra cada imagen, 
  * como intervalo, y el tiempo global, que tiene como parametro duracionTotal 
 */
-function temporizadorCiclicoObjeto(intervalo, duracionTotal){  
+let salidaRuleta=0;
+
+function temporizadorCiclicoObjeto(intervalo, duracionTotal)
+{  
     let contador = 0;
-    const interval = setInterval(() => {
-    for(i=0;i<4;i++){ 
-      let comparacion=(ObjTablero[i].Id==Tablero[i]);
-      console.log(comparacion)
-      if(comparacion)
-      {
-        ObjTablero[i].ruta =  $(Tablero[i]).attr("src",ObjFiguras[numAleato()].ruta); 
-      }     
-    }
-      contador++;
+    const interval = setInterval(() => {       
+      for(i=0;i<4;i++)
+      { 
+        let comparacion=(ObjTablero[i].Id!=Tablero[i]);   
+        if(comparacion)
+        {
+          ObjTablero[i].ruta =  $(Tablero[i].Id).attr("src",ObjFiguras[numAleato()].ruta); 
+          // ObjTablero[i].valor= i++;
+          console.log(ObjTablero[i].valor)
+          console.log("la imagen del tablero 1 es: " + $(ObjTablero[i].Id).attr("src"))
+          
+        }     
+        if (contador==20){
+          // TotalPuntosTablero+=$(ObjTablero[i].valor).attr("src",ObjFiguras[numAleato()].valor)
+        
+          console.log("el contador ha llegado a 20")
+        }    
+      }
+      
+   
+    // let TotalPuntosTablero=0;
     
+      // console.log("El total de esta tirada es:" + TotalPuntosTablero)
+      contador++;
+    console.log("el contador va por:" + contador)
       if (contador * intervalo >= duracionTotal * 1000) 
         {
             clearInterval(interval);
@@ -173,8 +190,9 @@ function temporizadorCiclicoObjeto(intervalo, duracionTotal){
             console.log("Temporizador cíclico finalizado.");   
                        
         }
+       
     }, intervalo * 10);
-
+//  return TotalPuntosTablero;
 }
 
 /**
@@ -210,7 +228,7 @@ let puntuacion=0;
  */
 let resultadoTableroPuntos;
 
-console.log(imgTablero1.attr("src"));
+// console.log(imgTablero1.attr("src"));
  function tableroPuntos (figIndice,posTablero){  
   let comparacionTableroFiguras=ObjFiguras[figIndice].ruta==Tablero[posTablero].src;
     if(comparacionTableroFiguras)
@@ -244,7 +262,7 @@ console.log(imgTablero1.attr("src"));
 
     }
 
-  console.log("resultado de la suma de los valores de cada figura del tablero " + resultadoTableroPuntos)
+  // console.log("resultado de la suma de los valores de cada figura del tablero " + resultadoTableroPuntos)
 return resultadoTableroPuntos;
   }
 
