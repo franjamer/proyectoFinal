@@ -154,40 +154,22 @@ miApuesta.addEventListener("input", function()
 function temporizadorCiclicoObjeto(intervalo, duracionTotal){  
     let contador = 0;
     const interval = setInterval(() => {
-
-
-
-for(i=0;i<4;i++){ 
-  let comparacion=(ObjTablero[i].Id==Tablero[i]);
-  console.log(comparacion)
-if(comparacion){
-  ObjTablero[i].ruta =  $(Tablero[i]).attr("src",ObjFiguras[numAleato()].ruta); 
-
- }
-
-
-
-
-}
-//  console.log(imgTablero1.attr("src", ObjFiguras[numAleato.ruta]))
-        // ObjTablero[0].ruta =  $(Tablero[0]).attr("src",ObjFiguras[numAleato()].ruta);    
-        // ObjTablero[1].ruta = 
-        // $(Tablero[1]).attr("src",elqueatocado2.ruta);
-        // ObjTablero[2].ruta = 
-        // $(Tablero[2]).attr("src",elqueatocado3.ruta);
-        // ObjTablero[3].ruta = 
-        // $(Tablero[3]).attr("src",elqueatocado4.ruta);
-        // otroquetocotambien1.Nombre = elqueatocado1.nombre;
-        // otroquetocotambien1.valor += elqueatocado1.valor;
-        contador++;
-        // console.log( "contador vale " + contador)    
+    for(i=0;i<4;i++){ 
+      let comparacion=(ObjTablero[i].Id==Tablero[i]);
+      console.log(comparacion)
+      if(comparacion)
+      {
+        ObjTablero[i].ruta =  $(Tablero[i]).attr("src",ObjFiguras[numAleato()].ruta); 
+      }     
+    }
+      contador++;
+    
       if (contador * intervalo >= duracionTotal * 1000) 
         {
             clearInterval(interval);
             miPuntuacion();        
             console.log(miPuntuacion());
-            // console.log("este es el valor de mi apuesta: "+ laApuesta.valueOf(miApuesta.value));
-            // return (resultadoApuesta(miPuntuacion(),miApuesta));    
+             
             console.log("Temporizador cíclico finalizado.");   
                        
         }
@@ -361,7 +343,7 @@ si salen por encima, el apostante es el que gana.
 $("#boton").click(function(e){    
       // tiempo de ruleta 
       // temporizadorCiclico(50, 1);
-      temporizadorCiclicoObjeto(25,0.51)
+      temporizadorCiclicoObjeto(25,0.5)
 
       
 
