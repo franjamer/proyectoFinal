@@ -119,7 +119,7 @@ let ObjTablero=[
 //IDENTIFICADORES DE LAS ETIQUETA IMG QUE SE MUESTRAN.
 const Tablero=["#imgn1","#imgn2","#imgn3","#imgn4"]
 
-console.log("la imagen del tablero 0 es: " + ObjTablero[0].ruta)
+// console.log("la imagen del tablero 0 es: " + ObjTablero[0].ruta)
 /*
 *  con esta funcion damos valores a las propiedades de ObjTablero en todas sus posiciones, 
 *  pero no todas las propiedades
@@ -151,25 +151,43 @@ miApuesta.addEventListener("input", function()
 /** temporizadorCiclicoObjeto  tiene por parametros el tiempo que se muestra cada imagen, 
  * como intervalo, y el tiempo global, que tiene como parametro duracionTotal 
 */
+  let total=0;
 function temporizadorCiclicoObjeto(intervalo, duracionTotal){  
-    let contador = 0;
-    const interval = setInterval(() => {
-    for(i=0;i<4;i++){ 
-      let comparacion=(ObjTablero[i].Id==Tablero[i]);
-      
+    let contador = 0;  
+    const interval = setInterval(() => {      
+    for(i=0;i<4;i++)
+    {      
+      let comparacion=(ObjTablero[i].Id==Tablero[i]);      
       if(comparacion)
-      {
-        ObjTablero[i].ruta =  $(Tablero[i]).attr("src",ObjFiguras[numAleato()].ruta); 
-      }     
-    }
+        {        
+          $(Tablero[i]).attr("src",ObjFiguras[numAleato()].ruta); 
+            ObjTablero[i].ruta = $(Tablero[i]).attr("src");
+            for (j=0; j<8;j++)
+            {
+              if ((ObjFiguras[j].ruta==ObjTablero[i].ruta)&&(contador==19))
+              {
+                ObjTablero[i].valor=ObjFiguras[j].valor
+                console.log(ObjTablero[i].ruta + " " + ObjTablero[i].valor)
+              }
+            }       
+        }
+        if(contador==19){
+          
+          total+=ObjTablero[i].valor
+          console.log("la suma total es " + total)
+        }  
+    }    
+
+        
+   
     
       contador++;
-    console.log("el contador va por:" + contador)
+    
       if (contador * intervalo >= duracionTotal * 1000) 
         {
             clearInterval(interval);
-            miPuntuacion();        
-            console.log(miPuntuacion());
+            // miPuntuacion();        
+            console.log(total);
              
             console.log("Temporizador cíclico finalizado.");   
                        
@@ -211,7 +229,7 @@ let puntuacion=0;
  */
 let resultadoTableroPuntos;
 
-console.log(imgTablero1.attr("src"));
+// console.log(imgTablero1.attr("src"));
  function tableroPuntos (figIndice,posTablero){  
   let comparacionTableroFiguras=ObjFiguras[figIndice].ruta==Tablero[posTablero].src;
     if(comparacionTableroFiguras)
@@ -245,7 +263,7 @@ console.log(imgTablero1.attr("src"));
 
     }
 
-  console.log("resultado de la suma de los valores de cada figura del tablero " + resultadoTableroPuntos)
+  // console.log("resultado de la suma de los valores de cada figura del tablero " + resultadoTableroPuntos)
 return resultadoTableroPuntos;
   }
 
@@ -254,7 +272,7 @@ contador();
 
   // Con la siguiente linea, tenemos la puntuacion por tirada.
 
-console.log("la puntuacion de esta tirada es: ");
+// console.log("la puntuacion de esta tirada es: ");
 let salidaPuntos= resultadoTableroPuntos/100;
 return salidaPuntos;
 
@@ -288,6 +306,38 @@ si salen por encima, el apostante es el que gana.
  * 
  * 
  */
+
+    // console.log(ObjTablero[i].ruta);
+        // if (contador==19){
+          
+        //   console.log("el contador va por " + contador + "y la ultima imagen es " + ObjTablero[i].ruta);
+          
+        // }
+      // if (ObjTablero[i].valor==0)
+      // {
+      //   ObjTablero[i].valor+= ObjFiguras[numAleato()].valor; 
+
+      //   // console.log("sumando" + ObjTablero[i].valor)
+      // }
+      // else
+      // {
+      //   console.log()
+      //   ObjTablero[i].valor=0;
+      //   ObjTablero[i].valor= ObjFiguras[numAleato()].valor;
+      //   // console.log("sustituyendo valor" + ObjTablero[i].valor)
+      //   console.log("el contador va por:" + contador)
+      // }
+      // if(contador>=19){
+      //   console.log(i);
+      //   console.log("la imagen del tablero "+ i +" es " + ObjTablero[i].ruta)
+      //   console.log("el valor de inicial de total es "+ total)
+        
+      //   total+= ObjTablero[i].valor;
+      //   console.log("el valor del tablero "+ i +" es " + ObjTablero[i].valor)
+        
+      //   console.log("el valor de total despues de sumar el tablero " + i + " es "+ total)
+      // }
+
 // $(document).ready(function() {
 //   // Crea el campo de entrada de tipo numérico
 //   const myInput = $("<input>", {
