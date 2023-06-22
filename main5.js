@@ -1,3 +1,72 @@
+// window.addEventListener('load', function() {  
+//   // Arreglo de imágenes
+//   var imagenes = [   
+//     {nombre:"Gran Premio",valor:"36",ruta:"/imagenes/granpremio.svg"},
+//     {nombre:"siete",valor:"33",ruta:"/imagenes/siete.svg"},  
+//     {nombre:"sandia",valor:"30",ruta:"/imagenes/sandia.svg"},
+//     {nombre:"platanos",valor:"27",ruta:"/imagenes/platanos.svg"},
+//     {nombre:"limon",valor:"24",ruta:"/imagenes/limon.svg"},
+//     {nombre:"naranja",valor:"21",ruta:"/imagenes/naranja.svg"},
+//     {nombre:"fresa",valor:"18",ruta:"/imagenes/fresa.svg"},
+//     {nombre:"cereza",valor:"15",ruta:"/imagenes/cereza.svg"},
+//     {nombre:"ciruela",valor:"12",ruta:"/imagenes/ciruela.svg"}
+//   ];
+
+//   // Carga las imágenes en el contenedor
+//   cargarImagenes(imagenes, "#container");
+//   // cargarImagenes(imagenes, "#container");
+//   // cargarImagenes(imagenes, "#container");
+//   // cargarImagenes(imagenes, "#container");
+// });
+
+// function cargarImagenes(imagenes, contenedor) {
+//   var contenedorElem = document.querySelector(contenedor);  
+  
+
+//   contenedorElem.style.width="300px";
+//   contenedorElem.style.height="600px";
+//   contenedorElem.style.background= "burlywood";
+//   contenedorElem.style.display= "flex";
+//   // contenedorElem.style.flexdirecction="column";
+//   // contenedorElem.style.justify = "space-evenly";
+//   // contenedorElem.style.wrap= "wrap";
+//   for (let j=0; i<4;i++){
+//     arrayPremios= document.createElement("section");
+//     arrayPremios.appendChild(imagen);
+//     arrayPremios.style.background="bisque";
+//   }
+
+//   for (var i = 0; i < imagenes.length; i++) {
+//     var contImagen = document.createElement("span");
+//     var imagen = document.createElement("img");
+//     var texto= document.createElement("p");
+//     // contenedorElem $(contenedorElem).hasClass(className);
+//     texto.innerText=imagenes[i].nombre;
+//     imagen.src = imagenes[i].ruta;
+//     imagen.alt = imagenes[i].nombre;
+//     imagen.style.width= "50px";
+//     imagen.style.height = "50px";
+    
+
+//     imagen.dataset.valor = imagenes[i].valor;
+//     contenedorElem.appendChild(contImagen);
+//     contImagen.appendChild(imagen);
+//     contenedorElem.appendChild(imagen);
+//     contenedorElem.appendChild(texto);
+   
+//     //  imagen.width = 
+//     // imagen.className=
+//   }
+// }
+
+
+
+
+
+
+
+
+
 // numero aleatorio de 0 a 8
 function numAleato(){
     let aleatorio=Math.random();

@@ -50,16 +50,16 @@ window.addEventListener('DOMContentLoaded', function() {
 
 window.addEventListener('load', function() {  
     // Arreglo de imágenes
-    var imagenes = [
-      {nombre:"cereza",valor:"36",ruta:"/imagenes/cereza.svg"},
-      {nombre:"ciruela",valor:"33",ruta:"/imagenes/ciruela.svg"},
-      {nombre:"fresa",valor:"30",ruta:"/imagenes/fresa.svg"},
-      {nombre:"limon",valor:"27",ruta:"/imagenes/limon.svg"},
-      {nombre:"naranja",valor:"24",ruta:"/imagenes/naranja.svg"},
-      {nombre:"platanos",valor:"21",ruta:"/imagenes/platanos.svg"},
-      {nombre:"sandia",valor:"18",ruta:"/imagenes/sandia.svg"},
-      {nombre:"siete",valor:"15",ruta:"/imagenes/siete.svg"},     
-      {nombre:"Gran Premio",valor:"12",ruta:"/imagenes/granpremio.svg"}
+    var imagenes = [   
+      {nombre:"Gran Premio",valor:"36",ruta:"/imagenes/granpremio.svg"},
+      {nombre:"siete",valor:"33",ruta:"/imagenes/siete.svg"},  
+      {nombre:"sandia",valor:"30",ruta:"/imagenes/sandia.svg"},
+      {nombre:"platanos",valor:"27",ruta:"/imagenes/platanos.svg"},
+      {nombre:"limon",valor:"24",ruta:"/imagenes/limon.svg"},
+      {nombre:"naranja",valor:"21",ruta:"/imagenes/naranja.svg"},
+      {nombre:"fresa",valor:"18",ruta:"/imagenes/fresa.svg"},
+      {nombre:"cereza",valor:"15",ruta:"/imagenes/cereza.svg"},
+      {nombre:"ciruela",valor:"12",ruta:"/imagenes/ciruela.svg"}
     ];
 
     // Carga las imágenes en el contenedor

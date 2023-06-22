@@ -171,7 +171,7 @@ footer > .btn-glb {
 }
 .combos-prem{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: stretch;
 
 }
@@ -210,3 +210,5 @@ footer > .btn-glb {
 width: 100px;
 height: 25px;
 }
+
+.
