@@ -7,11 +7,12 @@ body {
 }
 header{
     display:flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     width: 80%;
     background-color: blueviolet;
+    padding: 3%;
 }
 header > .marcadores {
     display: flex;
@@ -204,7 +205,8 @@ footer > .btn-glb {
     display: flex;
     justify-content: space-evenly;
 }
-.botones > button{
+
+.botones > button, .boton{
 width: 100px;
 height: 25px;
 }

@@ -121,39 +121,61 @@ let ObjTablero=[
 const Tablero=["#imgn1","#imgn2","#imgn3","#imgn4"]
 
 
-/*
-*  con esta funcion damos valores a las propiedades de ObjTablero en todas sus posiciones, 
-*  pero no todas las propiedades
-*/
+
 /* ***********************************************************************************
 Creacion de las etiquetas de html
    *********************************************************************************** */
-// insertamos un elemento imput de tipo numérico, en el header.
+// insertamos los elementos de forma dinamica en el HTML.
 const cabecera= document.querySelector("#cabecera");
-const etiqueta = document.createElement("input");
+const etiqueta = document.createElement("input");//es el control numérico que muestra cuanto quieres apostar.
+const apostar = document.createElement("button");//es el botón que adjudica el valor del control numérico, al campo resultado antes de tirar.
+const labelResultado = document.createElement("label");
+const resultado= document.createElement("input");//es el campo donde se muestra el valor del resultado cuando finaliza la tirada.
+labelResultado.id="tituloResultado";
+labelResultado.textContent="Resultado de la Tirada"
+resultado.id="resultado";
+resultado.innerHTML="hola";
+resultado.type="text";
+resultado.textContent= "resultado de la tirada";
+resultado.readOnly=false;//establece el campo resultado como de solo lectura.
+resultado.value=0;
+resultado.title="resultado de la apuesta"
+etiqueta.readOnly=true;
+etiqueta.required;
+etiqueta.min = 5;
 etiqueta.id="apuesta";
 etiqueta.type= "number";
-etiqueta.value= 0;//provisionalmente en centimos de euro
+etiqueta.step=0.01
+etiqueta.value= etiqueta.min;//provisionalmente en centimos de euro
+apostar.id="apostar";
 cabecera.appendChild(etiqueta);
+cabecera.appendChild(apostar);
+cabecera.appendChild(labelResultado);
+labelResultado.appendChild(resultado);
 
+resultado.id="resultado";
+document.querySelector("#apostar").classList.add("boton");//añadir una clase, que ya está en css
+apostar.innerHTML="Apostar"//poner texto dentro del boton 
 /* **************************Fin de creacion de html ******************************* */ 
-// Variable para almacenar el valor de la apuesta
 
-let miApuesta = document.getElementById("apuesta");
-miApuesta.addEventListener("input", function() 
-  {
-    laApuesta = parseInt(miApuesta.value);
-    console.log("Nuevo valor de la apuesta:", laApuesta.valueOf(laApuesta));
-    return laApuesta.valueOf(miApuesta);
-  });
+/*****modificacion del campo numerico mediante una funcion****** */
+function cargaValores(){
+  document.getElementById("resultado").addEventListener("click",cambiaValores);
+}
+function cambiaValores(){
+  let inputNumero = document.getElementById("resultado");
+  inputNumero.value= operacion;
+  console.log(inputNumero.value);
+}
+
 /** temporizadorCiclicoObjeto  tiene por parametros el tiempo que se muestra cada imagen, 
  * como intervalo, y el tiempo global, que tiene como parametro duracionTotal 
 */
   let total=0;
-function temporizadorCiclicoObjeto(intervalo, duracionTotal){  
+  function temporizadorCiclicoObjeto(intervalo, duracionTotal){  
     let contador = 0;  
     const interval = setInterval(() => {      
-    total=0;
+    let totalinterno=0;
       for(i=0;i<4;i++)
     {      
       
@@ -173,8 +195,9 @@ function temporizadorCiclicoObjeto(intervalo, duracionTotal){
         }
         if(contador==19){
           
-          total+=ObjTablero[i].valor
-          console.log("la suma total es " + total)
+          totalinterno+=ObjTablero[i].valor
+          console.log("la suma total es " + totalinterno)
+          total=totalinterno;
         }  
     }       
       contador++;
@@ -182,11 +205,13 @@ function temporizadorCiclicoObjeto(intervalo, duracionTotal){
       if (contador * intervalo >= duracionTotal * 1000) 
         {
             clearInterval(interval);
-            // miPuntuacion();        
-            console.log(total);
-             
+                  
+            // console.log(total);
+            total=totalinterno;     
+            totalizador();
+              console.log("total externo es " + total)   
             console.log("Temporizador cíclico finalizado.");   
-                       
+                
         }
     }, intervalo * 10);
 
@@ -198,26 +223,54 @@ function temporizadorCiclicoObjeto(intervalo, duracionTotal){
  * @param {ratio} ratio 
  * @returns 
  */
-const resultadoApuesta = function (unNumero,ratio){  
-    let vueltaAppuesta;
-    vueltaAppuesta=(ratio*unNumero)/100;  
-    return vueltaAppuesta;
+
+/**
+ * una vez que le damos al click del boton tirar, se captura el valor del bote, se guarda
+ * la suma de las figuras que salen cuando dejan de cambiar, y se hace la siguiente cuenta
+ *   ((suma de las figuras/100)* valor del bote)+valor del bote, y el resultado de cambia 
+ * en el campo de apuesta, por el valor que hubiera.
+ */
+
+// let valorBote=0;
+// let añadirAlBote= function(valor){
+//   let vuelta=valor;
+//   console.log("el nuevo valor del bote es "+ vuelta);
+//   return  Math.floor(vuelta);
+// }
+// console.log(añadirAlBote(total))
+
+// let nuevoValorBote= function (bote,tirada){
+// let resultadon=Math.floor((bote*tirada)/100) ;
+// console.log("le nuevo valor del bote es "+ resultado.value) 
+// resultado.value=resultadon;
+// ;
+// }
+
+  let operacion= ((total * etiqueta.value)/100)
+$("#tirada").click(function(e){
+  console.log("el nuevo valor de la tirada es "+total);
+  console.log("el valor de la apuesta es "+ etiqueta.value)
+  resultado.value=operacion;
+
+  console.log("el nuevo resultado del vote es " + operacion)
+})
+
+function totalizador(){
+  let operaciones=0;
+  operaciones = parseFloat((total * etiqueta.value)/100)+etiqueta.value
+  resultado.value=parseFloat(operaciones);
+  console.log("el resultado total de las operaciones es "+operaciones)
+  
 }
 
 
-let valorBote=0;
-let añadirAlBote= function(valor){
-  valorBote=etiqueta.value;
-  console.log("el nuevo valor del bote es "+valorBote);
-  return valorBote;
-}
 
-
-$("#bote").click(function(e){
+$("#apostar").click(function(e){
 // lectura del valor del campo bote
 añadirAlBote(etiqueta.value)
 valorBote=etiqueta.value
 console.log("El valor del bote es " + valorBote)
+resultado.value=etiqueta.value;
 return valorBote;
 })
 
@@ -229,6 +282,7 @@ $("#boton").click(function(e){
       // temporizadorCiclico(50, 1);
       temporizadorCiclicoObjeto(25,0.5)
     //   temporizadorFinal(0.1);   
+    nuevoValorBote(valorBote,total);
   });
 
 
