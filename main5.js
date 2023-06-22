@@ -158,15 +158,15 @@ document.querySelector("#apostar").classList.add("boton");//añadir una clase, q
 apostar.innerHTML="Apostar"//poner texto dentro del boton 
 /* **************************Fin de creacion de html ******************************* */ 
 
-/*****modificacion del campo numerico mediante una funcion****** */
-function cargaValores(){
-  document.getElementById("resultado").addEventListener("click",cambiaValores);
-}
-function cambiaValores(){
-  let inputNumero = document.getElementById("resultado");
-  inputNumero.value= operacion;
-  console.log(inputNumero.value);
-}
+// /*****modificacion del campo numerico mediante una funcion****** */
+// function cargaValores(){
+//   document.getElementById("resultado").addEventListener("click",cambiaValores);
+// }
+// function cambiaValores(){
+//   let inputNumero = document.getElementById("resultado");
+//   inputNumero.value= operacion;
+//   console.log(inputNumero.value);
+// }
 
 /** temporizadorCiclicoObjeto  tiene por parametros el tiempo que se muestra cada imagen, 
  * como intervalo, y el tiempo global, que tiene como parametro duracionTotal 
@@ -257,7 +257,7 @@ $("#tirada").click(function(e){
 
 function totalizador(){
   let operaciones=0;
-  operaciones = parseFloat((total * etiqueta.value)/100)+etiqueta.value
+  operaciones = parseFloat((total * etiqueta.value)/100)
   resultado.value=parseFloat(operaciones);
   console.log("el resultado total de las operaciones es "+operaciones)
   
@@ -267,8 +267,8 @@ function totalizador(){
 
 $("#apostar").click(function(e){
 // lectura del valor del campo bote
-añadirAlBote(etiqueta.value)
-valorBote=etiqueta.value
+// añadirAlBote(etiqueta.value)
+// valorBote=etiqueta.value
 console.log("El valor del bote es " + valorBote)
 resultado.value=etiqueta.value;
 return valorBote;
