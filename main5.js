@@ -137,10 +137,10 @@ resultado.id="resultado";
 resultado.innerHTML="hola";
 resultado.type="text";
 resultado.textContent= "resultado de la tirada";
-resultado.readOnly=false;//establece el campo resultado como de solo lectura.
+resultado.readOnly=true;//establece el campo resultado como de solo lectura.
 resultado.value=0;
 resultado.title="resultado de la apuesta"
-etiqueta.readOnly=true;
+etiqueta.readOnly=false;
 etiqueta.required;
 etiqueta.min = 5;
 etiqueta.id="apuesta";
@@ -209,7 +209,7 @@ apostar.innerHTML="Apostar"//poner texto dentro del boton
             // console.log(total);
             total=totalinterno;     
             totalizador();
-              console.log("total externo es " + total)   
+              // console.log("total externo es " + total)   
             console.log("Temporizador cíclico finalizado.");   
                 
         }
@@ -257,10 +257,12 @@ $("#tirada").click(function(e){
 
 function totalizador(){
   let operaciones=0;
-  operaciones = parseFloat((total * etiqueta.value)/100)
+  operaciones = (parseFloat((total * etiqueta.value)/100)).toFixed(2);
   resultado.value=parseFloat(operaciones);
   console.log("el resultado total de las operaciones es "+operaciones)
-  
+  // etiqueta.value=etiqueta.value.toFixed(2)
+  etiqueta.value=resultado.value;
+
 }
 
 
@@ -282,7 +284,7 @@ $("#boton").click(function(e){
       // temporizadorCiclico(50, 1);
       temporizadorCiclicoObjeto(25,0.5)
     //   temporizadorFinal(0.1);   
-    nuevoValorBote(valorBote,total);
+    // nuevoValorBote(valorBote,total);
   });
 
 
