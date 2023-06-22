@@ -1,3 +1,4 @@
+// numero aleatorio de 0 a 8
 function numAleato(){
     let aleatorio=Math.random();
     // let numAleatorio= aleatorio * 10;
@@ -8,6 +9,7 @@ function numAleato(){
     // console.log("numeroEntero es " + numeroEntero)   
     return numeroEntero;       
 }
+// funcion de número aleatorio de 0 a 3.
 function numAleato3(){
     let aleatorio=Math.random();
     let numAleatorio= aleatorio * 10;
@@ -70,8 +72,7 @@ const grupoFiguras=[
   "nombre":"ciruela",
 "ruta":  "/imagenes/ciruela.svg",
 "valor": 12
-}
-]
+}]
 // variables para enlazar con las etiquetas img que hemos llamado tablero
 let imgTablero1 = $("#imgn1");
 let imgTablero2 = $("#imgn2");
@@ -132,8 +133,9 @@ const cabecera= document.querySelector("#cabecera");
 const etiqueta = document.createElement("input");
 etiqueta.id="apuesta";
 etiqueta.type= "number";
-etiqueta.value= 630;//provisionalmente en centimos de euro
+etiqueta.value= 0;//provisionalmente en centimos de euro
 cabecera.appendChild(etiqueta);
+
 /* **************************Fin de creacion de html ******************************* */ 
 // Variable para almacenar el valor de la apuesta
 
@@ -151,8 +153,10 @@ miApuesta.addEventListener("input", function()
 function temporizadorCiclicoObjeto(intervalo, duracionTotal){  
     let contador = 0;  
     const interval = setInterval(() => {      
-    for(i=0;i<4;i++)
+    total=0;
+      for(i=0;i<4;i++)
     {      
+      
       let comparacion=(ObjTablero[i].Id==Tablero[i]);      
       if(comparacion)
         {        
@@ -172,11 +176,7 @@ function temporizadorCiclicoObjeto(intervalo, duracionTotal){
           total+=ObjTablero[i].valor
           console.log("la suma total es " + total)
         }  
-    }    
-
-        
-   
-    
+    }       
       contador++;
     
       if (contador * intervalo >= duracionTotal * 1000) 
@@ -191,7 +191,7 @@ function temporizadorCiclicoObjeto(intervalo, duracionTotal){
     }, intervalo * 10);
 
 }
-
+ 
 /**
  * la siguiente funcion devuelve el calculo de ganancia o perdida de la tirada.
  * @param {unNumero} unNumero 
@@ -199,10 +199,27 @@ function temporizadorCiclicoObjeto(intervalo, duracionTotal){
  * @returns 
  */
 const resultadoApuesta = function (unNumero,ratio){  
-   let vueltaAppuesta;
-   vueltaAppuesta=(ratio*unNumero)/100;  
-  return vueltaAppuesta;
+    let vueltaAppuesta;
+    vueltaAppuesta=(ratio*unNumero)/100;  
+    return vueltaAppuesta;
 }
+
+
+let valorBote=0;
+let añadirAlBote= function(valor){
+  valorBote=etiqueta.value;
+  console.log("el nuevo valor del bote es "+valorBote);
+  return valorBote;
+}
+
+
+$("#bote").click(function(e){
+// lectura del valor del campo bote
+añadirAlBote(etiqueta.value)
+valorBote=etiqueta.value
+console.log("El valor del bote es " + valorBote)
+return valorBote;
+})
 
 // evento click que pone todo en marcha
 /** este es el evento click principal, que inicia la partida. */
