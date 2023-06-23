@@ -137,47 +137,47 @@ const grupoFiguras=[
   "id":1,
   "nombre": "granpremio",
   "ruta":   "/imagenes/granpremio.svg",
-  "valor":  36
+  "valor":  20
 },{
   "id":2,
   "nombre": "siete",
 "ruta":  "/imagenes/siete.svg",
-"valor": 33
+"valor": 10
 },{
   "id":3,
   "nombre": "sandia",
 "ruta":  "/imagenes/sandia.svg",
-"valor": 30
+"valor": 5
 },{
   "id":4,
   "nombre": "Platanos",
 "ruta":  "/imagenes/platanos.svg",
-"valor": 27
+"valor": 2
 },{
   "id":5,
   "nombre": "limon",
 "ruta":  "/imagenes/limon.svg",
-"valor": 24
+"valor": 1
 },{
   "id":6,
   "nombre":"naranja",
 "ruta":  "/imagenes/naranja.svg",
-"valor": 21
+"valor": 0.5
 },{
   "id":7,
   "nombre":"fresa",
 "ruta":  "/imagenes/fresa.svg",
-"valor": 18
+"valor": 0.20
 },{
   "id":8,
   "nombre":"cereza",
 "ruta":  "/imagenes/cereza.svg",
-"valor":15 
+"valor": 0.10 
 },{
   "id":9,
   "nombre":"ciruela",
 "ruta":  "/imagenes/ciruela.svg",
-"valor": 12
+"valor": 0.05
 }]
 // variables para enlazar con las etiquetas img que hemos llamado tablero
 let imgTablero1 = $("#imgn1");
@@ -248,12 +248,14 @@ resultado.value=0;
 resultado.title="resultado de la apuesta"
 etiqueta.readOnly=false;
 etiqueta.required;
-etiqueta.min = 5;
+etiqueta.min = 1;
 etiqueta.id="apuesta";
 etiqueta.type= "number";
 etiqueta.step=0.01
 etiqueta.value= etiqueta.min;//provisionalmente en centimos de euro
 apostar.id="apostar";
+apostar.disabled=true;
+apostar.hidden=true;
 cabecera.appendChild(etiqueta);
 cabecera.appendChild(apostar);
 cabecera.appendChild(labelResultado);
@@ -284,7 +286,7 @@ apostar.innerHTML="Apostar"//poner texto dentro del boton
     let totalinterno=0;
       for(i=0;i<4;i++)
     {      
-      
+    
       let comparacion=(ObjTablero[i].Id==Tablero[i]);      
       if(comparacion)
         {        
@@ -300,10 +302,12 @@ apostar.innerHTML="Apostar"//poner texto dentro del boton
             }       
         }
         if(contador==19){
-          
           totalinterno+=ObjTablero[i].valor
           console.log("la suma total es " + totalinterno)
-          total=totalinterno;
+          total=totalinterno;          
+        }
+        if (contador ==19 && (totalinterno%4==0)){
+          console.log("Han salido las cuatro figuras iguales, tienes un premio especial.")
         }  
     }       
       contador++;
@@ -323,19 +327,28 @@ apostar.innerHTML="Apostar"//poner texto dentro del boton
 
 }
  
-/**
- * la siguiente funcion devuelve el calculo de ganancia o perdida de la tirada.
- * @param {unNumero} unNumero 
- * @param {ratio} ratio 
- * @returns 
- */
+
 
 /**
+ * la siguiente funcion devuelve el calculo de ganancia o perdida de la tirada.
  * una vez que le damos al click del boton tirar, se captura el valor del bote, se guarda
  * la suma de las figuras que salen cuando dejan de cambiar, y se hace la siguiente cuenta
- *   ((suma de las figuras/100)* valor del bote)+valor del bote, y el resultado de cambia 
+ *   ((suma de las figuras/100)* valor del bote), y el resultado se cambia 
  * en el campo de apuesta, por el valor que hubiera.
  */
+
+
+/*************cambio del mecanismo*********************************************************** */
+
+/** el nuevo mecanismo es con combinaciones completas, es decir, en la tabla de premios
+ * hay dos cifras. La cifra que hay entre paréntesis, es lo que vale cada figura, y la cifra que está fuera 
+ * del paréntesis es jackpot, y es si sale las cuatro figuras iguales, y es multiplicativo, es decir, que lo que
+ * se iba ganando, se le suma esa cifra.
+ */
+
+
+
+
 
 // let valorBote=0;
 // let añadirAlBote= function(valor){
@@ -363,7 +376,7 @@ $("#tirada").click(function(e){
 
 function totalizador(){
   let operaciones=0;
-  operaciones = (parseFloat((total * etiqueta.value)/100)).toFixed(2);
+  operaciones = (parseFloat((total * etiqueta.value)/100)).toFixed(2);//se quita la division por 100 para probar
   resultado.value=parseFloat(operaciones);
   console.log("el resultado total de las operaciones es "+operaciones)
   // etiqueta.value=etiqueta.value.toFixed(2)
@@ -373,14 +386,14 @@ function totalizador(){
 
 
 
-$("#apostar").click(function(e){
+// $("#apostar").click(function(e){
 // lectura del valor del campo bote
 // añadirAlBote(etiqueta.value)
 // valorBote=etiqueta.value
-console.log("El valor del bote es " + valorBote)
-resultado.value=etiqueta.value;
-return valorBote;
-})
+// console.log("El valor del bote es " + valorBote)
+// resultado.value=etiqueta.value;
+// return valorBote;
+// })
 
 // evento click que pone todo en marcha
 /** este es el evento click principal, que inicia la partida. */

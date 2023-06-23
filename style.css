@@ -83,7 +83,7 @@ section > .rued-marc {
 }
 .ruedas > button{
     background-color: blueviolet;
-    width: 80%;
+    width: 90%;
     height: 50px;
     /* display:flex; */
     /* align-items:space-around; */
@@ -141,9 +141,8 @@ footer > .btn-glb {
 .comb-gan > section > * {
     display: flex;
     justify-content:space-around;
-
     background-color: aquamarine;
-    width: 40%;
+    width: 50%;
     height: 100%;
 }
 .pulsador{
@@ -165,49 +164,53 @@ footer > .btn-glb {
 
 }
 
-/* .combos{
+.combos{
     display:flex;
-    width: fit-content;
+    width: 300px;
     height: auto;
-    padding: 2%;
+    padding: 1%;
     background-color: rgb(112, 112, 35);
     justify-content: space-evenly;
     
-} */
-/* .combos-gan, .combos-prem {
+}
+.combos-gan, .combos-prem {
     background-color: rgb(192, 234, 220);
-    opacity: 75%;
+    /* opacity: 75%; */
     height: auto;
-    width: 80%;
+    width: 100%;
     margin: 2%;
     text-align: center;
-} */
-.combos-prem{
+}
+/* .combos-prem{
     display: flex;
     flex-direction: row;
     align-items: stretch;
 
-}
+} */
 .combos-gan{
     display: flex;
     flex-direction: column;
-    width: fit-content;
+    width: 300px;
     height: auto;
     justify-content: center;
     align-items: center;
-    margin: 100px,0px,100px,100px;
+    /* margin: 100px,0px,100px,100px; */
 }
  .comb-figuras> img{
-    width: 425px;
-    height: 650px;
-
-
+    width: 40px;
+    height: 40px;
 }
-/*
+.comb-figuras{
+    display:inline-flex;
+    width: 260px;
+    justify-content: center;
+    align-items: center;
+}
 .comb-figuras>h3{
-    margin-left: auto;
-    margin-right: auto;
-} */
+    /* margin-left:5%; */
+    /* margin-right: 5%; */
+}
+
 .botones{
     background-color: bisque;
     width: 86%;
@@ -220,3 +223,4 @@ width: 100px;
 height: 50px;
 }
 
+aside > 
