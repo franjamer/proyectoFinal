@@ -1,9 +1,12 @@
+html{
+    height: 150vh;
+}
 body {
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: aquamarine;
-    height: 100vh;
+    height: max-content;
 }
 header{
     display:flex;
@@ -35,16 +38,24 @@ header > .marcadores > div > .marc-valor {
     display: inline-flex;
     justify-content: space-around;
 }
-main  {
-    margin:0px;
+{
+    display: flex;
+    justify-content: space-evenly;
+}
+main > *  {
+    margin:0,10px;
     padding: 0px;
     width: 100%;
     background-color:cadetblue;
-    display:flex;
-    flex-direction: column;
-    /* justify-content:center; */
+    display:inline-flex;
+    flex-direction: row;
+    justify-content:space-evenly;
     /* justify-self: auto; */
     /* margin: 0 ; */
+}
+main > contenedor-img > *{
+    display: flex;
+    justify-content: space-evenly   ;
 }
 .contador{
     text-align: center;
@@ -101,6 +112,10 @@ main > .cuerpo {
     width: 600px;
     background-color: chocolate;
 }
+main{
+    display: flex;
+    justify-content: space-between;
+}
 footer {
     display: flex;
     justify-content: center;
@@ -149,10 +164,11 @@ footer > .btn-glb {
 .contenedor-img{
     display: inline-flex;
     justify-content: space-around;
+    width: max-content;
 
 }
 
-.combos{
+/* .combos{
     display:flex;
     width: fit-content;
     height: auto;
@@ -160,15 +176,15 @@ footer > .btn-glb {
     background-color: rgb(112, 112, 35);
     justify-content: space-evenly;
     
-}
-.combos-gan, .combos-prem {
+} */
+/* .combos-gan, .combos-prem {
     background-color: rgb(192, 234, 220);
-    /* opacity: 75%; */
+    opacity: 75%;
     height: auto;
     width: 80%;
     margin: 2%;
     text-align: center;
-}
+} */
 .combos-prem{
     display: flex;
     flex-direction: row;
@@ -182,33 +198,28 @@ footer > .btn-glb {
     height: auto;
     justify-content: center;
     align-items: center;
+    margin: 100px,0px,100px,100px;
 }
-.comb-figuras{
-    display:flex;
-    padding: 1%;
-    width: fit-conten200px;
-    
-}
-.comb-figuras> img{
-    width: 50px;
-    height: 50px;
+ .comb-figuras> img{
+    width: 425px;
+    height: 650px;
 
 
 }
+/*
 .comb-figuras>h3{
     margin-left: auto;
     margin-right: auto;
-}
+} */
 .botones{
     background-color: bisque;
-    width: 50%;
+    width: 86%;
     display: flex;
     justify-content: space-evenly;
 }
 
 .botones > button, .boton{
 width: 100px;
-height: 25px;
+height: 50px;
 }
 
-.

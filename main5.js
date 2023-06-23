@@ -62,44 +62,44 @@
 //creamos un elemento section desde js. Este elemento que 
 //vamos a crar es hijo del elemento body.
 
-function crearElementos(elemento,num,padre){
+// function crearElementos(elemento,num,padre){
   
-  for (i=0;i<num; i++){
-    document.createElement(elemento);
-    document.padre.appendChild(elemento);
-    let arrayElementos=[];
-    arrayElementos[i]={
-      "id": i,
-      "contenido": "hola" + i
-    }
-    elemento.setAttribute("id",i)
+//   for (i=0;i<num; i++){
+//     document.createElement(elemento);
+//     document.padre.appendChild(elemento);
+//     let arrayElementos=[];
+//     arrayElementos[i]={
+//       "id": i,
+//       "contenido": "hola" + i
+//     }
+//     elemento.setAttribute("id",i)
     
-  }
-}
+//   }
+// }
 
 
-let sectionFr = document.createElement("section");
-//añadimos estilo css a el elemento creado anteriormente.
-sectionFr.style.backgroundColor = "red";
-sectionFr.style.width="80%";
-sectionFr.style.height = "50px";
-sectionFr.style.margin = "auto";
-//añadimos el atributo id a la etiqueta sectionFr.
-sectionFr.setAttribute("id","sectionOne");
-document.body.appendChild(sectionFr);
+// let sectionFr = document.createElement("section");
+// //añadimos estilo css a el elemento creado anteriormente.
+// sectionFr.style.backgroundColor = "red";
+// sectionFr.style.width="80%";
+// sectionFr.style.height = "50px";
+// sectionFr.style.margin = "auto";
+// //añadimos el atributo id a la etiqueta sectionFr.
+// sectionFr.setAttribute("id","sectionOne");
+// document.body.appendChild(sectionFr);
 
 
-//creamos un elemento parrafo con su etiqueta p. Este elemento p está dentro, o es hijo del elemento sectionFr. 
-let parrafo = document.createElement("p");
-parrafo.setAttribute("id","sectionTwo")
-sectionFr.appendChild(parrafo);
-sectionFr.appendChild(parrafo);
+// //creamos un elemento parrafo con su etiqueta p. Este elemento p está dentro, o es hijo del elemento sectionFr. 
+// let parrafo = document.createElement("p");
+// parrafo.setAttribute("id","sectionTwo")
+// sectionFr.appendChild(parrafo);
+// sectionFr.appendChild(parrafo);
 
-//creamos otro elemento texto que está dentro del elemento p creado anteriormente.
-let texto = document.createTextNode("Este es un texto dentro de p. es un ejemplo de atributo desde js");
-parrafo.appendChild(texto);
-parrafo.appendChild(texto);
-crearElementos(div,2,body);
+// //creamos otro elemento texto que está dentro del elemento p creado anteriormente.
+// let texto = document.createTextNode("Este es un texto dentro de p. es un ejemplo de atributo desde js");
+// parrafo.appendChild(texto);
+// parrafo.appendChild(texto);
+// crearElementos(div,2,body);
 
 
 
