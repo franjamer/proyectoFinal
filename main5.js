@@ -133,52 +133,61 @@ const grupoFiguras=[
 
 // creación de objeto figuras
  let ObjFiguras = [
+
   {
-  "id":1,
+    "id":1,
+    "nombre":"ciruela",
+  "ruta":  "/imagenes/ciruela.svg",
+  "valor": 0.05
+  },{
+    "id":2,
+    "nombre":"cereza",
+  "ruta":  "/imagenes/cereza.svg",
+  "valor": 0.10 
+  },{
+    "id":3,
+    "nombre":"fresa",
+  "ruta":  "/imagenes/fresa.svg",
+  "valor": 0.20
+  },{
+    "id":4,
+    "nombre":"naranja",
+  "ruta":  "/imagenes/naranja.svg",
+  "valor": 0.5
+  },{
+    "id":5,
+    "nombre": "limon",
+  "ruta":  "/imagenes/limon.svg",
+  "valor": 1
+  },{
+    "id":6,
+    "nombre": "Platanos",
+  "ruta":  "/imagenes/platanos.svg",
+  "valor": 2
+  },{
+    "id":7,
+    "nombre": "sandia",
+  "ruta":  "/imagenes/sandia.svg",
+  "valor": 5
+  },{
+    "id":8,
+    "nombre": "siete",
+  "ruta":  "/imagenes/siete.svg",
+  "valor": 10
+  },{
+  "id":9,
   "nombre": "granpremio",
   "ruta":   "/imagenes/granpremio.svg",
   "valor":  20
-},{
-  "id":2,
-  "nombre": "siete",
-"ruta":  "/imagenes/siete.svg",
-"valor": 10
-},{
-  "id":3,
-  "nombre": "sandia",
-"ruta":  "/imagenes/sandia.svg",
-"valor": 5
-},{
-  "id":4,
-  "nombre": "Platanos",
-"ruta":  "/imagenes/platanos.svg",
-"valor": 2
-},{
-  "id":5,
-  "nombre": "limon",
-"ruta":  "/imagenes/limon.svg",
-"valor": 1
-},{
-  "id":6,
-  "nombre":"naranja",
-"ruta":  "/imagenes/naranja.svg",
-"valor": 0.5
-},{
-  "id":7,
-  "nombre":"fresa",
-"ruta":  "/imagenes/fresa.svg",
-"valor": 0.20
-},{
-  "id":8,
-  "nombre":"cereza",
-"ruta":  "/imagenes/cereza.svg",
-"valor": 0.10 
-},{
-  "id":9,
-  "nombre":"ciruela",
-"ruta":  "/imagenes/ciruela.svg",
-"valor": 0.05
-}]
+}
+
+
+
+
+
+
+
+]
 // variables para enlazar con las etiquetas img que hemos llamado tablero
 let imgTablero1 = $("#imgn1");
 let imgTablero2 = $("#imgn2");
@@ -248,7 +257,7 @@ resultado.value=0;
 resultado.title="resultado de la apuesta"
 etiqueta.readOnly=false;
 etiqueta.required;
-etiqueta.min = 1;
+etiqueta.min = 5;
 etiqueta.id="apuesta";
 etiqueta.type= "number";
 etiqueta.step=0.01
@@ -284,6 +293,8 @@ apostar.innerHTML="Apostar"//poner texto dentro del boton
     let contador = 0;  
     const interval = setInterval(() => {      
     let totalinterno=0;
+    let i=0;
+    let j=0;
       for(i=0;i<4;i++)
     {      
     
@@ -304,10 +315,8 @@ apostar.innerHTML="Apostar"//poner texto dentro del boton
         if(contador==19){
           totalinterno+=ObjTablero[i].valor
           console.log("la suma total es " + totalinterno)
-          total=totalinterno;          
-        }
-        if (contador ==19 && (totalinterno%4==0)){
-          console.log("Han salido las cuatro figuras iguales, tienes un premio especial.")
+          total=totalinterno;
+           premio(total,j);
         }  
     }       
       contador++;
@@ -319,6 +328,7 @@ apostar.innerHTML="Apostar"//poner texto dentro del boton
             // console.log(total);
             total=totalinterno;     
             totalizador();
+           
               // console.log("total externo es " + total)   
             console.log("Temporizador cíclico finalizado.");   
                 
@@ -378,6 +388,12 @@ function totalizador(){
   let operaciones=0;
   operaciones = (parseFloat((total * etiqueta.value)/100)).toFixed(2);//se quita la division por 100 para probar
   resultado.value=parseFloat(operaciones);
+  if (total>17&&total<25){
+    console.log("Han salido cuatro sandias iguales")
+
+    
+  }
+  
   console.log("el resultado total de las operaciones es "+operaciones)
   // etiqueta.value=etiqueta.value.toFixed(2)
   etiqueta.value=resultado.value;
@@ -385,15 +401,6 @@ function totalizador(){
 }
 
 
-
-// $("#apostar").click(function(e){
-// lectura del valor del campo bote
-// añadirAlBote(etiqueta.value)
-// valorBote=etiqueta.value
-// console.log("El valor del bote es " + valorBote)
-// resultado.value=etiqueta.value;
-// return valorBote;
-// })
 
 // evento click que pone todo en marcha
 /** este es el evento click principal, que inicia la partida. */
@@ -410,12 +417,87 @@ $("#boton").click(function(e){
 
 
 
+  /** funciones para establecer limites superiores e inferiores para determinar si han salido cuatro figuras iguales.*/
+
+let valorMinimoSup=function limitInf(indice){
+  let minimo=0;
+  
+  if(indice<=0)
+  {minimo=(ObjFiguras[indice].valor)*4
+  console.log("Salieron 4 Ciruelas, y es el valor minimo posible")}
+  else {
+    minimo=((ObjFiguras[indice-1].valor)*3)+ObjFiguras[indice].valor
+    console.log(("Si salen 3 " + ObjFiguras[indice-1].nombre) + " iguales y una " + ObjFiguras[indice].nombre)
+  }
+   
+  return minimo
+}
+
+
+let valorMáximoInf = function limitSup(indiceFig) {
+  let maximo;
+  if(indiceFig >= ObjFiguras.length-1){
+    maximo=ObjFiguras[indice].valor*4;
+  }
+  else{
+    maximo =((ObjFiguras[indicFige+1].valor)*3) + ObjFiguras[indiceFig].valor
+    console.log(("Para cuatro "+ ObjFiguras[indiceFig].nombre + " si salen 3 " + ObjFiguras[indiceFig+1].nombre) + " iguales y una " + ObjFiguras[indiceFig].nombre + " será el valor minimo por encima del pleno para " + ObjFiguras[indice].nombre)
+  }
+    
+  return maximo;  
+}
 
 
 
 
+function premio(valor,indice)
+{
+  let salida="salieron los cuatro " + ObjFiguras[indice].nombre + " iguales ";
+    for(let  i=0; i<4;i++){
+        if (valorMáximoInf(i)<valor)
+        {
+            if (valorMinimoSup(i)>valor)
+            {
+              console.log("son las cuatro figuras iguales")
+              salida="salieron los cuatro " + ObjFiguras[indice].nombre + " iguales ";
+              return salida 
+            }
+            else 
+            {
+              console.log("el valor minimo superior es inferior al que le corresponde a la figura " + ObjFiguras[indice].nombre);    
+            }
+        }
+        else
+            {
+              console.log("el valor maximo inferior es igual o superior al que le corresponde a la figura " + ObjFiguras[indice].nombre);    
+            }
+    }
+  
+}
+
+let monitor=function monitoreo()  
+{
+  let salida;
+  for (let i=0; i<ObjFiguras.length-1;i++){
+      for ( let j=0; j<ObjTablero-1; j++){
+          if (ObjFiguras[i].valor==ObjTablero[j].valor){
+            salida+=ObjFiguras[i].valor;
+          }
+      }
+  }
+  return salida;
+}
 
 
+let sonIguales = function losMismos (){
+let valoresIguales=0;
+  for (i=0;i<3;i++){
+  if ((ObjTablero[i].valor==ObjTablero[i+1].valor)&&(i<=3)){
+    valoresIguales+=ObjTablero[i].valor;
+  }
+}
+return valoresIguales;
+}
 
 
 
