@@ -188,6 +188,30 @@ const grupoFiguras=[
 
 
 ]
+
+//Creación de array de objetos para manejar los cuadros individualmente
+const cuadrosSolitarios=[
+  {
+    "id": 1,
+    "inicio":0,
+    "fin":1
+  },
+  {
+    "id":2,
+    "inicio":1,
+    "fin":2
+  },
+  {
+    "id":3,
+    "inicio": 2,
+    "fin": 3
+  },
+  {
+    "id":4,
+    "inicio":3,
+    "fin":4,
+  }
+]
 // variables para enlazar con las etiquetas img que hemos llamado tablero
 let imgTablero1 = $("#imgn1");
 let imgTablero2 = $("#imgn2");
@@ -289,7 +313,7 @@ apostar.innerHTML="Apostar"//poner texto dentro del boton
  * como intervalo, y el tiempo global, que tiene como parametro duracionTotal 
 */
   let total=0;
-  function temporizadorCiclicoObjeto(intervalo, duracionTotal){  
+  function temporizadorCiclicoObjetosTablero(intervalo, duracionTotal){  
     let contador = 0;  
     const interval = setInterval(() => {      
     let totalinterno=0;
@@ -316,7 +340,7 @@ apostar.innerHTML="Apostar"//poner texto dentro del boton
           totalinterno+=ObjTablero[i].valor
           console.log("la suma total es " + totalinterno)
           total=totalinterno;
-           premio(total,j);
+         
         }  
     }       
       contador++;
@@ -328,6 +352,7 @@ apostar.innerHTML="Apostar"//poner texto dentro del boton
             // console.log(total);
             total=totalinterno;     
             totalizador();
+              // premio(total,j);
            
               // console.log("total externo es " + total)   
             console.log("Temporizador cíclico finalizado.");   
@@ -386,21 +411,34 @@ $("#tirada").click(function(e){
 
 function totalizador(){
   let operaciones=0;
-  operaciones = (parseFloat((total * etiqueta.value)/100)).toFixed(2);//se quita la division por 100 para probar
-  resultado.value=parseFloat(operaciones);
-  if (total>17&&total<25){
-    console.log("Han salido cuatro sandias iguales")
+  if(total>=15){
+        operaciones =etiqueta.value + (parseFloat((total * etiqueta.value))).toFixed(2);//se quita la division por 100 para probar
+        resultado.value=parseFloat(operaciones);
+        console.log("el resultado total de las operaciones es " + operaciones)
+    // etiqueta.value=etiqueta.value.toFixed(2)
+        etiqueta.value=resultado.value;
+      }
+  else
+    {
+      operaciones =etiqueta.value - (parseFloat((total * etiqueta.value)/100)).toFixed(2);//se quita la division por 100 para probar
+      resultado.value=parseFloat(operaciones);
+      console.log("el resultado total de las operaciones es " + operaciones)
+      // etiqueta.value=etiqueta.value.toFixed(2)
+      etiqueta.value=resultado.value;
+    }
 
-    
+};
+
+let montoTirada = function(){
+  let monto=0;
+  for (let i=0; i<4;i++){
+    ObjTablero[i].ruta=$(Tablero[i]).attr("src");
+    if (Tablero[i]==ObjTablero[i].Id){      
+          monto+=ObjTablero[i].valor;
+      }      
   }
-  
-  console.log("el resultado total de las operaciones es "+operaciones)
-  // etiqueta.value=etiqueta.value.toFixed(2)
-  etiqueta.value=resultado.value;
-
-}
-
-
+  return monto;
+} 
 
 // evento click que pone todo en marcha
 /** este es el evento click principal, que inicia la partida. */
@@ -408,13 +446,33 @@ function totalizador(){
 $("#boton").click(function(e){    
       // tiempo de ruleta 
       // temporizadorCiclico(50, 1);
-      temporizadorCiclicoObjeto(25,0.5)
+      temporizadorCiclicoObjetosTablero(25,0.5)
     //   temporizadorFinal(0.1);   
     // nuevoValorBote(valorBote,total);
   });
 
+  // botones individual para mover cada una de las cajas con un boton.
 
+  $("#caja1").click(function(e){    
 
+    temporizadorCiclicoTablero(25,0.5,0)
+
+});
+  $("#caja2").click(function(e){    
+
+    temporizadorCiclicoTablero(25,0.5,1)
+
+});
+  $("#caja3").click(function(e){    
+
+    temporizadorCiclicoTablero(25,0.5,2)
+
+});
+  $("#caja4").click(function(e){    
+
+    temporizadorCiclicoTablero(25,0.5,3)
+
+});
 
 
   /** funciones para establecer limites superiores e inferiores para determinar si han salido cuatro figuras iguales.*/
@@ -422,17 +480,16 @@ $("#boton").click(function(e){
 let valorMinimoSup=function limitInf(indice){
   let minimo=0;
   
-  if(indice<=0)
+  if(indice>=0)
   {minimo=(ObjFiguras[indice].valor)*4
   console.log("Salieron 4 Ciruelas, y es el valor minimo posible")}
   else {
     minimo=((ObjFiguras[indice-1].valor)*3)+ObjFiguras[indice].valor
-    console.log(("Si salen 3 " + ObjFiguras[indice-1].nombre) + " iguales y una " + ObjFiguras[indice].nombre)
+    // console.log(("Si salen 3 " + ObjFiguras[indice-1].nombre) + " iguales y una " + ObjFiguras[indice].nombre)
   }
    
   return minimo
 }
-
 
 let valorMáximoInf = function limitSup(indiceFig) {
   let maximo;
@@ -440,15 +497,12 @@ let valorMáximoInf = function limitSup(indiceFig) {
     maximo=ObjFiguras[indice].valor*4;
   }
   else{
-    maximo =((ObjFiguras[indicFige+1].valor)*3) + ObjFiguras[indiceFig].valor
-    console.log(("Para cuatro "+ ObjFiguras[indiceFig].nombre + " si salen 3 " + ObjFiguras[indiceFig+1].nombre) + " iguales y una " + ObjFiguras[indiceFig].nombre + " será el valor minimo por encima del pleno para " + ObjFiguras[indice].nombre)
+    maximo =((ObjFiguras[indiceFig+1].valor)*3) + ObjFiguras[indiceFig].valor
+    // console.log(("Para cuatro "+ ObjFiguras[indiceFig].nombre + " si salen 3 " + ObjFiguras[indiceFig+1].nombre) + " iguales y una " + ObjFiguras[indiceFig].nombre + " será el valor minimo por encima del pleno para " + ObjFiguras[indiceFig].nombre)
   }
     
   return maximo;  
 }
-
-
-
 
 function premio(valor,indice)
 {
@@ -462,46 +516,78 @@ function premio(valor,indice)
               salida="salieron los cuatro " + ObjFiguras[indice].nombre + " iguales ";
               return salida 
             }
-            else 
-            {
-              console.log("el valor minimo superior es inferior al que le corresponde a la figura " + ObjFiguras[indice].nombre);    
-            }
+         
         }
-        else
-            {
-              console.log("el valor maximo inferior es igual o superior al que le corresponde a la figura " + ObjFiguras[indice].nombre);    
-            }
+      
     }
   
 }
 
-let monitor=function monitoreo()  
-{
-  let salida;
-  for (let i=0; i<ObjFiguras.length-1;i++){
-      for ( let j=0; j<ObjTablero-1; j++){
-          if (ObjFiguras[i].valor==ObjTablero[j].valor){
-            salida+=ObjFiguras[i].valor;
-          }
+
+
+// let sonIguales = function losMismos (){
+// let valoresIguales=0;
+//   for (i=0;i<3;i++){
+//   if ((ObjTablero[i].valor==ObjTablero[i+1].valor)&&(i<=3)){
+//     valoresIguales+=ObjTablero[i].valor;
+//   }
+//   console.log(ObjTablero[i].nombre)
+// }
+
+// return valoresIguales;
+// }
+
+function temporizadorCiclicoTablero(intervalo, duracionTotal,numero){  
+  let contador = 0;  
+  const interval = setInterval(() => {      
+  let totalinterno=0;
+  let descuentoInterno=0;
+  let i=0;
+  let j=0;
+  descuentoInterno=total-ObjTablero[numero].valor;
+  console.log("el valor de total, menos la caja " + numero + " es " + descuentoInterno)
+    for(i=cuadrosSolitarios[numero].inicio;i<cuadrosSolitarios[numero].fin;i++)
+    {   
+      let comparacion=(ObjTablero[i].Id==Tablero[i]);      
+      if(comparacion)
+      {        
+        $(Tablero[i]).attr("src",ObjFiguras[numAleato()].ruta); 
+          ObjTablero[i].ruta = $(Tablero[i]).attr("src");
+          for (j=0; j<8;j++)
+          {
+            if ((ObjFiguras[j].ruta==ObjTablero[i].ruta)&&(contador==19))
+            {
+              ObjTablero[i].valor=ObjFiguras[j].valor
+              console.log(ObjTablero[i].ruta + " " + ObjTablero[i].valor);
+            }
+          }       
       }
-  }
-  return salida;
+      if(contador==19){       
+        
+        totalinterno=ObjTablero[i].valor + descuentoInterno
+        console.log("la suma total es " + totalinterno)
+        total=totalinterno;
+       
+      }  
+  }       
+    contador++;
+  
+    if (contador * intervalo >= duracionTotal * 1000) 
+      {
+          clearInterval(interval);
+                
+          // console.log(total);
+          total=totalinterno;     
+          totalizador();
+            // premio(total,j);
+         
+            // console.log("total externo es " + total)   
+          console.log("Temporizador cíclico finalizado.");   
+              
+      }
+  }, intervalo * 10);
+
 }
-
-
-let sonIguales = function losMismos (){
-let valoresIguales=0;
-  for (i=0;i<3;i++){
-  if ((ObjTablero[i].valor==ObjTablero[i+1].valor)&&(i<=3)){
-    valoresIguales+=ObjTablero[i].valor;
-  }
-}
-return valoresIguales;
-}
-
-
-
-
 
 
 
