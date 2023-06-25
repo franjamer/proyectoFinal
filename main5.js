@@ -1,109 +1,3 @@
-// window.addEventListener('load', function() {  
-//   // Arreglo de imágenes
-//   var imagenes = [   
-//     {nombre:"Gran Premio",valor:"36",ruta:"/imagenes/granpremio.svg"},
-//     {nombre:"siete",valor:"33",ruta:"/imagenes/siete.svg"},  
-//     {nombre:"sandia",valor:"30",ruta:"/imagenes/sandia.svg"},
-//     {nombre:"platanos",valor:"27",ruta:"/imagenes/platanos.svg"},
-//     {nombre:"limon",valor:"24",ruta:"/imagenes/limon.svg"},
-//     {nombre:"naranja",valor:"21",ruta:"/imagenes/naranja.svg"},
-//     {nombre:"fresa",valor:"18",ruta:"/imagenes/fresa.svg"},
-//     {nombre:"cereza",valor:"15",ruta:"/imagenes/cereza.svg"},
-//     {nombre:"ciruela",valor:"12",ruta:"/imagenes/ciruela.svg"}
-//   ];
-
-//   // Carga las imágenes en el contenedor
-//   cargarImagenes(imagenes, "#container");
-//   // cargarImagenes(imagenes, "#container");
-//   // cargarImagenes(imagenes, "#container");
-//   // cargarImagenes(imagenes, "#container");
-// });
-
-// function cargarImagenes(imagenes, contenedor) {
-//   var contenedorElem = document.querySelector(contenedor);  
-  
-
-//   contenedorElem.style.width="300px";
-//   contenedorElem.style.height="600px";
-//   contenedorElem.style.background= "burlywood";
-//   contenedorElem.style.display= "flex";
-//   // contenedorElem.style.flexdirecction="column";
-//   // contenedorElem.style.justify = "space-evenly";
-//   // contenedorElem.style.wrap= "wrap";
-//   for (let j=0; i<4;i++){
-//     arrayPremios= document.createElement("section");
-//     arrayPremios.appendChild(imagen);
-//     arrayPremios.style.background="bisque";
-//   }
-
-//   for (var i = 0; i < imagenes.length; i++) {
-//     var contImagen = document.createElement("span");
-//     var imagen = document.createElement("img");
-//     var texto= document.createElement("p");
-//     // contenedorElem $(contenedorElem).hasClass(className);
-//     texto.innerText=imagenes[i].nombre;
-//     imagen.src = imagenes[i].ruta;
-//     imagen.alt = imagenes[i].nombre;
-//     imagen.style.width= "50px";
-//     imagen.style.height = "50px";
-    
-
-//     imagen.dataset.valor = imagenes[i].valor;
-//     contenedorElem.appendChild(contImagen);
-//     contImagen.appendChild(imagen);
-//     contenedorElem.appendChild(imagen);
-//     contenedorElem.appendChild(texto);
-   
-//     //  imagen.width = 
-//     // imagen.className=
-//   }
-// }
-
-//creamos un elemento section desde js. Este elemento que 
-//vamos a crar es hijo del elemento body.
-
-// function crearElementos(elemento,num,padre){
-  
-//   for (i=0;i<num; i++){
-//     document.createElement(elemento);
-//     document.padre.appendChild(elemento);
-//     let arrayElementos=[];
-//     arrayElementos[i]={
-//       "id": i,
-//       "contenido": "hola" + i
-//     }
-//     elemento.setAttribute("id",i)
-    
-//   }
-// }
-
-
-// let sectionFr = document.createElement("section");
-// //añadimos estilo css a el elemento creado anteriormente.
-// sectionFr.style.backgroundColor = "red";
-// sectionFr.style.width="80%";
-// sectionFr.style.height = "50px";
-// sectionFr.style.margin = "auto";
-// //añadimos el atributo id a la etiqueta sectionFr.
-// sectionFr.setAttribute("id","sectionOne");
-// document.body.appendChild(sectionFr);
-
-
-// //creamos un elemento parrafo con su etiqueta p. Este elemento p está dentro, o es hijo del elemento sectionFr. 
-// let parrafo = document.createElement("p");
-// parrafo.setAttribute("id","sectionTwo")
-// sectionFr.appendChild(parrafo);
-// sectionFr.appendChild(parrafo);
-
-// //creamos otro elemento texto que está dentro del elemento p creado anteriormente.
-// let texto = document.createTextNode("Este es un texto dentro de p. es un ejemplo de atributo desde js");
-// parrafo.appendChild(texto);
-// parrafo.appendChild(texto);
-// crearElementos(div,2,body);
-
-
-
-
 // numero aleatorio de 0 a 8
 function numAleato(){
     let aleatorio=Math.random();
@@ -133,84 +27,76 @@ const grupoFiguras=[
 
 // creación de objeto figuras
  let ObjFiguras = [
-
-  {
-    "id":1,
-    "nombre":"ciruela",
-  "ruta":  "/imagenes/ciruela.svg",
-  "valor": 0.05
-  },{
-    "id":2,
-    "nombre":"cereza",
-  "ruta":  "/imagenes/cereza.svg",
-  "valor": 0.10 
-  },{
-    "id":3,
-    "nombre":"fresa",
-  "ruta":  "/imagenes/fresa.svg",
-  "valor": 0.20
-  },{
-    "id":4,
-    "nombre":"naranja",
-  "ruta":  "/imagenes/naranja.svg",
-  "valor": 0.5
-  },{
-    "id":5,
-    "nombre": "limon",
-  "ruta":  "/imagenes/limon.svg",
-  "valor": 1
-  },{
-    "id":6,
-    "nombre": "Platanos",
-  "ruta":  "/imagenes/platanos.svg",
-  "valor": 2
-  },{
-    "id":7,
-    "nombre": "sandia",
-  "ruta":  "/imagenes/sandia.svg",
-  "valor": 5
-  },{
-    "id":8,
-    "nombre": "siete",
-  "ruta":  "/imagenes/siete.svg",
-  "valor": 10
-  },{
-  "id":9,
-  "nombre": "granpremio",
-  "ruta":   "/imagenes/granpremio.svg",
-  "valor":  20
-}
-
-
-
-
-
-
-
+      {
+        "id":1,
+        "nombre":"ciruela",
+      "ruta":  "/imagenes/ciruela.svg",
+      "valor": 0.05
+      },{
+        "id":2,
+        "nombre":"cereza",
+      "ruta":  "/imagenes/cereza.svg",
+      "valor": 0.10 
+      },{
+        "id":3,
+        "nombre":"fresa",
+      "ruta":  "/imagenes/fresa.svg",
+      "valor": 0.20
+      },{
+        "id":4,
+        "nombre":"naranja",
+      "ruta":  "/imagenes/naranja.svg",
+      "valor": 0.5
+      },{
+        "id":5,
+        "nombre": "limon",
+      "ruta":  "/imagenes/limon.svg",
+      "valor": 1
+      },{
+        "id":6,
+        "nombre": "Platanos",
+      "ruta":  "/imagenes/platanos.svg",
+      "valor": 2
+      },{
+        "id":7,
+        "nombre": "sandia",
+      "ruta":  "/imagenes/sandia.svg",
+      "valor": 5
+      },{
+        "id":8,
+        "nombre": "siete",
+      "ruta":  "/imagenes/siete.svg",
+      "valor": 10
+      },{
+      "id":9,
+      "nombre": "granpremio",
+      "ruta":   "/imagenes/granpremio.svg",
+      "valor":  20
+    }
 ]
 
 //Creación de array de objetos para manejar los cuadros individualmente
 const cuadrosSolitarios=[
-  {
-    "id": 1,
-    "inicio":0,
-    "fin":1
-  },
-  {
-    "id":2,
-    "inicio":1,
-    "fin":2
-  },
-  {
-    "id":3,
-    "inicio": 2,
-    "fin": 3
-  },
-  {
-    "id":4,
-    "inicio":3,
-    "fin":4,
-  }
+    {
+      "id": 1,
+      "inicio":0,
+      "fin":1
+    },
+    {
+      "id":2,
+      "inicio":1,
+      "fin":2
+    },
+    {
+      "id":3,
+      "inicio": 2,
+      "fin": 3
+    },
+    {
+      "id":4,
+      "inicio":3,
+      "fin":4,
+    }
 ]
 // variables para enlazar con las etiquetas img que hemos llamado tablero
 let imgTablero1 = $("#imgn1");
@@ -272,6 +158,9 @@ const labelResultado = document.createElement("label");
 const resultado= document.createElement("input");//es el campo donde se muestra el valor del resultado cuando finaliza la tirada.
 labelResultado.id="tituloResultado";
 labelResultado.textContent="Resultado de la Tirada"
+cabecera.appendChild(labelResultado);
+
+// elemento resultado
 resultado.id="resultado";
 resultado.innerHTML="hola";
 resultado.type="text";
@@ -279,6 +168,9 @@ resultado.textContent= "resultado de la tirada";
 resultado.readOnly=true;//establece el campo resultado como de solo lectura.
 resultado.value=0;
 resultado.title="resultado de la apuesta"
+labelResultado.appendChild(resultado);
+
+//Elemento etiqueta 
 etiqueta.readOnly=false;
 etiqueta.required;
 etiqueta.min = 5;
@@ -286,28 +178,22 @@ etiqueta.id="apuesta";
 etiqueta.type= "number";
 etiqueta.step=0.01
 etiqueta.value= etiqueta.min;//provisionalmente en centimos de euro
+cabecera.appendChild(etiqueta);
+
+// elemento apostar
 apostar.id="apostar";
 apostar.disabled=true;
 apostar.hidden=true;
-cabecera.appendChild(etiqueta);
 cabecera.appendChild(apostar);
-cabecera.appendChild(labelResultado);
-labelResultado.appendChild(resultado);
-
-resultado.id="resultado";
-document.querySelector("#apostar").classList.add("boton");//añadir una clase, que ya está en css
 apostar.innerHTML="Apostar"//poner texto dentro del boton 
+document.querySelector("#apostar").classList.add("boton");//añadir una clase a este elemento, ya está en css
+
+
+
+
+
 /* **************************Fin de creacion de html ******************************* */ 
 
-// /*****modificacion del campo numerico mediante una funcion****** */
-// function cargaValores(){
-//   document.getElementById("resultado").addEventListener("click",cambiaValores);
-// }
-// function cambiaValores(){
-//   let inputNumero = document.getElementById("resultado");
-//   inputNumero.value= operacion;
-//   console.log(inputNumero.value);
-// }
 
 /** temporizadorCiclicoObjeto  tiene por parametros el tiempo que se muestra cada imagen, 
  * como intervalo, y el tiempo global, que tiene como parametro duracionTotal 
@@ -332,13 +218,13 @@ apostar.innerHTML="Apostar"//poner texto dentro del boton
               if ((ObjFiguras[j].ruta==ObjTablero[i].ruta)&&(contador==19))
               {
                 ObjTablero[i].valor=ObjFiguras[j].valor
-                console.log(ObjTablero[i].ruta + " " + ObjTablero[i].valor)
+                // console.log(ObjTablero[i].ruta + " " + ObjTablero[i].valor)
               }
             }       
         }
         if(contador==19){
           totalinterno+=ObjTablero[i].valor
-          console.log("la suma total es " + totalinterno)
+          // console.log("la suma total es " + totalinterno)
           total=totalinterno;
          
         }  
@@ -354,7 +240,7 @@ apostar.innerHTML="Apostar"//poner texto dentro del boton
             totalizador();
               // premio(total,j);
            
-              // console.log("total externo es " + total)   
+              console.log("total externo es " + total)   
             console.log("Temporizador cíclico finalizado.");   
                 
         }
@@ -384,22 +270,6 @@ apostar.innerHTML="Apostar"//poner texto dentro del boton
 
 
 
-
-// let valorBote=0;
-// let añadirAlBote= function(valor){
-//   let vuelta=valor;
-//   console.log("el nuevo valor del bote es "+ vuelta);
-//   return  Math.floor(vuelta);
-// }
-// console.log(añadirAlBote(total))
-
-// let nuevoValorBote= function (bote,tirada){
-// let resultadon=Math.floor((bote*tirada)/100) ;
-// console.log("le nuevo valor del bote es "+ resultado.value) 
-// resultado.value=resultadon;
-// ;
-// }
-
   let operacion= ((total * etiqueta.value)/100)
 $("#tirada").click(function(e){
   console.log("el nuevo valor de la tirada es "+total);
@@ -421,7 +291,7 @@ function totalizador(){
   else
     {
       operaciones =etiqueta.value - (parseFloat((total * etiqueta.value)/100)).toFixed(2);//se quita la division por 100 para probar
-      resultado.value=parseFloat(operaciones);
+      resultado.value=parseFloat(operaciones).toFixed(2);
       console.log("el resultado total de las operaciones es " + operaciones)
       // etiqueta.value=etiqueta.value.toFixed(2)
       etiqueta.value=resultado.value;
@@ -429,15 +299,23 @@ function totalizador(){
 
 };
 
+// funcion para solo para contar cuanto vale la suma del valor de las figuras
 let montoTirada = function(){
   let monto=0;
   for (let i=0; i<4;i++){
-    ObjTablero[i].ruta=$(Tablero[i]).attr("src");
-    if (Tablero[i]==ObjTablero[i].Id){      
-          monto+=ObjTablero[i].valor;
-      }      
+     ObjTablero[i].ruta=$(Tablero[i]).attr("src");
+    for(let j=0; j<9;j++){
+    
+    if (ObjFiguras[j].ruta==ObjTablero[i].ruta){      
+      ObjTablero[i].valor=ObjFiguras[j].valor;
+          monto = monto + ObjTablero[i].valor;
+      // monto+=i;          
+      }     
+      console.log(monto)  
+    }
+    
   }
-  return monto;
+  return "Tsotal valores Figuras " +   monto;
 } 
 
 // evento click que pone todo en marcha
@@ -456,22 +334,23 @@ $("#boton").click(function(e){
   $("#caja1").click(function(e){    
 
     temporizadorCiclicoTablero(25,0.5,0)
+    montoTirada();
 
 });
   $("#caja2").click(function(e){    
 
     temporizadorCiclicoTablero(25,0.5,1)
-
+    montoTirada();
 });
   $("#caja3").click(function(e){    
 
     temporizadorCiclicoTablero(25,0.5,2)
-
+    montoTirada();
 });
   $("#caja4").click(function(e){    
 
     temporizadorCiclicoTablero(25,0.5,3)
-
+    montoTirada();
 });
 
 
@@ -544,7 +423,7 @@ function temporizadorCiclicoTablero(intervalo, duracionTotal,numero){
   let descuentoInterno=0;
   let i=0;
   let j=0;
-  descuentoInterno=total-ObjTablero[numero].valor;
+  descuentoInterno=parseFloat(total-ObjTablero[numero].valor).toFixed(2);
   console.log("el valor de total, menos la caja " + numero + " es " + descuentoInterno)
     for(i=cuadrosSolitarios[numero].inicio;i<cuadrosSolitarios[numero].fin;i++)
     {   
