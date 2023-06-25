@@ -152,7 +152,7 @@ Creacion de las etiquetas de html
    *********************************************************************************** */
 // insertamos los elementos de forma dinamica en el HTML.
 const cabecera= document.querySelector("#cabecera");
-const etiqueta = document.createElement("input");//es el control numérico que muestra cuanto quieres apostar.
+const montoApuesta = document.createElement("input");//es el control numérico que muestra cuanto quieres apostar.
 const apostar = document.createElement("button");//es el botón que adjudica el valor del control numérico, al campo resultado antes de tirar.
 const labelResultado = document.createElement("label");
 const resultado= document.createElement("input");//es el campo donde se muestra el valor del resultado cuando finaliza la tirada.
@@ -170,15 +170,15 @@ resultado.value=0;
 resultado.title="resultado de la apuesta"
 labelResultado.appendChild(resultado);
 
-//Elemento etiqueta 
-etiqueta.readOnly=false;
-etiqueta.required;
-etiqueta.min = 5;
-etiqueta.id="apuesta";
-etiqueta.type= "number";
-etiqueta.step=0.01
-etiqueta.value= etiqueta.min;//provisionalmente en centimos de euro
-cabecera.appendChild(etiqueta);
+//Elemento montoApuesta 
+montoApuesta.readOnly=false;
+montoApuesta.required;
+montoApuesta.min = 5;
+montoApuesta.id="apuesta";
+montoApuesta.type= "number";
+montoApuesta.step=0.01
+montoApuesta.value= montoApuesta.min;//provisionalmente en centimos de euro
+cabecera.appendChild(montoApuesta);
 
 // elemento apostar
 apostar.id="apostar";
@@ -270,10 +270,10 @@ document.querySelector("#apostar").classList.add("boton");//añadir una clase a 
 
 
 
-  let operacion= ((total * etiqueta.value)/100)
+  let operacion= ((total * montoApuesta.value)/100)
 $("#tirada").click(function(e){
   console.log("el nuevo valor de la tirada es "+total);
-  console.log("el valor de la apuesta es "+ etiqueta.value)
+  console.log("el valor de la apuesta es "+ montoApuesta.value)
   resultado.value=operacion;
 
   console.log("el nuevo resultado del vote es " + operacion)
@@ -282,19 +282,19 @@ $("#tirada").click(function(e){
 function totalizador(){
   let operaciones=0;
   if(total>=15){
-        operaciones =etiqueta.value + (parseFloat((total * etiqueta.value))).toFixed(2);//se quita la division por 100 para probar
+        operaciones =montoApuesta.value + (parseFloat((total * montoApuesta.value))).toFixed(2);//se quita la division por 100 para probar
         resultado.value=parseFloat(operaciones);
         console.log("el resultado total de las operaciones es " + operaciones)
-    // etiqueta.value=etiqueta.value.toFixed(2)
-        etiqueta.value=resultado.value;
+    // montoApuesta.value=montoApuesta.value.toFixed(2)
+        montoApuesta.value=resultado.value;
       }
   else
     {
-      operaciones =etiqueta.value - (parseFloat((total * etiqueta.value)/100)).toFixed(2);//se quita la division por 100 para probar
+      operaciones =montoApuesta.value - (parseFloat((total * montoApuesta.value)/100)).toFixed(2);//se quita la division por 100 para probar
       resultado.value=parseFloat(operaciones).toFixed(2);
       console.log("el resultado total de las operaciones es " + operaciones)
-      // etiqueta.value=etiqueta.value.toFixed(2)
-      etiqueta.value=resultado.value;
+      // montoApuesta.value=montoApuesta.value.toFixed(2)
+      montoApuesta.value=resultado.value;
     }
 
 };
