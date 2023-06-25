@@ -13,7 +13,7 @@ header{
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
-    width: 80%;
+    width: 100%;
     background-color: blueviolet;
     padding: 3%;
 }
@@ -41,7 +41,7 @@ header > .marcadores > div > .marc-valor {
 
 main > *  {
     margin:0,10px;
-    padding: 0px;
+    padding: 20px;
     width: 100%;
     background-color:cadetblue;
     display:inline-flex;
@@ -56,6 +56,7 @@ main > contenedor-img > *{
 }
 .contador{
     text-align: center;
+    background-color: burlywood;
 }
 section{
     display:flex;
@@ -69,31 +70,8 @@ section>span {
     justify-content: center;
     align-items: center;
 }
-.ruedas{
-    width: 100px;
-    height: 200px;
-    background-color: aqua;
-    margin: 2px;
-    display: flex;
-    justify-content: center;
-    align-items: start;
-}   
 section > .rued-marc {
     display: inline-flex;
-}
-.ruedas > button{
-    background-color: blueviolet;
-    width: 90%;
-    height: 50px;
-    /* display:flex; */
-    /* align-items:space-around; */
-
-}
-.ruedas  {
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
 }
 img {
     width: 75%;
@@ -118,15 +96,7 @@ footer {
     justify-content: center;
     align-items: center;
 }
-footer > .btn-glb {
-    display: inline-flex;
-    height: 60px;
-    width: 400px;
-    background-color: blue;
-    justify-content: space-around;
-    align-items: center;
 
-}
 .btn-glb {
     height: 300px;
 }
@@ -135,34 +105,15 @@ footer > .btn-glb {
     width: 100px;
     border-radius: 10px;
 }
-.comb-gan > .listas {
-    height: 200px;
-}
-.comb-gan > section > * {
-    display: flex;
-    justify-content:space-around;
-    background-color: aquamarine;
-    width: 50%;
-    height: 100%;
-}
-.pulsador{
-    width: 100px;
-    height: 100px;
-    border-radius: 3%;
-}
+
 .imgn {
     /* display:block; */
     padding: 4%;
     background-color: blue;
-    width: 200px;
-    height: 200px;
+    width: 80%;
+    height: 80%;
 }
-.contenedor-img{
-    display: inline-flex;
-    justify-content: space-around;
-    width: max-content;
 
-}
 
 .combos{
     display:flex;
@@ -170,11 +121,11 @@ footer > .btn-glb {
     height: auto;
     padding: 1%;
     background-color: rgb(112, 112, 35);
-    justify-content: space-evenly;
-    
+    justify-content: space-evenly;    
 }
 .combos-gan, .combos-prem {
-    background-color: rgb(192, 234, 220);
+
+    background-color: rgb(166, 241, 216);
     /* opacity: 75%; */
     height: auto;
     width: 100%;
@@ -187,40 +138,34 @@ footer > .btn-glb {
     align-items: stretch;
 
 } */
-.combos-gan{
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    height: auto;
-    justify-content: center;
-    align-items: center;
-    /* margin: 100px,0px,100px,100px; */
-}
+
  .comb-figuras> img{
     width: 40px;
     height: 40px;
+    border-radius: 5%;
+    background-color: cadetblue;
+    padding: 3px;
 }
+/* clase prescindible cuando se cambie a una imagen */
 .comb-figuras{
     display:inline-flex;
     width: 260px;
     justify-content: center;
     align-items: center;
 }
-.comb-figuras>h3{
-    /* margin-left:5%; */
-    /* margin-right: 5%; */
-}
 
+/* Zona para el boton de Iniciar tirada y el campo de número de tiradas */
 .botones{
     background-color: bisque;
     width: 86%;
+    height: max-content;
     display: flex;
     justify-content: space-evenly;
 }
 
 .botones > button, .boton{
 width: 100px;
-height: 50px;
+height: 40px;
 }
 
 .imgyboton{
@@ -229,5 +174,15 @@ height: 50px;
 }
 .cajas{
     width: 50px;
-    height: 30px;
+    height: 50px;
+    padding: 3px;
+    background-color: hsla(60, 72%, 83%, 0.51);
+}
+
+label{
+    background-color:rgb(200, 172, 172) ;
+    margin-right: 2%;
+    margin-left: 2%;
+    width: 50%;
+    
 }

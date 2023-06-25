@@ -147,17 +147,22 @@ const Tablero=["#imgn1","#imgn2","#imgn3","#imgn4"]
 
 
 
-/* ***********************************************************************************
-Creacion de las etiquetas de html
-   *********************************************************************************** */
+/* ********************************************Creacion de las etiquetas de html****************** */
 // insertamos los elementos de forma dinamica en el HTML.
 const cabecera= document.querySelector("#cabecera");
+const labelApuesta = document.createElement("label");
 const montoApuesta = document.createElement("input");//es el control numérico que muestra cuanto quieres apostar.
 const apostar = document.createElement("button");//es el botón que adjudica el valor del control numérico, al campo resultado antes de tirar.
 const labelResultado = document.createElement("label");
 const resultado= document.createElement("input");//es el campo donde se muestra el valor del resultado cuando finaliza la tirada.
+const labelTirada = document.createElement("label");
+const tiradas = document.createElement("input");
+
+
 labelResultado.id="tituloResultado";
-labelResultado.textContent="Resultado de la Tirada"
+labelApuesta.class="Etiquetas-class";
+labelResultado.textContent="Monto resultante";
+labelResultado.for= "resultado";
 cabecera.appendChild(labelResultado);
 
 // elemento resultado
@@ -170,30 +175,37 @@ resultado.value=0;
 resultado.title="resultado de la apuesta"
 labelResultado.appendChild(resultado);
 
+//Label de apuesta
+labelApuesta.id="labelApuesta";
+labelApuesta.textContent="Cantidad Apostada";
+labelApuesta.for= "apuesta";
+labelApuesta.class="Etiquetas-class";
+cabecera.appendChild(labelApuesta);
+
 //Elemento montoApuesta 
 montoApuesta.readOnly=false;
 montoApuesta.required;
 montoApuesta.min = 5;
 montoApuesta.id="apuesta";
 montoApuesta.type= "number";
-montoApuesta.step=0.01
+montoApuesta.step=0.01;
 montoApuesta.value= montoApuesta.min;//provisionalmente en centimos de euro
 cabecera.appendChild(montoApuesta);
 
-// elemento apostar
-apostar.id="apostar";
-apostar.disabled=true;
-apostar.hidden=true;
-cabecera.appendChild(apostar);
-apostar.innerHTML="Apostar"//poner texto dentro del boton 
-document.querySelector("#apostar").classList.add("boton");//añadir una clase a este elemento, ya está en css
 
 
-
-
+labelTirada.id="labelTirada";
+labelTirada.textContent="Numero de Tiradas";
+labelTirada.for= "tiradas";
+labelApuesta.class="Etiquetas-class";
+cabecera.appendChild(labelTirada);
+// Elemento Tiradas
+tiradas.id= "#tiradas";
+tiradas.type="number";
+tiradas.value=3;
+cabecera.appendChild(tiradas);
 
 /* **************************Fin de creacion de html ******************************* */ 
-
 
 /** temporizadorCiclicoObjeto  tiene por parametros el tiempo que se muestra cada imagen, 
  * como intervalo, y el tiempo global, que tiene como parametro duracionTotal 
@@ -247,8 +259,6 @@ document.querySelector("#apostar").classList.add("boton");//añadir una clase a 
     }, intervalo * 10);
 
 }
- 
-
 
 /**
  * la siguiente funcion devuelve el calculo de ganancia o perdida de la tirada.
@@ -258,7 +268,6 @@ document.querySelector("#apostar").classList.add("boton");//añadir una clase a 
  * en el campo de apuesta, por el valor que hubiera.
  */
 
-
 /*************cambio del mecanismo*********************************************************** */
 
 /** el nuevo mecanismo es con combinaciones completas, es decir, en la tabla de premios
@@ -266,8 +275,6 @@ document.querySelector("#apostar").classList.add("boton");//añadir una clase a 
  * del paréntesis es jackpot, y es si sale las cuatro figuras iguales, y es multiplicativo, es decir, que lo que
  * se iba ganando, se le suma esa cifra.
  */
-
-
 
 
   let operacion= ((total * montoApuesta.value)/100)
@@ -353,7 +360,6 @@ $("#boton").click(function(e){
     montoTirada();
 });
 
-
   /** funciones para establecer limites superiores e inferiores para determinar si han salido cuatro figuras iguales.*/
 
 let valorMinimoSup=function limitInf(indice){
@@ -404,18 +410,6 @@ function premio(valor,indice)
 
 
 
-// let sonIguales = function losMismos (){
-// let valoresIguales=0;
-//   for (i=0;i<3;i++){
-//   if ((ObjTablero[i].valor==ObjTablero[i+1].valor)&&(i<=3)){
-//     valoresIguales+=ObjTablero[i].valor;
-//   }
-//   console.log(ObjTablero[i].nombre)
-// }
-
-// return valoresIguales;
-// }
-
 function temporizadorCiclicoTablero(intervalo, duracionTotal,numero){  
   let contador = 0;  
   const interval = setInterval(() => {      
@@ -465,7 +459,6 @@ function temporizadorCiclicoTablero(intervalo, duracionTotal,numero){
               
       }
   }, intervalo * 10);
-
 }
 
 
