@@ -186,3 +186,10 @@ label{
     width: 50%;
     
 }
+.contador-clicks {
+    font-size: 40px;
+    font-weight: bold;
+    font-family: impact;
+    margin: 10px;
+    color:aliceblue
+}
