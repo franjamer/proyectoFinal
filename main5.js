@@ -158,6 +158,15 @@ const tiradas = document.createElement("input");
 const botonera = document.querySelector("#botonera");
 const pasoTiradas = document.createElement("button");
 const cobrar = document.createElement("button");
+const nuevaPart = document.createElement("button");
+
+
+
+nuevaPart.id="nuevaPartida";
+// nuevaPart.className="modal";//agrega una clase,
+nuevaPart.innerHTML= "Nueva Partida";
+botonera.appendChild(nuevaPart);
+
 
 pasoTiradas.id="pasoTiradas";
 pasoTiradas.innerText="Cobrar bote en Tiradas";
@@ -316,7 +325,9 @@ let montoTirada = function(){
 /** este es el evento click principal, que inicia la partida. */
 
 $("#boton").click(function(e){   
-      reseteo()
+      cambiaBote();
+      reseteo();
+      resultado.value-=montoApuesta.value;
       temporizadorCiclicoObjetosTablero(25,0.5);   
   });
 
@@ -344,6 +355,15 @@ $("#pasoTiradas").click(function(){
   parseInt(resultado.value =0);
 })
 
+/*****************************funcion para relacionar cantidad apostada con bote******************************* */
+//esta funcion la sustituiremos por un modal que sale cuando carga la página y el campo resultado no tiene valor, o es 0.
+function cambiaBote(){
+  if(resultado.value>=montoApuesta.value){
+    resultado.value-=montoApuesta.value
+  }
+  return resultado.value;
+}
+
 /*******************funcion para convertir el resultado de la tirada principal en tiradas********************** */
 function pasoResultadoaTiradas(){
   let resVal=parseInt(resultado.value);
@@ -356,6 +376,21 @@ function pasoResultadoaTiradas(){
     alert("no queda bote para pasar a tiradas")
   }
 }
+/********************creacion de modal para ingresar saldo*************** */
+const abrirModal= document.querySelector("#nuevaPartida");
+const modal = document.querySelector(".modal");
+const cerrarModal= document.querySelector(".cerrarModal")
+abrirModal.addEventListener("click",(e)=>{
+  e.preventDefault();
+  modal.classList.add("modal--mostrar");
+
+})
+
+cerrarModal.addEventListener("click",(e)=>{
+  e.preventDefault();
+  modal.classList.remove("modal--mostrar");
+
+});
 
   /** funcion para mover las figuras individualmente.*/
 function temporizadorCiclicoTablero(intervalo, duracionTotal,numero){  
