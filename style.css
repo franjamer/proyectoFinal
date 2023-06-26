@@ -180,11 +180,19 @@ height: 40px;
 }
 
 label{
+    
     background-color:rgb(200, 172, 172) ;
     margin-right: 2%;
     margin-left: 2%;
-    width: 50%;
+    margin-bottom: 2%;
+    width:calc(100%-200px);
+
     
+}
+input{
+    width: fit-content;
+    display:flex;
+    justify-content: center;
 }
 .contador-clicks {
     font-size: 40px;
@@ -192,4 +200,19 @@ label{
     font-family: impact;
     margin: 10px;
     color:aliceblue
+}
+@media (width<  720px) {
+    header {
+        display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items: center;
+    }
+.botones{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items: center;
+
+}
 }

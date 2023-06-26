@@ -205,26 +205,23 @@ montoApuesta.id="apuesta";
 montoApuesta.type= "number";
 montoApuesta.step=0.01;
 montoApuesta.value= 5;//provisionalmente en centimos de euro
-cabecera.appendChild(montoApuesta);
+labelApuesta.appendChild(montoApuesta);
 
 
-
+// label del elemento tiradas
 labelTirada.id="labelTirada";
 labelTirada.textContent="Numero de Tiradas";
 labelTirada.for= "tiradas";
-labelApuesta.class="Etiquetas-class";
+labelTirada.class="Etiquetas-class";
 cabecera.appendChild(labelTirada);
+
 // Elemento Tiradas
 tiradas.id= "tiradas";
 tiradas.type="number";
-// tiradas.min=3;
 tiradas.value=3;
-
-// tiradas.value = pasoResultadoaTiradas();
 tiradas.type="number";
 tiradas.readOnly=true;
-
-cabecera.appendChild(tiradas);
+labelTirada.appendChild(tiradas);
 
 
 
@@ -403,8 +400,7 @@ function pasoResultadoaTiradas(){
   let resVal=parseInt(resultado.value);
   let tirVal = parseInt(tiradas.value);
   if (tirVal>=3||resVal>10){
-    tirVal=tirVal+(resVal/10);
-    
+    tirVal=tirVal+(resVal/10);    
     return (parseInt(tirVal));
   }
   else{
@@ -413,12 +409,7 @@ function pasoResultadoaTiradas(){
 }
 
 
-  /** funciones para establecer limites superiores e inferiores para determinar si han salido cuatro figuras iguales.*/
-
-
-
-
-
+  /** funcion para mover las figuras de a un cuadro solitarior.*/
 function temporizadorCiclicoTablero(intervalo, duracionTotal,numero){  
   let contador = 0;  
   const interval = setInterval(() => {      
