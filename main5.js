@@ -157,7 +157,16 @@ const labelResultado = document.createElement("label");
 const resultado= document.createElement("input");//es el campo donde se muestra el valor del resultado cuando finaliza la tirada.
 const labelTirada = document.createElement("label");
 const tiradas = document.createElement("input");
+const botonera = document.querySelector("#botonera");
+const pasoTiradas = document.createElement("button");
+const cobrar = document.createElement("button");
 
+pasoTiradas.id="pasoTiradas";
+
+botonera.appendChild(pasoTiradas);
+
+cobrar.id = "cobrarResultado";
+botonera.appendChild(cobrar);
 
 
 labelResultado.id="tituloResultado";
@@ -168,7 +177,7 @@ cabecera.appendChild(labelResultado);
 
 // elemento resultado
 resultado.id="resultado";
-resultado.innerHTML="hola";
+// resultado.innerHTML="hola";
 resultado.type="number";
 resultado.textContent= "resultado de la tirada";
 resultado.readOnly=true;//establece el campo resultado como de solo lectura.
