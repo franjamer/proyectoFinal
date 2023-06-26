@@ -235,13 +235,13 @@ cabecera.appendChild(tiradas);
               if ((ObjFiguras[j].ruta==ObjTablero[i].ruta)&&(contador==19))
               {
                 ObjTablero[i].valor=ObjFiguras[j].valor
-                // console.log(ObjTablero[i].ruta + " " + ObjTablero[i].valor)
+            
               }
             }       
         }
         if(contador==19){
           totalinterno+=ObjTablero[i].valor
-          // console.log("la suma total es " + totalinterno)
+        
           total=totalinterno;
          
         }  
@@ -251,14 +251,14 @@ cabecera.appendChild(tiradas);
       if (contador * intervalo >= duracionTotal * 1000) 
         {
             clearInterval(interval);                  
-            // total=totalinterno;     
+             
             totalizador();           
-            // console.log("total externo es " + total)   
+             
             console.log("Temporizador cíclico finalizado.");   
                 
         }
     }, intervalo * 10);
-// total=totalinterno;
+
 }
 
 /**
@@ -291,17 +291,17 @@ cabecera.appendChild(tiradas);
 let totalizador = function(){
   let operaciones=0;
   let tirada=montoTirada();
-  let apuesta=parseInt(montoApuesta.value);
+  let apuesta=parseFloat(montoApuesta.value);
   // if(montoTirada  >=15 && montoApuesta.value>=0){
     
-        operaciones = (parseInt(tirada) * parseInt(montoApuesta.value));//se quita la division por 100 para probar
+        operaciones = (parseFloat(tirada) * apuesta);//se quita la division por 100 para probar
         // resultado.value=operaciones;
         console.log("el valor de la tirada es "+tirada)
         console.log("el valor de la apuesta es " + apuesta)
         // console.log("el resultado total de las operaciones es " + operaciones)
     // montoApuesta.value=montoApuesta.value.toFixed(2)
        
-      // montoApuesta.value=resultado.value;
+      resultado.value=parseInt(operaciones);
       // }
   // else
     // {
@@ -312,7 +312,7 @@ let totalizador = function(){
       // montoApuesta.value=montoApuesta.value.toFixed(2)
       
     // }
-return operaciones;
+return parseInt(operaciones);
 };
 
 // funcion para solo para contar cuanto vale la suma del valor de las figuras
@@ -324,14 +324,14 @@ let montoTirada = function(){
     
     if (ObjFiguras[j].ruta==ObjTablero[i].ruta){      
       ObjTablero[i].valor=ObjFiguras[j].valor;
-          monto += parseInt(ObjTablero[i].valor);
+          monto += parseFloat(ObjTablero[i].valor);
       // monto+=i;          
       }     
       // console.log(monto)  
     }
     
   }
-  return    monto;
+  return    monto.toFixed(2);
 } 
 
 // evento click que pone todo en marcha
