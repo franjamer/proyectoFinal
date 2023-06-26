@@ -162,10 +162,14 @@ const pasoTiradas = document.createElement("button");
 const cobrar = document.createElement("button");
 
 pasoTiradas.id="pasoTiradas";
+pasoTiradas.innerText="Cobrar bote en Tiradas";
+// pasoTiradas.onclick=pasoResultadoaTiradas();
+
 
 botonera.appendChild(pasoTiradas);
 
 cobrar.id = "cobrarResultado";
+cobrar.innerHTML="Pasar bote a mi Tarjeta";
 botonera.appendChild(cobrar);
 
 
@@ -211,9 +215,15 @@ labelTirada.for= "tiradas";
 labelApuesta.class="Etiquetas-class";
 cabecera.appendChild(labelTirada);
 // Elemento Tiradas
-tiradas.id= "#tiradas";
+tiradas.id= "tiradas";
 tiradas.type="number";
+// tiradas.min=3;
 tiradas.value=3;
+
+// tiradas.value = pasoResultadoaTiradas();
+tiradas.type="number";
+tiradas.readOnly=true;
+
 cabecera.appendChild(tiradas);
 
 
@@ -262,7 +272,7 @@ cabecera.appendChild(tiradas);
             clearInterval(interval);                  
              
             totalizador();           
-             
+             tiradas.value-=1;
             console.log("Temporizador cíclico finalizado.");   
                 
         }
@@ -354,6 +364,7 @@ $("#boton").click(function(e){
       // temporizadorCiclico(50, 1);
       reseteo()
       temporizadorCiclicoObjetosTablero(25,0.5)
+      
     //   temporizadorFinal(0.1);   
     // nuevoValorBote(valorBote,total);
   });
@@ -381,61 +392,30 @@ $("#boton").click(function(e){
     temporizadorCiclicoTablero(25,0.5,3)
     montoTirada();
 });
+$("#pasoTiradas").click(function(){
+  pasoResultadoaTiradas()
+  parseInt(tiradas.value=pasoResultadoaTiradas());
+  parseInt(resultado.value =0);
+})
 
+/*******************funcion para convertir el resultado de la tirada principal en tiradas********************** */
 function pasoResultadoaTiradas(){
-  let pasoaTiradas
-  if (resultado.value>100){
-    tiradas.value+=parseInt((resultado.value)/10)
-  }
-return pasoaTiradas;
-}
-  /** funciones para establecer limites superiores e inferiores para determinar si han salido cuatro figuras iguales.*/
-
-let valorMinimoSup=function limitInf(indice){
-  let minimo=0;
-  
-  if(indice>=0)
-  {minimo=(ObjFiguras[indice].valor)*4
-  console.log("Salieron 4 Ciruelas, y es el valor minimo posible")}
-  else {
-    minimo=((ObjFiguras[indice-1].valor)*3)+ObjFiguras[indice].valor
-    // console.log(("Si salen 3 " + ObjFiguras[indice-1].nombre) + " iguales y una " + ObjFiguras[indice].nombre)
-  }
-   
-  return minimo
-}
-
-let valorMáximoInf = function limitSup(indiceFig) {
-  let maximo;
-  if(indiceFig >= ObjFiguras.length-1){
-    maximo=ObjFiguras[indice].valor*4;
+  let resVal=parseInt(resultado.value);
+  let tirVal = parseInt(tiradas.value);
+  if (tirVal>=3||resVal>10){
+    tirVal=tirVal+(resVal/10);
+    
+    return (parseInt(tirVal));
   }
   else{
-    maximo =((ObjFiguras[indiceFig+1].valor)*3) + ObjFiguras[indiceFig].valor
-    // console.log(("Para cuatro "+ ObjFiguras[indiceFig].nombre + " si salen 3 " + ObjFiguras[indiceFig+1].nombre) + " iguales y una " + ObjFiguras[indiceFig].nombre + " será el valor minimo por encima del pleno para " + ObjFiguras[indiceFig].nombre)
+    alert("no queda bote para pasar a tiradas")
   }
-    
-  return maximo;  
 }
 
-function premio(valor,indice)
-{
-  let salida="salieron los cuatro " + ObjFiguras[indice].nombre + " iguales ";
-    for(let  i=0; i<4;i++){
-        if (valorMáximoInf(i)<valor)
-        {
-            if (valorMinimoSup(i)>valor)
-            {
-              console.log("son las cuatro figuras iguales")
-              salida="salieron los cuatro " + ObjFiguras[indice].nombre + " iguales ";
-              return salida 
-            }
-         
-        }
-      
-    }
-  
-}
+
+  /** funciones para establecer limites superiores e inferiores para determinar si han salido cuatro figuras iguales.*/
+
+
 
 
 
@@ -497,8 +477,52 @@ function reseteo (){
 }
 
 
+//funciones fuera de uso por no poder aplicarso de momento.
+// let valorMinimoSup=function limitInf(indice){
+//   let minimo=0;
+  
+//   if(indice>=0)
+//   {minimo=(ObjFiguras[indice].valor)*4
+//   console.log("Salieron 4 Ciruelas, y es el valor minimo posible")}
+//   else {
+//     minimo=((ObjFiguras[indice-1].valor)*3)+ObjFiguras[indice].valor
+//     // console.log(("Si salen 3 " + ObjFiguras[indice-1].nombre) + " iguales y una " + ObjFiguras[indice].nombre)
+//   }
+   
+//   return minimo
+// }
 
+// let valorMáximoInf = function limitSup(indiceFig) {
+//   let maximo;
+//   if(indiceFig >= ObjFiguras.length-1){
+//     maximo=ObjFiguras[indice].valor*4;
+//   }
+//   else{
+//     maximo =((ObjFiguras[indiceFig+1].valor)*3) + ObjFiguras[indiceFig].valor
+//     // console.log(("Para cuatro "+ ObjFiguras[indiceFig].nombre + " si salen 3 " + ObjFiguras[indiceFig+1].nombre) + " iguales y una " + ObjFiguras[indiceFig].nombre + " será el valor minimo por encima del pleno para " + ObjFiguras[indiceFig].nombre)
+//   }
+    
+//   return maximo;  
+// }
 
+// function premio(valor,indice)
+// {
+//   let salida="salieron los cuatro " + ObjFiguras[indice].nombre + " iguales ";
+//     for(let  i=0; i<4;i++){
+//         if (valorMáximoInf(i)<valor)
+//         {
+//             if (valorMinimoSup(i)>valor)
+//             {
+//               console.log("son las cuatro figuras iguales")
+//               salida="salieron los cuatro " + ObjFiguras[indice].nombre + " iguales ";
+//               return salida 
+//             }
+         
+//         }
+      
+//     }
+  
+// }
 
 
 
