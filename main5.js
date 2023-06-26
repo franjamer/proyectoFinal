@@ -145,8 +145,6 @@ let ObjTablero=[
 //IDENTIFICADORES DE LAS ETIQUETA IMG QUE SE MUESTRAN.
 const Tablero=["#imgn1","#imgn2","#imgn3","#imgn4"]
 
-
-
 /* ********************************************Creacion de las etiquetas de html****************** */
 // insertamos los elementos de forma dinamica en el HTML.
 const cabecera= document.querySelector("#cabecera");
@@ -163,9 +161,6 @@ const cobrar = document.createElement("button");
 
 pasoTiradas.id="pasoTiradas";
 pasoTiradas.innerText="Cobrar bote en Tiradas";
-// pasoTiradas.onclick=pasoResultadoaTiradas();
-
-
 botonera.appendChild(pasoTiradas);
 
 cobrar.id = "cobrarResultado";
@@ -207,7 +202,6 @@ montoApuesta.step=0.01;
 montoApuesta.value= 5;//provisionalmente en centimos de euro
 labelApuesta.appendChild(montoApuesta);
 
-
 // label del elemento tiradas
 labelTirada.id="labelTirada";
 labelTirada.textContent="Numero de Tiradas";
@@ -222,9 +216,6 @@ tiradas.value=3;
 tiradas.type="number";
 tiradas.readOnly=true;
 labelTirada.appendChild(tiradas);
-
-
-
 
 /* **************************Fin de creacion de html ******************************* */ 
 
@@ -256,25 +247,20 @@ labelTirada.appendChild(tiradas);
             }       
         }
         if(contador==19){
-          totalinterno+=ObjTablero[i].valor
-        
-          total=totalinterno;
-         
+          totalinterno+=ObjTablero[i].valor;        
+          total=totalinterno;         
         }  
     }       
       contador++;
     
       if (contador * intervalo >= duracionTotal * 1000) 
         {
-            clearInterval(interval);                  
-             
+            clearInterval(interval);       
             totalizador();           
              tiradas.value-=1;
-            console.log("Temporizador cíclico finalizado.");   
-                
+            console.log("Temporizador cíclico finalizado.");                   
         }
     }, intervalo * 10);
-
 }
 
 /**
@@ -292,43 +278,16 @@ labelTirada.appendChild(tiradas);
  * del paréntesis es jackpot, y es si sale las cuatro figuras iguales, y es multiplicativo, es decir, que lo que
  * se iba ganando, se le suma esa cifra.
  */
-
-
-  
-// $("#tirada").click(function(e){
-//   let operacion= ((total * montoApuesta.value)/100)
-//   console.log("el nuevo valor de la tirada es "+total);
-//   console.log("el valor de la apuesta es "+ montoApuesta.value)
-//   resultado.value=operacion;
-
-//   console.log("el nuevo resultado del vote es " + operacion)
-// })
-
 let totalizador = function(){
   let operaciones=0;
   let tirada=montoTirada();
   let apuesta=parseFloat(montoApuesta.value);
-  // if(montoTirada  >=15 && montoApuesta.value>=0){
-    
         operaciones = (parseFloat(tirada) * apuesta);//se quita la division por 100 para probar
         // resultado.value=operaciones;
         console.log("el valor de la tirada es "+tirada)
         console.log("el valor de la apuesta es " + apuesta)
-        // console.log("el resultado total de las operaciones es " + operaciones)
-    // montoApuesta.value=montoApuesta.value.toFixed(2)
-       
-      resultado.value=parseInt(operaciones);
-      // }
-  // else
-    // {
-      // $(".cajas").attr("disabled","true")
-      // operaciones =(parseFloat((total * montoApuesta.value)/100)).toFixed(2);//se quita la division por 100 para probar
-      // resultado.value=parseFloat(operaciones).toFixed(2);
-      // console.log("el resultado total de las operaciones es " + operaciones)
-      // montoApuesta.value=montoApuesta.value.toFixed(2)
-      
-    // }
-return parseInt(operaciones);
+        resultado.value=parseInt(operaciones); 
+  return parseInt(operaciones);
 };
 
 // funcion para pasar a tiradas el campo resultado.
@@ -356,36 +315,26 @@ let montoTirada = function(){
 // evento click que pone todo en marcha
 /** este es el evento click principal, que inicia la partida. */
 
-$("#boton").click(function(e){    
-      // tiempo de ruleta 
-      // temporizadorCiclico(50, 1);
+$("#boton").click(function(e){   
       reseteo()
-      temporizadorCiclicoObjetosTablero(25,0.5)
-      
-    //   temporizadorFinal(0.1);   
-    // nuevoValorBote(valorBote,total);
+      temporizadorCiclicoObjetosTablero(25,0.5);   
   });
 
   // botones individual para mover cada una de las cajas con un boton.
 
-  $("#caja1").click(function(e){    
-
+  $("#caja1").click(function(e){ 
     temporizadorCiclicoTablero(25,0.5,0)
     montoTirada();
-
 });
   $("#caja2").click(function(e){    
-
     temporizadorCiclicoTablero(25,0.5,1)
     montoTirada();
 });
   $("#caja3").click(function(e){    
-
     temporizadorCiclicoTablero(25,0.5,2)
     montoTirada();
 });
-  $("#caja4").click(function(e){    
-
+  $("#caja4").click(function(e){  
     temporizadorCiclicoTablero(25,0.5,3)
     montoTirada();
 });
@@ -408,8 +357,7 @@ function pasoResultadoaTiradas(){
   }
 }
 
-
-  /** funcion para mover las figuras de a un cuadro solitarior.*/
+  /** funcion para mover las figuras individualmente.*/
 function temporizadorCiclicoTablero(intervalo, duracionTotal,numero){  
   let contador = 0;  
   const interval = setInterval(() => {      
@@ -435,6 +383,7 @@ function temporizadorCiclicoTablero(intervalo, duracionTotal,numero){
             }
           }       
       }
+      // condicion para actualizar las variables que varian cuando termine la tirada
       if(contador==19){       
         console.log("el descuento interno es " + descuentoInterno);
         totalinterno=ObjTablero[i].valor + descuentoInterno
@@ -444,120 +393,18 @@ function temporizadorCiclicoTablero(intervalo, duracionTotal,numero){
       }  
   }       
     contador++;
-  
+  // condicion para salir del bucle del setInterval
     if (contador * intervalo >= duracionTotal * 1000) 
       {
           clearInterval(interval);
-                
-          // console.log(total);
           total=totalinterno;     
           totalizador();
-            // premio(total,j);
-         
-            // console.log("total externo es " + total)   
-          console.log("Temporizador cíclico finalizado.");   
-              
+          console.log("Temporizador cíclico finalizado.");                 
       }
   }, intervalo * 10);
 }
-
 function reseteo (){
   for(i=0; i<4;i++){
     ObjTablero[i].valor=0;
   }
 }
-
-
-//funciones fuera de uso por no poder aplicarso de momento.
-// let valorMinimoSup=function limitInf(indice){
-//   let minimo=0;
-  
-//   if(indice>=0)
-//   {minimo=(ObjFiguras[indice].valor)*4
-//   console.log("Salieron 4 Ciruelas, y es el valor minimo posible")}
-//   else {
-//     minimo=((ObjFiguras[indice-1].valor)*3)+ObjFiguras[indice].valor
-//     // console.log(("Si salen 3 " + ObjFiguras[indice-1].nombre) + " iguales y una " + ObjFiguras[indice].nombre)
-//   }
-   
-//   return minimo
-// }
-
-// let valorMáximoInf = function limitSup(indiceFig) {
-//   let maximo;
-//   if(indiceFig >= ObjFiguras.length-1){
-//     maximo=ObjFiguras[indice].valor*4;
-//   }
-//   else{
-//     maximo =((ObjFiguras[indiceFig+1].valor)*3) + ObjFiguras[indiceFig].valor
-//     // console.log(("Para cuatro "+ ObjFiguras[indiceFig].nombre + " si salen 3 " + ObjFiguras[indiceFig+1].nombre) + " iguales y una " + ObjFiguras[indiceFig].nombre + " será el valor minimo por encima del pleno para " + ObjFiguras[indiceFig].nombre)
-//   }
-    
-//   return maximo;  
-// }
-
-// function premio(valor,indice)
-// {
-//   let salida="salieron los cuatro " + ObjFiguras[indice].nombre + " iguales ";
-//     for(let  i=0; i<4;i++){
-//         if (valorMáximoInf(i)<valor)
-//         {
-//             if (valorMinimoSup(i)>valor)
-//             {
-//               console.log("son las cuatro figuras iguales")
-//               salida="salieron los cuatro " + ObjFiguras[indice].nombre + " iguales ";
-//               return salida 
-//             }
-         
-//         }
-      
-//     }
-  
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// let i=0;
-// do {
-   
-//   for (let i=0; i<grupoFiguras.length; i++)
-// console.log(indFig(numAleato()))
-// setInterval(() => {
-//      $(Tablero[0]).attr("src",grupoFiguras[indFig]);
-//      $(Tablero[1]).attr("src",grupoFiguras[indFig]);
-//      $(Tablero[2]).attr("src",grupoFiguras[indFig]);
-//      $(Tablero[3]).attr("src",grupoFiguras[indFig]);
-// }, 250); 
-//   i++; 
-// } while (i<1000);

@@ -185,9 +185,6 @@ label{
     margin-right: 2%;
     margin-left: 2%;
     margin-bottom: 2%;
-    width:calc(100%-200px);
-
-    
 }
 input{
     width: fit-content;
