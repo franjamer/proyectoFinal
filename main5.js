@@ -324,6 +324,9 @@ let totalizador = function(){
 return parseInt(operaciones);
 };
 
+// funcion para pasar a tiradas el campo resultado.
+
+
 // funcion para solo para contar cuanto vale la suma del valor de las figuras
 let montoTirada = function(){
   let monto=0;
@@ -379,6 +382,13 @@ $("#boton").click(function(e){
     montoTirada();
 });
 
+function pasoResultadoaTiradas(){
+  let pasoaTiradas
+  if (resultado.value>100){
+    tiradas.value+=parseInt((resultado.value)/10)
+  }
+return pasoaTiradas;
+}
   /** funciones para establecer limites superiores e inferiores para determinar si han salido cuatro figuras iguales.*/
 
 let valorMinimoSup=function limitInf(indice){
