@@ -42,21 +42,28 @@
     </div>
 
 </main> 
+<!-- ventana modal para nueva partida y agregar saldo -->
 <section id="sec-modal" class="modal">
     <div class="modal___container">
         <img src="imagenes/monedas bote.svg" alt="imagen de saco de monedas" class="modal__img" >
         <h2 class="modal__title">¡Por favor, ingrese una cantidad para jugar</h2>
-       <label id="labelNuevoSaldo" class="modal__parrafo" value="Nuevo Saldo" for="#nuevoSaldo"><input id="nuevoSaldo" type="number" min="20" step="5">
+       <label id="labelNuevoSaldo" class="modal__parrafo" value="Nuevo Saldo" for="nuevoSaldo"><input id="nuevoSaldo" name="nuevoSaldo" type="number" min="20" step="5">
         </label> 
     <a href="#" class="modal__cierre">Agregar Saldo</a>
     </div>
+
+    <!-- ventana modal para combinacion premiada  -->
+
 </section>
 <section id="premio" class="modal">
-<div class="modal-premio">
-    <img src="imagenes/premio.svg" alt="imagen de premio">
+<div class="modal___container">
+    <img class="modal__img" src="imagenes/premio.svg" alt="imagen de premio">
     <h2>¡EHHH! ¡TIENES COMBINACION GANADORA!</h2>
     <h3>Has ganado xxx €</h3>
+    <a href="#"  class="modal__cierre__premio">Cobrar Premio</a>
 </div>
+
+
 </section>
 <div id="botonera" class="botones">  
    

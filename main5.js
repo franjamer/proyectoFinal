@@ -147,7 +147,7 @@ const Tablero=["#imgn1","#imgn2","#imgn3","#imgn4"]
 
 /* ********************************************Creacion de las etiquetas de html****************** */
 // insertamos los elementos de forma dinamica en el HTML.
-const cabecera= document.querySelector("#cabecera");
+const cabecera = document.querySelector("#cabecera");
 const labelApuesta = document.createElement("label");
 const montoApuesta = document.createElement("input");//es el control numérico que muestra cuanto quieres apostar.
 const apostar = document.createElement("button");//es el botón que adjudica el valor del control numérico, al campo resultado antes de tirar.
@@ -165,36 +165,37 @@ const nuevaPart = document.createElement("button");
 
 
 
-nuevaPart.id="nuevaPartida";
+nuevaPart.id ="nuevaPartida";
 // nuevaPart.className="modal";//agrega una clase,
-nuevaPart.innerHTML= "Nueva Partida";
+nuevaPart.innerHTML = "Nueva Partida";
 botonera.appendChild(nuevaPart);
 
 
 pasoTiradas.id="pasoTiradas";
-pasoTiradas.innerText="Cobrar bote en Tiradas";
+pasoTiradas.innerText ="Cobrar bote en Tiradas";
 botonera.appendChild(pasoTiradas);
 
 cobrar.id = "cobrarResultado";
-cobrar.innerHTML="Pasar bote a mi Tarjeta";
+cobrar.innerHTML ="Pasar bote a mi Tarjeta";
 botonera.appendChild(cobrar);
 
 
-labelResultado.id="tituloResultado";
-labelApuesta.class="Etiquetas-class";
-labelResultado.textContent="Monto resultante";
-labelResultado.for= "resultado";
+labelResultado.id ="tituloResultado";
+labelApuesta.class ="Etiquetas-class";
+labelResultado.textContent ="Monto resultante";
+labelResultado.for = "resultado";
 cabecera.appendChild(labelResultado);
 
 // elemento resultado
-resultado.id="resultado";
+resultado.id ="resultado";
+name="resultado"
 // resultado.innerHTML="hola";
-resultado.type="number";
-resultado.textContent= "resultado de la tirada";
-resultado.readOnly=true;//establece el campo resultado como de solo lectura.
-resultado.min=0;
-resultado.value=0;
-resultado.title="resultado de la apuesta"
+resultado.type = "number";
+resultado.textContent =  "resultado de la tirada";
+resultado.readOnly = true;//establece el campo resultado como de solo lectura.
+resultado.min = 0;
+resultado.value = 0;
+resultado.title = "resultado de la apuesta"
 labelResultado.appendChild(resultado);
 
 //Label de apuesta
@@ -205,29 +206,29 @@ labelApuesta.class="Etiquetas-class";
 cabecera.appendChild(labelApuesta);
 
 //Elemento montoApuesta 
-montoApuesta.readOnly=false;
+montoApuesta.readOnly = false;
 montoApuesta.required;
 montoApuesta.min = 5;
-montoApuesta.id="apuesta";
-montoApuesta.type= "number";
-montoApuesta.step=0.01;
-montoApuesta.value= 5;//provisionalmente en centimos de euro
+montoApuesta.id = "apuesta";
+montoApuesta.type =  "number";
+montoApuesta.step = 0.01;
+montoApuesta.value =  5;//provisionalmente en centimos de euro
 labelApuesta.appendChild(montoApuesta);
 
 // label del elemento tiradas
-labelTirada.id="labelTirada";
-labelTirada.textContent="Numero de Tiradas";
-labelTirada.for= "tiradas";
-labelTirada.class="Etiquetas-class";
+labelTirada.id = "labelTirada";
+labelTirada.textContent = "Numero de Tiradas";
+labelTirada.for =  "tiradas";
+labelTirada.class = "Etiquetas-class";
 cabecera.appendChild(labelTirada);
 
 // Elemento Tiradas
-tiradas.id= "tiradas";
-tiradas.type="number";
-tiradas.defaultValue=3;
-tiradas.value=3;
-tiradas.type="number";
-tiradas.readOnly=true;
+tiradas.id = "tiradas";
+tiradas.type ="number";
+tiradas.defaultValue =3;
+tiradas.value = 3;
+tiradas.type ="number";
+tiradas.readOnly = true;
 labelTirada.appendChild(tiradas);
 
 /* **************************Fin de creacion de html ******************************* */ 
@@ -239,29 +240,29 @@ labelTirada.appendChild(tiradas);
   function temporizadorCiclicoObjetosTablero(intervalo, duracionTotal){  
     let contador = 0;  
     const interval = setInterval(() => {      
-    let totalinterno=0;
-    let i=0;
-    let j=0;
+    let totalinterno = 0;
+    let i = 0;
+    let j = 0;
     $(".cajas").removeAttr("disabled") 
-      for(i=0;i<4;i++)
+      for(i = 0 ; i < 4 ; i++)
     {      
-      let comparacion=(ObjTablero[i].Id==Tablero[i]);      
+      let comparacion = (ObjTablero[i].Id == Tablero[i]);      
       if(comparacion)
         {        
           $(Tablero[i]).attr("src",ObjFiguras[numAleato()].ruta); 
             ObjTablero[i].ruta = $(Tablero[i]).attr("src");
-            for (j=0; j<8;j++)
+            for (j = 0 ; j < 8 ; j++)
             {
-              if ((ObjFiguras[j].ruta==ObjTablero[i].ruta)&&(contador==19))
+              if ((ObjFiguras[j].ruta == ObjTablero[i].ruta) && (contador == 19))
               {
-                ObjTablero[i].valor=ObjFiguras[j].valor
+                ObjTablero[i].valor = ObjFiguras[j].valor
             
               }
             }       
         }
-        if(contador==19){
-          totalinterno+=ObjTablero[i].valor;        
-          total=totalinterno;         
+        if(contador == 19){
+          totalinterno += ObjTablero[i].valor;        
+          total = totalinterno;         
         }  
     }       
       contador++;
@@ -275,6 +276,21 @@ labelTirada.appendChild(tiradas);
         }
     }, intervalo * 10);
 }
+
+
+let combinacionesPremiadas=function(tanteo){
+  let tanteototal=parseInt(tanteo)
+  switch (tanteototal) {
+    case 20 :
+      console.log("ha salido una puntuacion de menos de 20 puntos")
+      
+      break;
+  
+    default:
+      break;
+  }
+}
+
 
 /**
  * la siguiente funcion devuelve el calculo de ganancia o perdida de la tirada.
@@ -292,14 +308,14 @@ labelTirada.appendChild(tiradas);
  * se iba ganando, se le suma esa cifra.
  */
 let totalizador = function(){
-  let operaciones=0;
+  let operaciones = 0;
   let tirada=montoTirada();
   let apuesta=parseFloat(montoApuesta.value);
         operaciones = (parseFloat(tirada) * apuesta);//se quita la division por 100 para probar
         // resultado.value=operaciones;
-        console.log("el valor de la tirada es "+tirada)
+        console.log("el valor de la tirada es "+ tirada)
         console.log("el valor de la apuesta es " + apuesta)
-        resultado.value=parseInt(operaciones); 
+        resultado.value = parseInt(operaciones); 
   return parseInt(operaciones);
 };
 
@@ -308,13 +324,13 @@ let totalizador = function(){
 
 // funcion para solo para contar cuanto vale la suma del valor de las figuras
 let montoTirada = function(){
-  let monto=0;
-  for (let i=0; i<4;i++){
-     ObjTablero[i].ruta=$(Tablero[i]).attr("src");
-    for(let j=0; j<9;j++){
+  let monto = 0;
+  for (let i = 0 ; i < 4 ; i++){
+     ObjTablero[i].ruta = $(Tablero[i]).attr("src");
+    for(let j = 0 ; j < 9 ; j++){
     
-    if (ObjFiguras[j].ruta==ObjTablero[i].ruta){      
-      ObjTablero[i].valor=ObjFiguras[j].valor;
+    if (ObjFiguras[j].ruta == ObjTablero[i].ruta){      
+      ObjTablero[i].valor = ObjFiguras[j].valor;
           monto += parseFloat(ObjTablero[i].valor);
       // monto+=i;          
       }     
@@ -331,8 +347,8 @@ let montoTirada = function(){
 $("#boton").click(function(e){   
       cambiaBote();
       reseteo();
-      resultado.value-=montoApuesta.value;
-      if(tiradas.value>=1){
+      resultado.value -= montoApuesta.value;
+      if(tiradas.value >= 1){
         temporizadorCiclicoObjetosTablero(25,0.5);   
       }
       else{
@@ -370,17 +386,17 @@ $("#pasoTiradas").click(function(){
 /*****************************funcion para relacionar cantidad apostada con bote******************************* */
 //esta funcion la sustituiremos por un modal que sale cuando carga la página y el campo resultado no tiene valor, o es 0.
 function cambiaBote(){
-  if(resultado.value>=montoApuesta.value){
-    resultado.value-=montoApuesta.value
+  if(resultado.value >= montoApuesta.value){
+    resultado.value -= montoApuesta.value
   }
   return resultado.value;
 }
 
 /*******************funcion para convertir el resultado de la tirada principal en tiradas********************** */
 function pasoResultadoaTiradas(){
-  let resVal=parseInt(resultado.value);
+  let resVal = parseInt(resultado.value);
   let tirVal = parseInt(tiradas.value);
-  if (tirVal>=3||resVal>10){
+  if (tirVal >= 3 || resVal > 10){
     tirVal=tirVal+(resVal/10);    
     return (parseInt(tirVal));
   }
@@ -390,31 +406,48 @@ function pasoResultadoaTiradas(){
 }
 
 /********************creacion de modal para ingresar saldo*************** */
-const abrirModal= document.querySelector("#nuevaPartida");
+
+const abrirModal = document.querySelector("#nuevaPartida");
 const modal = document.querySelector(".modal");
-const cerrarModal= document.querySelector(".modal__cierre");
+const cerrarModal = document.querySelector(".modal__cierre");
 const nuevoSaldo = document.querySelector("#nuevoSaldo")
 abrirModal.addEventListener('click', (e)=>{
   e.preventDefault();
   // modal.classList.add("modal--mostrar");
   // alert("oops, he hecho click en nueva partida");
+ 
   modal.classList.add("modal---mostrar");
 });
 cerrarModal.addEventListener("click",(e)=>{
   e.preventDefault();
-resultado.value=nuevoSaldo.value;
-tiradas.value=tiradas.defaultValue;
+resultado.value = nuevoSaldo.value;
+tiradas.value = tiradas.defaultValue;
   modal.classList.remove("modal---mostrar");
+
+
 });
+/**********************creacion de modal para premio********************** */
+
+let modalPremio = document.querySelector("#premio");
+let cerrarPremioModal = document.querySelector(".modal__cierre__premio");
+
+cerrarPremioModal.addEventListener("click",(e)=>{
+  e.preventDefault();
+  modalPremio.classList.remove("modal---mostar");
+  // $("#premio").classList.remove("modal---mostrar");
+  console.log("has pulsado el boton cerrar de la ventana de premios");
+});
+
+
 
   /** funcion para mover las figuras individualmente.*/
 function temporizadorCiclicoTablero(intervalo, duracionTotal,numero){  
   let contador = 0;  
   const interval = setInterval(() => {      
-  let totalinterno=0;
-  let descuentoInterno=0;
-  let i=0;
-  let j=0;
+  let totalinterno = 0;
+  let descuentoInterno = 0;
+  let i = 0;
+  let j = 0;
   descuentoInterno=(total-((ObjTablero[numero].valor).toFixed(2)));
   console.log("el valor de total, menos la caja " + numero + " es " + descuentoInterno)
     for(i=cuadrosSolitarios[numero].inicio;i<cuadrosSolitarios[numero].fin;i++)
@@ -422,32 +455,32 @@ function temporizadorCiclicoTablero(intervalo, duracionTotal,numero){
       let comparacion=(ObjTablero[i].Id==Tablero[i]);      
       if(comparacion)
       {        
-        $(Tablero[i]).attr("src",ObjFiguras[numAleato()].ruta); 
+        $(Tablero[i]).attr("src", ObjFiguras[numAleato()].ruta); 
           ObjTablero[i].ruta = $(Tablero[i]).attr("src");
           for (j=0; j<8;j++)
           {
             if ((ObjFiguras[j].ruta==ObjTablero[i].ruta)&&(contador==19))
             {
-              ObjTablero[i].valor=ObjFiguras[j].valor
+              ObjTablero[i].valor = ObjFiguras[j].valor
               console.log(ObjTablero[i].ruta + " " + ObjTablero[i].valor);
             }
           }       
       }
       // condicion para actualizar las variables que varian cuando termine la tirada
-      if(contador==19){       
+      if(contador == 19){       
         console.log("el descuento interno es " + descuentoInterno);
         totalinterno=ObjTablero[i].valor + descuentoInterno
         console.log("la suma total es " + totalinterno)
-        total=totalinterno;
+        total = totalinterno;
        
       }  
   }       
-    contador++;
+    contador ++;
   // condicion para salir del bucle del setInterval
     if (contador * intervalo >= duracionTotal * 1000) 
       {
           clearInterval(interval);
-          tiradas.value=controlTiradas();
+          tiradas.value=controlTiradas(tiradas.value);
           totalizador();
           console.log("Temporizador cíclico finalizado.");                 
       }
@@ -458,15 +491,46 @@ function reseteo (){
     ObjTablero[i].valor=0;
   }
 }
-function controlTiradas(){
-  if(parseInt(tirada.value)<1){
-    tirada.readOnly= true;
-    tirada.value -=1;
+let controlTiradas = function (valorTiradas){
+  let nuevoValorTirada=parseInt(valorTiradas);
+  if(parseInt(tiradas.value)>>1){
+    tiradas.readOnly = true;
+   nuevoValorTirada -= 1;
    
   }
-  else
-  {
-    alert (" se te agotaron las tiradas, pasa saldo a tiradas o añade nuevo saldo para seguir jugando")
-  } 
-  return tiradas.value;
+  else {
+    nuevoValorTirada=0;
+    alert("ya no te quedan tiradas, pasa saldo, o renueva saldo")
+    $(".cajas").attr("disabled",true)
+  }
+
+  return nuevoValorTirada;
 }
+
+
+
+
+function evaluarPremio(numero) {
+  let premio = '';
+
+  switch (true) {
+    case numero === 80:{
+      premio = 'Premio gordo: HAS GANADO TODO EL BOTE';
+      modalPremio.classList.add("modal---mostrar");
+      break;
+    }
+      
+    case numero === 40:
+      premio = 'Segundo premio: HAS GANADO 1/2 BOTE';
+      break;
+    case numero === 20:
+      premio = 'Tercer premio: HAS GANADO 1/3 DEL BOTE';
+      break;
+    default:
+      premio = 'Sin premio';
+      
+  }
+
+  return premio;
+}
+

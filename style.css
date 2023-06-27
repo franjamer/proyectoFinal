@@ -257,7 +257,7 @@ input{
     width: 90%;
     max-width: 300px;
 }
-.modal__cierre{
+.modal__cierre, .modal__cierre__premio{
     text-decoration: none;
     color:#fff;
     background-color: #f26250;
@@ -268,10 +268,17 @@ input{
     font-weight: 300;
     transition: background-color .3s;   
 }
-.modal__cierre:hover{
+.modal__cierre:hover {
     color:#f26250;
     background-color: #fff;
 }
+
+.modal__cierre__premio:hover{
+    color:#f26250;
+    background-color:#232323;
+}
+
+
 .claseNueva{
     background-color: #f26250;
 }
