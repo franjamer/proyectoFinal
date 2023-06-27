@@ -162,6 +162,9 @@ const nuevaPart = document.createElement("button");
 
 
 
+
+
+
 nuevaPart.id="nuevaPartida";
 // nuevaPart.className="modal";//agrega una clase,
 nuevaPart.innerHTML= "Nueva Partida";
@@ -221,6 +224,7 @@ cabecera.appendChild(labelTirada);
 // Elemento Tiradas
 tiradas.id= "tiradas";
 tiradas.type="number";
+tiradas.defaultValue=3;
 tiradas.value=3;
 tiradas.type="number";
 tiradas.readOnly=true;
@@ -328,7 +332,13 @@ $("#boton").click(function(e){
       cambiaBote();
       reseteo();
       resultado.value-=montoApuesta.value;
-      temporizadorCiclicoObjetosTablero(25,0.5);   
+      if(tiradas.value>=1){
+        temporizadorCiclicoObjetosTablero(25,0.5);   
+      }
+      else{
+        alert("Se te agotaron las tiradas, por favor, renueva saldo para seguir jugando.")
+      }
+      
   });
 
   // botones individual para mover cada una de las cajas con un boton.
@@ -346,6 +356,7 @@ $("#boton").click(function(e){
     montoTirada();
 });
   $("#caja4").click(function(e){  
+    
     temporizadorCiclicoTablero(25,0.5,3)
     montoTirada();
 });
@@ -354,6 +365,7 @@ $("#pasoTiradas").click(function(){
   parseInt(tiradas.value=pasoResultadoaTiradas());
   parseInt(resultado.value =0);
 })
+// $(abrirModal).click()Ç
 
 /*****************************funcion para relacionar cantidad apostada con bote******************************* */
 //esta funcion la sustituiremos por un modal que sale cuando carga la página y el campo resultado no tiene valor, o es 0.
@@ -376,20 +388,23 @@ function pasoResultadoaTiradas(){
     alert("no queda bote para pasar a tiradas")
   }
 }
+
 /********************creacion de modal para ingresar saldo*************** */
 const abrirModal= document.querySelector("#nuevaPartida");
 const modal = document.querySelector(".modal");
-const cerrarModal= document.querySelector(".cerrarModal")
-abrirModal.addEventListener("click",(e)=>{
+const cerrarModal= document.querySelector(".modal__cierre");
+const nuevoSaldo = document.querySelector("#nuevoSaldo")
+abrirModal.addEventListener('click', (e)=>{
   e.preventDefault();
-  modal.classList.add("modal--mostrar");
-
-})
-
+  // modal.classList.add("modal--mostrar");
+  // alert("oops, he hecho click en nueva partida");
+  modal.classList.add("modal---mostrar");
+});
 cerrarModal.addEventListener("click",(e)=>{
   e.preventDefault();
-  modal.classList.remove("modal--mostrar");
-
+resultado.value=nuevoSaldo.value;
+tiradas.value=tiradas.defaultValue;
+  modal.classList.remove("modal---mostrar");
 });
 
   /** funcion para mover las figuras individualmente.*/
@@ -432,7 +447,7 @@ function temporizadorCiclicoTablero(intervalo, duracionTotal,numero){
     if (contador * intervalo >= duracionTotal * 1000) 
       {
           clearInterval(interval);
-          total=totalinterno;     
+          tiradas.value=controlTiradas();
           totalizador();
           console.log("Temporizador cíclico finalizado.");                 
       }
@@ -442,4 +457,16 @@ function reseteo (){
   for(i=0; i<4;i++){
     ObjTablero[i].valor=0;
   }
+}
+function controlTiradas(){
+  if(parseInt(tirada.value)<1){
+    tirada.readOnly= true;
+    tirada.value -=1;
+   
+  }
+  else
+  {
+    alert (" se te agotaron las tiradas, pasa saldo a tiradas o añade nuevo saldo para seguir jugando")
+  } 
+  return tiradas.value;
 }
