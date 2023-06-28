@@ -224,13 +224,16 @@ input{
     display:flex;
     opacity: 0;
     pointer-events: none;
-   
+    transition: opacity .6s;
+    --transform: translateY(-100vh);
+    --transition: transform .8s;   
 }
 
 .modal---mostrar{
     opacity: 1;
     pointer-events: unset;
     transition: opacity .6s;
+    --transform: translateY(0);
 }
 .modal___container{
     width: 90%;
@@ -243,21 +246,33 @@ input{
     display: grid;
     gap:1em;
     place-items: center;
-    grid-auto-columns: 100%;
+    grid-auto-columns: 100%; 
+    transform: var(--transform);
+    transition: var(--transsition);
 }
 .modal__title{
     font-size:2.5rem ;
-
 }
 .modal__parrafo{
     margin-bottom: 10px;
-
 }
 .modal__img{
     width: 90%;
     max-width: 300px;
 }
-.modal__cierre, .modal__cierre__premio{
+.modal__cierre{
+    text-decoration: none;
+    color:#fff;
+    background-color: #f26250;
+    padding: 1em,3em;
+    border: 1px solid;
+    border-radius: 6px;
+    display: inline-block;
+    font-weight: 300;
+    transition: background-color .3s;   
+} 
+
+.modal_cierre_premio{
     text-decoration: none;
     color:#fff;
     background-color: #f26250;
@@ -273,12 +288,10 @@ input{
     background-color: #fff;
 }
 
-.modal__cierre__premio:hover{
+.modal_cierre_premio:hover{
     color:#f26250;
     background-color:#232323;
 }
 
 
-.claseNueva{
-    background-color: #f26250;
-}
+

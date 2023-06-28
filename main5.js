@@ -99,6 +99,7 @@ const cuadrosSolitarios=[
     }
 ]
 // variables para enlazar con las etiquetas img que hemos llamado tablero
+
 let imgTablero1 = $("#imgn1");
 let imgTablero2 = $("#imgn2");
 let imgTablero3 = $("#imgn3");
@@ -107,6 +108,7 @@ let rutaImgTablero1 = imgTablero1.attr("src");
 let rutaImgTablero2 = imgTablero2.attr("src");
 let rutaImgTablero3 = imgTablero3.attr("src");
 let rutaImgTablero4 = imgTablero4.attr("src");
+
 
 // creacion de objeto tablero. Consta de 4 cajas, donde iran rotando las imagenes que se muestran un tiempo t1 cada imagen,
 // durante un tiempo global t2, el cual cuando termina, se coge el valor de la imagen de cada casillero, y se suma, 
@@ -277,7 +279,6 @@ labelTirada.appendChild(tiradas);
     }, intervalo * 10);
 }
 
-
 let combinacionesPremiadas=function(tanteo){
   let tanteototal=parseInt(tanteo)
   switch (tanteototal) {
@@ -290,7 +291,6 @@ let combinacionesPremiadas=function(tanteo){
       break;
   }
 }
-
 
 /**
  * la siguiente funcion devuelve el calculo de ganancia o perdida de la tirada.
@@ -321,7 +321,6 @@ let totalizador = function(){
 
 // funcion para pasar a tiradas el campo resultado.
 
-
 // funcion para solo para contar cuanto vale la suma del valor de las figuras
 let montoTirada = function(){
   let monto = 0;
@@ -340,7 +339,6 @@ let montoTirada = function(){
   }
   return    monto.toFixed(2);
 } 
-
 // evento click que pone todo en marcha
 /** este es el evento click principal, que inicia la partida. */
 
@@ -353,8 +351,7 @@ $("#boton").click(function(e){
       }
       else{
         alert("Se te agotaron las tiradas, por favor, renueva saldo para seguir jugando.")
-      }
-      
+      }      
   });
 
   // botones individual para mover cada una de las cajas con un boton.
@@ -413,29 +410,27 @@ const cerrarModal = document.querySelector(".modal__cierre");
 const nuevoSaldo = document.querySelector("#nuevoSaldo")
 abrirModal.addEventListener('click', (e)=>{
   e.preventDefault();
-  // modal.classList.add("modal--mostrar");
-  // alert("oops, he hecho click en nueva partida");
- 
+
   modal.classList.add("modal---mostrar");
 });
 cerrarModal.addEventListener("click",(e)=>{
   e.preventDefault();
-resultado.value = nuevoSaldo.value;
-tiradas.value = tiradas.defaultValue;
+  resultado.value = nuevoSaldo.value;
+  tiradas.value = tiradas.defaultValue;
   modal.classList.remove("modal---mostrar");
-
-
 });
 /**********************creacion de modal para premio********************** */
 
 let modalPremio = document.querySelector("#premio");
-let cerrarPremioModal = document.querySelector(".modal__cierre__premio");
+let cerrarPremioModal = document.querySelector(".modal_cierre_premios");
 
-cerrarPremioModal.addEventListener("click",(e)=>{
+modalPremio.addEventListener("click",(e)=>{
   e.preventDefault();
-  modalPremio.classList.remove("modal---mostar");
-  // $("#premio").classList.remove("modal---mostrar");
+
   console.log("has pulsado el boton cerrar de la ventana de premios");
+  modalPremio.classList.remove("modal---mostrar");
+
+
 });
 
 
@@ -454,18 +449,18 @@ function temporizadorCiclicoTablero(intervalo, duracionTotal,numero){
     {   
       let comparacion=(ObjTablero[i].Id==Tablero[i]);      
       if(comparacion)
-      {        
-        $(Tablero[i]).attr("src", ObjFiguras[numAleato()].ruta); 
-          ObjTablero[i].ruta = $(Tablero[i]).attr("src");
-          for (j=0; j<8;j++)
-          {
-            if ((ObjFiguras[j].ruta==ObjTablero[i].ruta)&&(contador==19))
+        {        
+          $(Tablero[i]).attr("src", ObjFiguras[numAleato()].ruta); 
+            ObjTablero[i].ruta = $(Tablero[i]).attr("src");
+            for (j=0; j<8;j++)
             {
-              ObjTablero[i].valor = ObjFiguras[j].valor
-              console.log(ObjTablero[i].ruta + " " + ObjTablero[i].valor);
-            }
-          }       
-      }
+              if ((ObjFiguras[j].ruta==ObjTablero[i].ruta)&&(contador==19))
+              {
+                ObjTablero[i].valor = ObjFiguras[j].valor
+                console.log(ObjTablero[i].ruta + " " + ObjTablero[i].valor);
+              }
+            }       
+        }
       // condicion para actualizar las variables que varian cuando termine la tirada
       if(contador == 19){       
         console.log("el descuento interno es " + descuentoInterno);
@@ -473,8 +468,8 @@ function temporizadorCiclicoTablero(intervalo, duracionTotal,numero){
         console.log("la suma total es " + totalinterno)
         total = totalinterno;
        
-      }  
-  }       
+        }  
+    }       
     contador ++;
   // condicion para salir del bucle del setInterval
     if (contador * intervalo >= duracionTotal * 1000) 
@@ -507,9 +502,6 @@ let controlTiradas = function (valorTiradas){
   return nuevoValorTirada;
 }
 
-
-
-
 function evaluarPremio(numero) {
   let premio = '';
 
@@ -520,12 +512,18 @@ function evaluarPremio(numero) {
       break;
     }
       
-    case numero === 40:
+    case numero === 40:{
+       modalPremio.classList.add("modal---mostrar");
       premio = 'Segundo premio: HAS GANADO 1/2 BOTE';
       break;
-    case numero === 20:
-      premio = 'Tercer premio: HAS GANADO 1/3 DEL BOTE';
+    }
+     
+    case numero === 20:{
+      modalPremio.classList.add("modal---mostrar");
+        premio = 'Tercer premio: HAS GANADO 1/3 DEL BOTE';
       break;
+    }
+    
     default:
       premio = 'Sin premio';
       
