@@ -165,8 +165,6 @@ const nuevaPart = document.createElement("button");
 
 
 
-
-
 nuevaPart.id ="nuevaPartida";
 // nuevaPart.className="modal";//agrega una clase,
 nuevaPart.innerHTML = "Nueva Partida";
@@ -279,18 +277,7 @@ labelTirada.appendChild(tiradas);
     }, intervalo * 10);
 }
 
-let combinacionesPremiadas=function(tanteo){
-  let tanteototal=parseInt(tanteo)
-  switch (tanteototal) {
-    case 20 :
-      console.log("ha salido una puntuacion de menos de 20 puntos")
-      
-      break;
-  
-    default:
-      break;
-  }
-}
+
 
 /**
  * la siguiente funcion devuelve el calculo de ganancia o perdida de la tirada.
@@ -347,7 +334,7 @@ $("#boton").click(function(e){
       reseteo();
       resultado.value -= montoApuesta.value;
       if(tiradas.value >= 1){
-        temporizadorCiclicoObjetosTablero(25,0.5);   
+        temporizadorCiclicoObjetosTablero(5,0.5);   
       }
       else{
         alert("Se te agotaron las tiradas, por favor, renueva saldo para seguir jugando.")
@@ -357,20 +344,20 @@ $("#boton").click(function(e){
   // botones individual para mover cada una de las cajas con un boton.
 
   $("#caja1").click(function(e){ 
-    temporizadorCiclicoTablero(25,0.5,0)
+    temporizadorCiclicoTablero(5,0.5,0)
     montoTirada();
 });
   $("#caja2").click(function(e){    
-    temporizadorCiclicoTablero(25,0.5,1)
+    temporizadorCiclicoTablero(5,0.5,1)
     montoTirada();
 });
   $("#caja3").click(function(e){    
-    temporizadorCiclicoTablero(25,0.5,2)
+    temporizadorCiclicoTablero(5,0.5,2)
     montoTirada();
 });
   $("#caja4").click(function(e){  
     
-    temporizadorCiclicoTablero(25,0.5,3)
+    temporizadorCiclicoTablero(5,0.5,3)
     montoTirada();
 });
 $("#pasoTiradas").click(function(){
@@ -430,9 +417,25 @@ modalPremio.addEventListener("click",(e)=>{
   console.log("has pulsado el boton cerrar de la ventana de premios");
   modalPremio.classList.remove("modal---mostrar");
 
-
 });
 
+/********************creacion de modal para cobrar premio en tarjeta de crédito*************** */
+
+const abrirModalTarjeta = document.querySelector("#cobrarResultado");
+const modalTarjeta = document.querySelector("#tarjeta");
+const cerrarModalTarjeta = document.querySelector(".modal__cierre");
+// const nuevoSaldo = document.querySelector("#nuevoSaldo")
+abrirModalTarjeta.addEventListener('click', (e)=>{
+  e.preventDefault();
+
+  modalTarjeta.classList.add("modal---mostrar");
+});
+modalTarjeta.addEventListener("click",(e)=>{
+  e.preventDefault();
+  // resultado.value = nuevoSaldo.value;
+  // tiradas.value = tiradas.defaultValue;
+  modalTarjeta.classList.remove("modal---mostrar");
+});
 
 
   /** funcion para mover las figuras individualmente.*/
@@ -532,3 +535,7 @@ function evaluarPremio(numero) {
   return premio;
 }
 
+/* *******mascara para el campo de entrada de tarjeta de crédito**** */
+document.addEventListener('DOMContentLoaded', function() {
+  applyInputMask('elinput', '0000_0000_0000_0000');
+});

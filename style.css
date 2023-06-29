@@ -12,8 +12,9 @@ header{
     display:flex;
     flex-direction: row;
     align-items: center;
+    border-radius: 6px;
     justify-content: space-evenly;
-    width: 100%;
+    width: 90%;
     background-color: blueviolet;
     padding: 3%;
 }
@@ -44,6 +45,7 @@ main > *  {
     padding: 20px;
     width: 100%;
     background-color:cadetblue;
+    border-radius: 6 px;
     display:inline-flex;
     flex-direction: row;
     justify-content:space-evenly;
@@ -108,14 +110,16 @@ footer {
 
 .imgn {
     /* display:block; */
-    padding: 4%;
-    background-color: blue;
+    padding: 1%;
+    background-color: burlywood;
     width: 80%;
     height: 80%;
+    border-radius: 50px;
 }
 
 
 .combos{
+    margin: 20px 0;
     display:flex;
     width: 300px;
     height: auto;
@@ -129,7 +133,7 @@ footer {
     /* opacity: 75%; */
     height: auto;
     width: 100%;
-    margin: 2%;
+    margin: 1%;
     text-align: center;
 }
 /* .combos-prem{
@@ -140,16 +144,18 @@ footer {
 } */
 
  .comb-figuras> img{
-    width: 40px;
-    height: 40px;
-    border-radius: 5%;
+    width: 200px;
+    height: 350px;
+    border-radius: 6px;
     background-color: cadetblue;
     padding: 3px;
+    display:flex;
+    justify-content: center;
 }
 /* clase prescindible cuando se cambie a una imagen */
 .comb-figuras{
     display:inline-flex;
-    width: 260px;
+    width: 200px;
     justify-content: center;
     align-items: center;
 }
@@ -272,26 +278,12 @@ input{
     transition: background-color .3s;   
 } 
 
-.modal_cierre_premio{
-    text-decoration: none;
-    color:#fff;
-    background-color: #f26250;
-    padding: 1em,3em;
-    border: 1px solid;
-    border-radius: 6px;
-    display: inline-block;
-    font-weight: 300;
-    transition: background-color .3s;   
-}
 .modal__cierre:hover {
     color:#f26250;
     background-color: #fff;
 }
 
-.modal_cierre_premio:hover{
-    color:#f26250;
-    background-color:#232323;
-}
+
 
 
 
