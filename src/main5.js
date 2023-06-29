@@ -20,9 +20,9 @@ function numAleato3(){
 
 //array maestro de imagenes
 const grupoFiguras=[
-"/imagenes/granpremio.svg","/imagenes/siete.svg","/imagenes/sandia.svg",
-"/imagenes/platanos.svg","/imagenes/limon.svg","/imagenes/naranja.svg",
-"/imagenes/fresa.svg","/imagenes/cereza.svg","/imagenes/ciruela.svg"
+"../imagenes/granpremio.svg","../imagenes/siete.svg","../imagenes/sandia.svg",
+"../imagenes/platanos.svg","../imagenes/limon.svg","../imagenes/naranja.svg",
+"../imagenes/fresa.svg","../imagenes/cereza.svg","../imagenes/ciruela.svg"
 ]
 
 // creación de objeto figuras
@@ -30,47 +30,47 @@ const grupoFiguras=[
       {
         "id":1,
         "nombre":"ciruela",
-      "ruta":  "/imagenes/ciruela.svg",
+      "ruta":  "../imagenes/ciruela.svg",
       "valor": 0.05
       },{
         "id":2,
         "nombre":"cereza",
-      "ruta":  "/imagenes/cereza.svg",
+      "ruta":  "../imagenes/cereza.svg",
       "valor": 0.10 
       },{
         "id":3,
         "nombre":"fresa",
-      "ruta":  "/imagenes/fresa.svg",
+      "ruta":  "../imagenes/fresa.svg",
       "valor": 0.20
       },{
         "id":4,
         "nombre":"naranja",
-      "ruta":  "/imagenes/naranja.svg",
+      "ruta":  "../imagenes/naranja.svg",
       "valor": 0.5
       },{
         "id":5,
         "nombre": "limon",
-      "ruta":  "/imagenes/limon.svg",
+      "ruta":  "../imagenes/limon.svg",
       "valor": 1
       },{
         "id":6,
         "nombre": "Platanos",
-      "ruta":  "/imagenes/platanos.svg",
+      "ruta":  "../imagenes/platanos.svg",
       "valor": 2
       },{
         "id":7,
         "nombre": "sandia",
-      "ruta":  "/imagenes/sandia.svg",
+      "ruta":  "../imagenes/sandia.svg",
       "valor": 5
       },{
         "id":8,
         "nombre": "siete",
-      "ruta":  "/imagenes/siete.svg",
+      "ruta":  "../imagenes/siete.svg",
       "valor": 10
       },{
       "id":9,
       "nombre": "granpremio",
-      "ruta":   "/imagenes/granpremio.svg",
+      "ruta":   "../imagenes/granpremio.svg",
       "valor":  20
     }
 ]
@@ -108,7 +108,6 @@ let rutaImgTablero1 = imgTablero1.attr("src");
 let rutaImgTablero2 = imgTablero2.attr("src");
 let rutaImgTablero3 = imgTablero3.attr("src");
 let rutaImgTablero4 = imgTablero4.attr("src");
-
 
 // creacion de objeto tablero. Consta de 4 cajas, donde iran rotando las imagenes que se muestran un tiempo t1 cada imagen,
 // durante un tiempo global t2, el cual cuando termina, se coge el valor de la imagen de cada casillero, y se suma, 
@@ -148,7 +147,7 @@ let ObjTablero=[
 const Tablero=["#imgn1","#imgn2","#imgn3","#imgn4"]
 
 /* ********************************************Creacion de las etiquetas de html****************** */
-// insertamos los elementos de forma dinamica en el HTML.
+// selectores de los elementos que insertamos de forma dinamica en el HTML.
 const cabecera = document.querySelector("#cabecera");
 const labelApuesta = document.createElement("label");
 const montoApuesta = document.createElement("input");//es el control numérico que muestra cuanto quieres apostar.
@@ -162,31 +161,30 @@ const pasoTiradas = document.createElement("button");
 const cobrar = document.createElement("button");
 const nuevaPart = document.createElement("button");
 
-
-
-
+// boton para hacer una nueva partida
 nuevaPart.id ="nuevaPartida";
 // nuevaPart.className="modal";//agrega una clase,
 nuevaPart.innerHTML = "Nueva Partida";
 botonera.appendChild(nuevaPart);
 
-
+// boton que pasa el valor de resultado a tiradas
 pasoTiradas.id="pasoTiradas";
 pasoTiradas.innerText ="Cobrar bote en Tiradas";
 botonera.appendChild(pasoTiradas);
 
+// booton para cobrar lo que tenga en el bote.
 cobrar.id = "cobrarResultado";
 cobrar.innerHTML ="Pasar bote a mi Tarjeta";
 botonera.appendChild(cobrar);
 
-
+// propiedades del label de resultado
 labelResultado.id ="tituloResultado";
 labelApuesta.class ="Etiquetas-class";
 labelResultado.textContent ="Monto resultante";
 labelResultado.for = "resultado";
 cabecera.appendChild(labelResultado);
 
-// elemento resultado
+// propiedades del elemento elemento resultado
 resultado.id ="resultado";
 name="resultado"
 // resultado.innerHTML="hola";
@@ -198,31 +196,34 @@ resultado.value = 0;
 resultado.title = "resultado de la apuesta"
 labelResultado.appendChild(resultado);
 
-//Label de apuesta
+//propiedades del Label de apuesta
 labelApuesta.id="labelApuesta";
 labelApuesta.textContent="Cantidad Apostada (€)";
 labelApuesta.for= "apuesta";
 labelApuesta.class="Etiquetas-class";
+labelApuesta.className= "is-primary is-rounded";
 cabecera.appendChild(labelApuesta);
 
-//Elemento montoApuesta 
+//propiedades del Elemento montoApuesta 
 montoApuesta.readOnly = false;
 montoApuesta.required;
 montoApuesta.min = 5;
 montoApuesta.id = "apuesta";
+montoApuesta.className= "is-primary is-rounded";
 montoApuesta.type =  "number";
 montoApuesta.step = 0.01;
 montoApuesta.value =  5;//provisionalmente en centimos de euro
 labelApuesta.appendChild(montoApuesta);
 
-// label del elemento tiradas
+//propiedades del label del elemento tiradas
 labelTirada.id = "labelTirada";
+labelTirada.className= "is-primary is-rounded";
 labelTirada.textContent = "Numero de Tiradas";
 labelTirada.for =  "tiradas";
 labelTirada.class = "Etiquetas-class";
 cabecera.appendChild(labelTirada);
 
-// Elemento Tiradas
+// atributos de Elemento Tiradas
 tiradas.id = "tiradas";
 tiradas.type ="number";
 tiradas.defaultValue =3;
@@ -230,7 +231,6 @@ tiradas.value = 3;
 tiradas.type ="number";
 tiradas.readOnly = true;
 labelTirada.appendChild(tiradas);
-
 /* **************************Fin de creacion de html ******************************* */ 
 
 /** temporizadorCiclicoObjeto  tiene por parametros el tiempo que se muestra cada imagen, 
@@ -276,9 +276,6 @@ labelTirada.appendChild(tiradas);
         }
     }, intervalo * 10);
 }
-
-
-
 /**
  * la siguiente funcion devuelve el calculo de ganancia o perdida de la tirada.
  * una vez que le damos al click del boton tirar, se captura el valor del bote, se guarda
@@ -305,9 +302,7 @@ let totalizador = function(){
         resultado.value = parseInt(operaciones); 
   return parseInt(operaciones);
 };
-
 // funcion para pasar a tiradas el campo resultado.
-
 // funcion para solo para contar cuanto vale la suma del valor de las figuras
 let montoTirada = function(){
   let monto = 0;
@@ -328,13 +323,12 @@ let montoTirada = function(){
 } 
 // evento click que pone todo en marcha
 /** este es el evento click principal, que inicia la partida. */
-
 $("#boton").click(function(e){   
       cambiaBote();
       reseteo();
       resultado.value -= montoApuesta.value;
       if(tiradas.value >= 1){
-        temporizadorCiclicoObjetosTablero(5,0.5);   
+        temporizadorCiclicoObjetosTablero(25,0.5);   
       }
       else{
         alert("Se te agotaron las tiradas, por favor, renueva saldo para seguir jugando.")
@@ -344,20 +338,20 @@ $("#boton").click(function(e){
   // botones individual para mover cada una de las cajas con un boton.
 
   $("#caja1").click(function(e){ 
-    temporizadorCiclicoTablero(5,0.5,0)
+    temporizadorCiclicoTablero(25,0.5,0)
     montoTirada();
 });
   $("#caja2").click(function(e){    
-    temporizadorCiclicoTablero(5,0.5,1)
+    temporizadorCiclicoTablero(25,0.5,1)
     montoTirada();
 });
   $("#caja3").click(function(e){    
-    temporizadorCiclicoTablero(5,0.5,2)
+    temporizadorCiclicoTablero(25,0.5,2)
     montoTirada();
 });
   $("#caja4").click(function(e){  
     
-    temporizadorCiclicoTablero(5,0.5,3)
+    temporizadorCiclicoTablero(25,0.5,3)
     montoTirada();
 });
 $("#pasoTiradas").click(function(){
@@ -365,7 +359,6 @@ $("#pasoTiradas").click(function(){
   parseInt(tiradas.value=pasoResultadoaTiradas());
   parseInt(resultado.value =0);
 })
-// $(abrirModal).click()Ç
 
 /*****************************funcion para relacionar cantidad apostada con bote******************************* */
 //esta funcion la sustituiremos por un modal que sale cuando carga la página y el campo resultado no tiene valor, o es 0.
@@ -390,9 +383,8 @@ function pasoResultadoaTiradas(){
 }
 
 /********************creacion de modal para ingresar saldo*************** */
-
 const abrirModal = document.querySelector("#nuevaPartida");
-const modal = document.querySelector(".modal");
+const modal = document.querySelector(".modales");
 const cerrarModal = document.querySelector(".modal__cierre");
 const nuevoSaldo = document.querySelector("#nuevoSaldo")
 abrirModal.addEventListener('click', (e)=>{
@@ -406,37 +398,30 @@ cerrarModal.addEventListener("click",(e)=>{
   tiradas.value = tiradas.defaultValue;
   modal.classList.remove("modal---mostrar");
 });
-/**********************creacion de modal para premio********************** */
 
+/**********************creacion de modal para premio********************** */
 let modalPremio = document.querySelector("#premio");
 let cerrarPremioModal = document.querySelector(".modal_cierre_premios");
-
 modalPremio.addEventListener("click",(e)=>{
   e.preventDefault();
-
   console.log("has pulsado el boton cerrar de la ventana de premios");
   modalPremio.classList.remove("modal---mostrar");
-
 });
 
 /********************creacion de modal para cobrar premio en tarjeta de crédito*************** */
-
 const abrirModalTarjeta = document.querySelector("#cobrarResultado");
 const modalTarjeta = document.querySelector("#tarjeta");
 const cerrarModalTarjeta = document.querySelector(".modal__cierre");
-// const nuevoSaldo = document.querySelector("#nuevoSaldo")
+
 abrirModalTarjeta.addEventListener('click', (e)=>{
   e.preventDefault();
-
   modalTarjeta.classList.add("modal---mostrar");
 });
 modalTarjeta.addEventListener("click",(e)=>{
   e.preventDefault();
-  // resultado.value = nuevoSaldo.value;
-  // tiradas.value = tiradas.defaultValue;
+
   modalTarjeta.classList.remove("modal---mostrar");
 });
-
 
   /** funcion para mover las figuras individualmente.*/
 function temporizadorCiclicoTablero(intervalo, duracionTotal,numero){  
@@ -504,7 +489,6 @@ let controlTiradas = function (valorTiradas){
 
   return nuevoValorTirada;
 }
-
 function evaluarPremio(numero) {
   let premio = '';
 
@@ -535,7 +519,4 @@ function evaluarPremio(numero) {
   return premio;
 }
 
-/* *******mascara para el campo de entrada de tarjeta de crédito**** */
-document.addEventListener('DOMContentLoaded', function() {
-  applyInputMask('elinput', '0000_0000_0000_0000');
-});
+

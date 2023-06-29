@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página de Pruebas</title>
-    <link rel="stylesheet" href="style.css"/>
-    <script
-    src="https://code.jquery.com/jquery-3.7.0.js"
+    <link rel="stylesheet" href="/style.css"/>
+    <link rel="stylesheet" href="../node_modules/bulma/css/bulma.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.0.js" 
     integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
     crossorigin="anonymous"></script>
 </head>
+
 <body>
     <header id="cabecera">
         <!-- ventana de marcador1 -->
@@ -17,79 +18,72 @@
         <!-- <input type="number" id="myInput" value="0"> -->
         <!-- <input type="number" id="apuesta" value=""/> -->
         <!-- <button id="eliminarElemento">Eliminar Elemento</button> -->
-    
-
 </header>
-    <main id="principal"> 
-
-    <div class="contenedor-img">
-        <section class="imgyboton"><img class="imgn" id="imgn1"  width="50px" height="100px" src="/imagenes/granpremio.svg" alt="imagen de frutas que premian" >
-            <button class="cajas" id="caja1">SPIN               
-            </button>
-        </section>
-        <section class="imgyboton"><img class="imgn" id="imgn2"  width="50px" height="100px" src="/imagenes/granpremio.svg" alt="imagen de frutas que premian" >
-            <button class="cajas" id="caja2">SPIN                
-            </button>
-        </section>
-        <section class="imgyboton"><img class="imgn" id="imgn3"  width="50px" height="100px" src="/imagenes/granpremio.svg" alt="imagen de frutas que premian" >
-            <button class="cajas" id="caja3">SPIN                
-            </button>
-        </section>
-        <section class="imgyboton"><img class="imgn" id="imgn4"  width="50px" height="100px" src="/imagenes/granpremio.svg" alt="imagen de frutas que premian" >
-            <button class="cajas" id="caja4">SPIN                
-            </button>
-        </section>
-    </div>
-
-</main> 
+    <main id="principal">
+        <div class="contenedor-img">
+            <section class="imgyboton"><img class="imgn" id="imgn1"  width="50px" height="100px" src="../imagenes/granpremio.svg" alt="imagen de frutas que premian" >
+                <button class="cajas button is-rounded" id="caja1">SPIN               
+                </button>
+            
+            </section>
+            <section class="imgyboton"><img class="imgn" id="imgn2"  width="50px" height="100px" src="../imagenes/granpremio.svg" alt="imagen de frutas que premian" >
+                <button class="cajas button is-rounded" id="caja2">SPIN                
+                </button>
+            </section>
+            <section class="imgyboton"><img class="imgn" id="imgn3"  width="50px" height="100px" src="../imagenes/granpremio.svg" alt="imagen de frutas que premian" >
+                <button class="cajas button is-rounded" id="caja3">SPIN                
+                </button>
+            </section>
+            <section class="imgyboton"><img class="imgn" id="imgn4"  width="50px" height="100px" src="../imagenes/granpremio.svg" alt="imagen de frutas que premian" >
+                <button class="cajas button is-rounded" id="caja4">SPIN                
+                </button>
+            </section>
+        </div>
+    </main> 
 <!-- ventana modal para nueva partida y agregar saldo -->
-<section id="sec-modal" class="modal">
-    <div class="modal___container">
-        <img src="imagenes/monedas bote.svg" alt="imagen de saco de monedas" class="modal__img" >
+<section id="sec-modal" class="modales">
+    <div class="modal__container">
+        <img src="../imagenes/monedas bote.svg" alt="imagen de saco de monedas" class="modal__img" >
         <h2 class="modal__title">¡Por favor, ingrese una cantidad para jugar</h2>
-       <label id="labelNuevoSaldo" class="modal__parrafo" value="Nuevo Saldo" for="nuevoSaldo"><input id="nuevoSaldo" name="nuevoSaldo" type="number" min="20" step="5">
+        <label id="labelNuevoSaldo" class="modal__parrafo" value="Nuevo Saldo" for="nuevoSaldo">
+        <input id="nuevoSaldo" name="nuevoSaldo" type="number" min="20" step="5">
         </label> 
-    <a href="#" class="modal__cierre">Agregar Saldo</a>
+        <a href="#" class="modal__cierre">
+            Agregar Saldo
+        </a>
     </div>
-
     <!-- ventana modal para combinacion premiada  -->
-
 </section>
-<section id="premio" class="modal">
-<div class="modal___container">
-    <img class="modal__img" src="imagenes/premio.svg" alt="imagen de premio">
-    <h2>¡EHHH! ¡TIENES COMBINACION GANADORA!</h2>
-    <h3>Has ganado xxx €</h3>
-    <!-- <a  href="#" class="modal__cierre_premio">Cobrar Premio</a> -->
-</div>
-
-
+<section id="premio" class="modales">
+    <div class="modal__container">
+        <img class="modal__img" src="../imagenes/premio.svg" alt="imagen de premio">
+        <h2>¡EHHH! ¡TIENES COMBINACION GANADORA!</h2>
+        <h3>Has ganado xxx €</h3>
+        <!-- <a  href="#" class="modal__cierre_premio">Cobrar Premio</a> -->
+    </div>
 </section>
 
 <!-- ventana modal para cobrar con tarjeta de -->
-<section id="tarjeta" class="modal">
-    <div class="modal___container">
+<section id="tarjeta" class="modales">
+    <div class="modal__container">
         <h2 class="modal__title">Pasar Saldo a Mi tarjeta</h2>
         <h3 class="modal__parrafo">En construccion</h3>
         <h4 class="modal__parrafo">Disculpen las moléstias</h4>
-        <img src="imagenes/tarjeta-de-credito.png" alt="imagen de tarjeta">
-        
+        <img src="../imagenes/tarjeta-de-credito.png" alt="imagen de tarjeta">        
     </div>
 </section>
-<div id="botonera" class="botones">  
-   
+<div id="botonera" class="botones">     
     <button id="boton">Iniciar Tirada</button>
     <button id="bote" disabled hidden >Añadir al Bote</button>
     <button id="tirada" hidden disabled>gano o pierdo</button> 
-</div>   
- <div id="container" class="contenedor"></div>
+</div>
+   
+ <!-- <div id="container" class="contenedor"></div> -->
  <!-- Tabla de Combinaciones. -->
 <aside class="combos">
-    <div class="combos-gan"> 
-        
-        combinaciones ganadoras en €.
+    <div class="combos-gan">     
         <span class="comb-figuras">
-            <img  src="/imagenes/tabla de premios2.png"alt="">        
+            <img  src="../imagenes/tabla de premios2.png"alt="tabla de premios">        
             <!-- <img src="/imagenes/granpremio.svg" alt="">
             <img src="/imagenes/granpremio.svg" alt="">
             <img src="/imagenes/granpremio.svg" alt="">
@@ -156,7 +150,7 @@
    
 </aside>
 </body>
-<script type="text/javascript" src="main5.js"></script>
+<script type="text/javascript" src="../src/main5.js"></script>
 </html>
 
 
