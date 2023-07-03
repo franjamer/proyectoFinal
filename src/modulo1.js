@@ -54,83 +54,10 @@ export let ObjFiguras = [
     "valor":  20
   }
 ]
-
-
-export let imgTablero1 = $("#imgn1");
-export let imgTablero2 = $("#imgn2");
-export let imgTablero3 = $("#imgn3");
-export let imgTablero4 = $("#imgn4");
-export let rutaImgTablero1 = imgTablero1.attr("src");
-export let rutaImgTablero2 = imgTablero2.attr("src");
-export let rutaImgTablero3 = imgTablero3.attr("src");
-export let rutaImgTablero4 = imgTablero4.attr("src");
-
-export let ObjTablero=[
-    {
-      Id:"#imgn1",
-      "posTablero" : "Posicion 1", 
-      // "Nombre" : "juan",
-      "ruta":  rutaImgTablero1,
-      "valor" : 5
-    },
-    {
-      Id:"#imgn2",
-      "posTablero" : "Posicion 2", 
-      // "Nombre" : "jose",
-      "ruta":  rutaImgTablero2,
-      "valor" : 5
-    },
-    {
-      Id:"#imgn3",
-      "posTablero" : "Posicion 3", 
-      // "Nombre" : "Paco",
-      "ruta": rutaImgTablero3,
-      "valor" : 5
-    },
-    {
-      Id:"#imgn4",
-      "posTablero" : "Posicion 4", 
-      // "Nombre" : "pedro",
-      ruta: rutaImgTablero4,
-      "valor" : 5
-    }
-  ]
-
 //IDENTIFICADORES DE LAS ETIQUETA IMG QUE SE MUESTRAN.
-export const Tablero=["#imgn1","#imgn2","#imgn3","#imgn4"];  
-// variables para enlazar con las etiquetas img que hemos llamado tablero
+export const Tablero=["#imgn1","#imgn2","#imgn3","#imgn4"];
 
-let imgTablero1 = $("#imgn1");
-let imgTablero2 = $("#imgn2");
-let imgTablero3 = $("#imgn3");
-let imgTablero4 = $("#imgn4");
-let rutaImgTablero1 = imgTablero1.attr("src");
-let rutaImgTablero2 = imgTablero2.attr("src");
-let rutaImgTablero3 = imgTablero3.attr("src");
-let rutaImgTablero4 = imgTablero4.attr("src");
-//Creación de array de objetos para manejar los cuadros individualmente
-const cuadrosSolitarios=[
-    {
-      "id": 1,
-      "inicio":0,
-      "fin":1
-    },
-    {
-      "id":2,
-      "inicio":1,
-      "fin":2
-    },
-    {
-      "id":3,
-      "inicio": 2,
-      "fin": 3
-    },
-    {
-      "id":4,
-      "inicio":3,
-      "fin":4,
-    }
-]
+
 
 // export function numAleato();
 export default function numAleato(){

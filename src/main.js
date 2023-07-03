@@ -1,132 +1,127 @@
 import  grupoFiguras  from "./modulo1.js";
-import  ObjFiguras  from "./modulo1.js";
 import numAleato from "./modulo1.js";
 import reseteo from "./modulo1.js";
-import Tablero from "./modulo1.js";
-import { imgTablero1,imgTablero2,imgTablero3,imgTablero4,rutaImgTablero1,rutaImgTablero2,rutaImgTablero3,rutaImgTablero4 } from "./modulo1.js";
-import ObjTablero from "./modulo1.js";
-import cuadrosSolitarios from "./modulo1.js";
 
 // creación de objeto figuras
-//  let ObjFiguras = [
-//       {
-//         "id":1,
-//         "nombre":"ciruela",
-//       "ruta":  "../imagenes/ciruela.svg",
-//       "valor": 0.05
-//       },{
-//         "id":2,
-//         "nombre":"cereza",
-//       "ruta":  "../imagenes/cereza.svg",
-//       "valor": 0.10 
-//       },{
-//         "id":3,
-//         "nombre":"fresa",
-//       "ruta":  "../imagenes/fresa.svg",
-//       "valor": 0.20
-//       },{
-//         "id":4,
-//         "nombre":"naranja",
-//       "ruta":  "../imagenes/naranja.svg",
-//       "valor": 0.5
-//       },{
-//         "id":5,
-//         "nombre": "limon",
-//       "ruta":  "../imagenes/limon.svg",
-//       "valor": 1
-//       },{
-//         "id":6,
-//         "nombre": "Platanos",
-//       "ruta":  "../imagenes/platanos.svg",
-//       "valor": 2
-//       },{
-//         "id":7,
-//         "nombre": "sandia",
-//       "ruta":  "../imagenes/sandia.svg",
-//       "valor": 5
-//       },{
-//         "id":8,
-//         "nombre": "siete",
-//       "ruta":  "../imagenes/siete.svg",
-//       "valor": 10
-//       },{
-//       "id":9,
-//       "nombre": "granpremio",
-//       "ruta":   "../imagenes/granpremio.svg",
-//       "valor":  20
-//     }
-// ]
+ let ObjFiguras = [
+      {
+        "id":1,
+        "nombre":"ciruela",
+      "ruta":  "../imagenes/ciruela.svg",
+      "valor": 0.05
+      },{
+        "id":2,
+        "nombre":"cereza",
+      "ruta":  "../imagenes/cereza.svg",
+      "valor": 0.10 
+      },{
+        "id":3,
+        "nombre":"fresa",
+      "ruta":  "../imagenes/fresa.svg",
+      "valor": 0.20
+      },{
+        "id":4,
+        "nombre":"naranja",
+      "ruta":  "../imagenes/naranja.svg",
+      "valor": 0.5
+      },{
+        "id":5,
+        "nombre": "limon",
+      "ruta":  "../imagenes/limon.svg",
+      "valor": 1
+      },{
+        "id":6,
+        "nombre": "Platanos",
+      "ruta":  "../imagenes/platanos.svg",
+      "valor": 2
+      },{
+        "id":7,
+        "nombre": "sandia",
+      "ruta":  "../imagenes/sandia.svg",
+      "valor": 5
+      },{
+        "id":8,
+        "nombre": "siete",
+      "ruta":  "../imagenes/siete.svg",
+      "valor": 10
+      },{
+      "id":9,
+      "nombre": "granpremio",
+      "ruta":   "../imagenes/granpremio.svg",
+      "valor":  20
+    }
+]
 
 //Creación de array de objetos para manejar los cuadros individualmente
-// const cuadrosSolitarios=[
-//     {
-//       "id": 1,
-//       "inicio":0,
-//       "fin":1
-//     },
-//     {
-//       "id":2,
-//       "inicio":1,
-//       "fin":2
-//     },
-//     {
-//       "id":3,
-//       "inicio": 2,
-//       "fin": 3
-//     },
-//     {
-//       "id":4,
-//       "inicio":3,
-//       "fin":4,
-//     }
-// ]
+const cuadrosSolitarios=[
+    {
+      "id": 1,
+      "inicio":0,
+      "fin":1
+    },
+    {
+      "id":2,
+      "inicio":1,
+      "fin":2
+    },
+    {
+      "id":3,
+      "inicio": 2,
+      "fin": 3
+    },
+    {
+      "id":4,
+      "inicio":3,
+      "fin":4,
+    }
+]
 // variables para enlazar con las etiquetas img que hemos llamado tablero
 
-// let imgTablero1 = $("#imgn1");
-// let imgTablero2 = $("#imgn2");
-// let imgTablero3 = $("#imgn3");
-// let imgTablero4 = $("#imgn4");
-// let rutaImgTablero1 = imgTablero1.attr("src");
-// let rutaImgTablero2 = imgTablero2.attr("src");
-// let rutaImgTablero3 = imgTablero3.attr("src");
-// let rutaImgTablero4 = imgTablero4.attr("src");
+let imgTablero1 = $("#imgn1");
+let imgTablero2 = $("#imgn2");
+let imgTablero3 = $("#imgn3");
+let imgTablero4 = $("#imgn4");
+let rutaImgTablero1 = imgTablero1.attr("src");
+let rutaImgTablero2 = imgTablero2.attr("src");
+let rutaImgTablero3 = imgTablero3.attr("src");
+let rutaImgTablero4 = imgTablero4.attr("src");
 
 // creacion de objeto tablero. Consta de 4 cajas, donde iran rotando las imagenes que se muestran un tiempo t1 cada imagen,
 // durante un tiempo global t2, el cual cuando termina, se coge el valor de la imagen de cada casillero, y se suma, 
 // guardandose en una variable llamada puntuación, que se usará despues.
-// let ObjTablero=[
-//   {
-//     Id:"#imgn1",
-//     "posTablero" : "Posicion 1", 
-//     // "Nombre" : "juan",
-//     "ruta":  rutaImgTablero1,
-//     "valor" : 5
-//   },
-//   {
-//     Id:"#imgn2",
-//     "posTablero" : "Posicion 2", 
-//     // "Nombre" : "jose",
-//     "ruta":  rutaImgTablero2,
-//     "valor" : 5
-//   },
-//   {
-//     Id:"#imgn3",
-//     "posTablero" : "Posicion 3", 
-//     // "Nombre" : "Paco",
-//     "ruta": rutaImgTablero3,
-//     "valor" : 5
-//   },
-//   {
-//     Id:"#imgn4",
-//     "posTablero" : "Posicion 4", 
-//     // "Nombre" : "pedro",
-//     ruta: rutaImgTablero4,
-//     "valor" : 5
-//   }
-// ]
+let ObjTablero=[
+  {
+    Id:"#imgn1",
+    "posTablero" : "Posicion 1", 
+    // "Nombre" : "juan",
+    "ruta":  rutaImgTablero1,
+    "valor" : 5
+  },
+  {
+    Id:"#imgn2",
+    "posTablero" : "Posicion 2", 
+    // "Nombre" : "jose",
+    "ruta":  rutaImgTablero2,
+    "valor" : 5
+  },
+  {
+    Id:"#imgn3",
+    "posTablero" : "Posicion 3", 
+    // "Nombre" : "Paco",
+    "ruta": rutaImgTablero3,
+    "valor" : 5
+  },
+  {
+    Id:"#imgn4",
+    "posTablero" : "Posicion 4", 
+    // "Nombre" : "pedro",
+    ruta: imgTablero4,
+    "valor" : 5
+  }
+]
 
 //IDENTIFICADORES DE LAS ETIQUETA IMG QUE SE MUESTRAN.
-// const Tablero=["#imgn1","#imgn2","#imgn3","#imgn4"]
+const Tablero=["#imgn1","#imgn2","#imgn3","#imgn4"]
 
 /* ********************************************Creacion de las etiquetas de html****************** */
 // selectores de los elementos que insertamos de forma dinamica en el HTML.
