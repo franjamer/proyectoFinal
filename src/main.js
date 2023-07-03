@@ -1,7 +1,11 @@
-import  grupoFiguras  from "./modulo1.js";
+// import  grupoFiguras  from "./modulo1.js";
 import numAleato from "./modulo1.js";
 import reseteo from "./modulo1.js";
-import { cabecera,labelApuesta,montoApuesta,labelResultado,resultado,labelTirada,tiradas, botonera,pasoTiradas,cobrar,nuevaPart } from "./marcadores.js";
+// import { cabecera,labelApuesta,montoApuesta,labelResultado,resultado,labelTirada,tiradas } from "./marcadores.js";
+// import {botonera,pasoTiradas,cobrar,nuevaPart } from "./botonera.js";
+import  {botoneras}  from "./botonera.js";
+import { marcadores } from './marcadores.js';
+
 // creación de objeto figuras
  let ObjFiguras = [
       {
@@ -124,94 +128,30 @@ let ObjTablero=[
 const Tablero=["#imgn1","#imgn2","#imgn3","#imgn4"]
 
 /* ********************************************Creacion de las etiquetas de html****************** */
-// selectores de los elementos que insertamos de forma dinamica en el HTML.
-// const cabecera = document.querySelector("#cabecera");
-// const labelApuesta = document.createElement("label");
-// const montoApuesta = document.createElement("input");//es el control numérico que muestra cuanto quieres apostar.
-// const apostar = document.createElement("button");//es el botón que adjudica el valor del control numérico, al campo resultado antes de tirar.
-// const labelResultado = document.createElement("label");
-// const resultado= document.createElement("input");//es el campo donde se muestra el valor del resultado cuando finaliza la tirada.
-// const labelTirada = document.createElement("label");
-// const tiradas = document.createElement("input");
-// const botonera = document.querySelector("#botonera");
-// const pasoTiradas = document.createElement("button");
-// const cobrar = document.createElement("button");
-// const nuevaPart = document.createElement("button");
+// const cuerpo = document.querySelector("#cuerpo");
 
-// boton para hacer una nueva partida
-nuevaPart.id ="nuevaPartida";
-// nuevaPart.className="modal";//agrega una clase,
-nuevaPart.innerHTML = "Nueva Partida";
-botonera.appendChild(nuevaPart);
+botoneras();
 
-// boton que pasa el valor de resultado a tiradas
-pasoTiradas.id="pasoTiradas";
-pasoTiradas.innerText ="Cobrar bote en Tiradas";
-botonera.appendChild(pasoTiradas);
+// botoneras();
 
-// booton para cobrar lo que tenga en el bote.
-cobrar.id = "cobrarResultado";
-cobrar.innerHTML ="Pasar bote a mi Tarjeta";
-botonera.appendChild(cobrar);
+marcadores();
 
-// propiedades del label de resultado
-labelResultado.id ="tituloResultado";
-labelApuesta.className ="Etiquetas-class";
-labelResultado.textContent ="Monto resultante";
-labelResultado.for = "resultado";
-cabecera.appendChild(labelResultado);
 
-// propiedades del elemento elemento resultado
-resultado.id ="resultado";
-resultado.className= "marcador"
 
-// resultado.innerHTML="hola";
-resultado.type = "number";
-resultado.textContent =  "resultado de la tirada";
-resultado.readOnly = true;//establece el campo resultado como de solo lectura.
-resultado.min = 0;
-resultado.value = 0;
-resultado.title = "resultado de la apuesta"
-labelResultado.appendChild(resultado);
 
-//propiedades del Label de apuesta
-labelApuesta.id="labelApuesta";
-labelApuesta.textContent="Cantidad Apostada (€)";
-labelApuesta.for= "apuesta";
-labelApuesta.className="Etiquetas-class";
-labelApuesta.className= "is-primary is-rounded";
-cabecera.appendChild(labelApuesta);
 
-//propiedades del Elemento montoApuesta 
-montoApuesta.readOnly = false;
-montoApuesta.className= "marcador"
 
-montoApuesta.required;
-montoApuesta.min = 5;
-montoApuesta.id = "apuesta";
-montoApuesta.className= "is-primary is-rounded";
-montoApuesta.type =  "number";
-montoApuesta.step = 0.01;
-montoApuesta.value =  5;//provisionalmente en centimos de euro
-labelApuesta.appendChild(montoApuesta);
 
-//propiedades del label del elemento tiradas
-labelTirada.id = "labelTirada";
-labelTirada.className= "is-primary is-rounded";
-labelTirada.textContent = "Numero de Tiradas";
-labelTirada.for =  "tiradas";
-labelTirada.class = "Etiquetas-class";
-cabecera.appendChild(labelTirada);
 
-// atributos de Elemento Tiradas
-tiradas.id = "tiradas";
-tiradas.className="marcador";
-tiradas.type ="number";
-tiradas.defaultValue =3;
-tiradas.value = 3;
-tiradas.type ="number";
-tiradas.readOnly = true;
-labelTirada.appendChild(tiradas);
+
+
+
+
+
+
+
+
+
 /* **************************Fin de creacion de html ******************************* */ 
 
 /** temporizadorCiclicoObjeto  tiene por parametros el tiempo que se muestra cada imagen, 
