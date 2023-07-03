@@ -1,63 +1,12 @@
-// import  grupoFiguras  from "./modulo1.js";
+import { arrayObjetosTablero, Tablero } from "./tablero.js";
+
+import { arrayObjFiguras } from "./figuras.js";
 import numAleato from "./modulo1.js";
-import reseteo from "./modulo1.js";
-import  cambiaBote  from "./modulo1.js";
+
 import { montoTirada } from "./modulo1.js";
 import  asignaciones  from "./modulo1.js";
-// import { cabecera,labelApuesta,montoApuesta,labelResultado,resultado,labelTirada,tiradas } from "./marcadores.js";
-// import {botonera,pasoTiradas,cobrar,nuevaPart } from "./botonera.js";
 import  botoneras  from "./botonera.js";
 import { marcadores } from './marcadores.js';
-
-// creación de objeto figuras
- let ObjFiguras = [
-      {
-        "id":1,
-        "nombre":"ciruela",
-      "ruta":  "../imagenes/ciruela.svg",
-      "valor": 0.05
-      },{
-        "id":2,
-        "nombre":"cereza",
-      "ruta":  "../imagenes/cereza.svg",
-      "valor": 0.10 
-      },{
-        "id":3,
-        "nombre":"fresa",
-      "ruta":  "../imagenes/fresa.svg",
-      "valor": 0.20
-      },{
-        "id":4,
-        "nombre":"naranja",
-      "ruta":  "../imagenes/naranja.svg",
-      "valor": 0.5
-      },{
-        "id":5,
-        "nombre": "limon",
-      "ruta":  "../imagenes/limon.svg",
-      "valor": 1
-      },{
-        "id":6,
-        "nombre": "Platanos",
-      "ruta":  "../imagenes/platanos.svg",
-      "valor": 2
-      },{
-        "id":7,
-        "nombre": "sandia",
-      "ruta":  "../imagenes/sandia.svg",
-      "valor": 5
-      },{
-        "id":8,
-        "nombre": "siete",
-      "ruta":  "../imagenes/siete.svg",
-      "valor": 10
-      },{
-      "id":9,
-      "nombre": "granpremio",
-      "ruta":   "../imagenes/granpremio.svg",
-      "valor":  20
-    }
-]
 
 //Creación de array de objetos para manejar los cuadros individualmente
 const cuadrosSolitarios=[
@@ -82,15 +31,7 @@ const cuadrosSolitarios=[
       "fin":4,
     }
 ]
-// variables para enlazar con las etiquetas img que hemos llamado tablero
-
-
-
-
-
-//IDENTIFICADORES DE LAS ETIQUETA IMG QUE SE MUESTRAN.
-const Tablero=["#imgn1","#imgn2","#imgn3","#imgn4"]
-
+/
 /* ********************************************Creacion de las etiquetas de html****************** */
 // const cuerpo = document.querySelector("#cuerpo");
 asignaciones();
@@ -100,21 +41,10 @@ botoneras();
 
 marcadores();
 
+const arrayFiguras = arrayObjFiguras();
+const arrayTablero = arrayObjetosTablero();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+console.log(Tablero[0])
 
 /* **************************Fin de creacion de html ******************************* */ 
 
@@ -128,25 +58,27 @@ marcadores();
     let totalinterno = 0;
     let i = 0;
     let j = 0;
+
     $(".cajas").removeAttr("disabled") 
       for(i = 0 ; i < 4 ; i++)
-    {      
-      let comparacion = (ObjTablero[i].Id == Tablero[i]);      
+    { 
+           
+      let comparacion = (arrayTablero[i].Id == Tablero[i]);      
       if(comparacion)
         {        
-          $(Tablero[i]).attr("src",ObjFiguras[numAleato()].ruta); 
-            ObjTablero[i].ruta = $(Tablero[i]).attr("src");
+          $(Tablero[i]).attr("src",arrayFiguras[numAleato()].ruta); 
+            arrayTablero[i].ruta = $(Tablero[i]).attr("src");
             for (j = 0 ; j < 8 ; j++)
             {
-              if ((ObjFiguras[j].ruta == ObjTablero[i].ruta) && (contador == 19))
+              if ((arrayFiguras[j].ruta == arrayTablero[i].ruta) && (contador == 19))
               {
-                ObjTablero[i].valor = ObjFiguras[j].valor
+                arrayTablero[i].valor = arrayFiguras[j].valor
             
               }
             }       
         }
         if(contador == 19){
-          totalinterno += ObjTablero[i].valor;        
+          totalinterno += arrayTablero[i].valor;        
           total = totalinterno;         
         }  
     }       
@@ -178,11 +110,11 @@ marcadores();
  */
 let totalizador = function(){
   let operaciones = 0;
-  let tirada=montoTirada();
+  
   let apuesta=parseFloat(montoApuesta.value);
-        operaciones = (parseFloat(tirada) * apuesta);//se quita la division por 100 para probar
+        operaciones = (parseFloat(montoTirada()) * apuesta);//se quita la division por 100 para probar
         // resultado.value=operaciones;
-        console.log("el valor de la tirada es "+ tirada)
+        console.log("el valor de la tirada es "+ montoTirada())
         console.log("el valor de la apuesta es " + apuesta)
         resultado.value = parseInt(operaciones); 
   return parseInt(operaciones);
@@ -190,62 +122,44 @@ let totalizador = function(){
 // funcion para pasar a tiradas el campo resultado.
 // funcion para solo para contar cuanto vale la suma del valor de las figuras
 
-
- function pulsado(){
-   console.log("está pulsad este botn")
-
-  
-
-}
-// pulsado.click()
-// console.log(pulsado) 
-  
-
-
-
-
- 
-
 // evento click que pone todo en marcha
 /** este es el evento click principal, que inicia la partida. */
-$("#boton").click(function(e){   
-      // cambiaBote();
-      // reseteo();
-      //  resultado.value -= montoApuesta.value;
-     
+document.getElementById("boton").click(function(e){   
+        cambiaBote();
+        reseteo();
+        resultado.value -= montoApuesta.value;     
           if(tiradas.value >= 1){
-        temporizadorCiclicoObjetosTablero(25,0.5);   
+            temporizadorCiclicoObjetosTablero(25,0.5);   
+          }
+          else{
+            alert("Se te agotaron las tiradas, por favor, renueva saldo para seguir jugando.")
+          }  
+      return (
+          (console.log("el boton tirar está pulsado"))
+        )
       }
-      else{
-        alert("Se te agotaron las tiradas, por favor, renueva saldo para seguir jugando.")
-      }  
-  return (
-
-(console.log("el boton tirar está pulsado"))
-  )
-    }
-  );
+    );
 
   // botones individual para mover cada una de las cajas con un boton.
 
-  $("#caja1").click(function(e){ 
+document.getElementById("caja1").click(function(e){ 
     temporizadorCiclicoTablero(25,0.5,0)
     montoTirada();
 });
-  $("#caja2").click(function(e){    
+  document.getElementById("caja2").click(function(e){    
     temporizadorCiclicoTablero(25,0.5,1)
     montoTirada();
 });
-  $("#caja3").click(function(e){    
+  document.getElementById("caja3").click(function(e){    
     temporizadorCiclicoTablero(25,0.5,2)
     montoTirada();
 });
-  $("#caja4").click(function(e){  
+  document.getElementById("caja4").click(function(e){  
     
     temporizadorCiclicoTablero(25,0.5,3)
     montoTirada();
 });
-$("#pasoTiradas").click(function(){
+document.getElementById("pasoTiradas").click(function(){
   pasoResultadoaTiradas()
   parseInt(tiradas.value=pasoResultadoaTiradas());
   parseInt(resultado.value =0);
@@ -322,28 +236,28 @@ function temporizadorCiclicoTablero(intervalo, duracionTotal,numero){
   let descuentoInterno = 0;
   let i = 0;
   let j = 0;
-  descuentoInterno=(total-((ObjTablero[numero].valor).toFixed(2)));
+  descuentoInterno=(total-((arrayTablero[numero].valor).toFixed(2)));
   console.log("el valor de total, menos la caja " + numero + " es " + descuentoInterno)
     for(i=cuadrosSolitarios[numero].inicio;i<cuadrosSolitarios[numero].fin;i++)
     {   
-      let comparacion=(ObjTablero[i].Id==Tablero[i]);      
+      let comparacion=(arrayTablero[i].Id==Tablero[i]);      
       if(comparacion)
         {        
-          $(Tablero[i]).attr("src", ObjFiguras[numAleato()].ruta); 
-            ObjTablero[i].ruta = $(Tablero[i]).attr("src");
+          $(Tablero[i]).attr("src", arrayFiguras[numAleato()].ruta); 
+            arrayTablero[i].ruta = $(Tablero[i]).attr("src");
             for (j=0; j<8;j++)
             {
-              if ((ObjFiguras[j].ruta==ObjTablero[i].ruta)&&(contador==19))
+              if ((arrayFiguras[j].ruta==arrayTablero[i].ruta)&&(contador==19))
               {
-                ObjTablero[i].valor = ObjFiguras[j].valor
-                console.log(ObjTablero[i].ruta + " " + ObjTablero[i].valor);
+                arrayTablero[i].valor = arrayFiguras[j].valor
+                console.log(arrayTablero[i].ruta + " " + arrayTablero[i].valor);
               }
             }       
         }
       // condicion para actualizar las variables que varian cuando termine la tirada
       if(contador == 19){       
         console.log("el descuento interno es " + descuentoInterno);
-        totalinterno=ObjTablero[i].valor + descuentoInterno
+        totalinterno=arrayTablero[i].valor + descuentoInterno
         console.log("la suma total es " + totalinterno)
         total = totalinterno;
        
@@ -360,24 +274,17 @@ function temporizadorCiclicoTablero(intervalo, duracionTotal,numero){
       }
   }, intervalo * 10);
 }
-// function reseteo (){
-//   for(i=0; i<4;i++){
-//     ObjTablero[i].valor=0;
-//   }
-// }
 let controlTiradas = function (valorTiradas){
   let nuevoValorTirada=parseInt(valorTiradas);
   if(parseInt(tiradas.value)>>1){
     tiradas.readOnly = true;
-   nuevoValorTirada -= 1;
-   
+   nuevoValorTirada -= 1;   
   }
   else {
     nuevoValorTirada=0;
     alert("ya no te quedan tiradas, pasa saldo, o renueva saldo")
     $(".cajas").attr("disabled",true)
   }
-
   return nuevoValorTirada;
 }
 let evaluarPremio=function(numero) {
@@ -388,26 +295,19 @@ let evaluarPremio=function(numero) {
       premio = 'Premio gordo: HAS GANADO TODO EL BOTE';
       modalPremio.classList.add("modal---mostrar");
       break;
-    }
-      
+    }      
     case numero === 40:{
        modalPremio.classList.add("modal---mostrar");
       premio = 'Segundo premio: HAS GANADO 1/2 BOTE';
       break;
-    }
-     
+    }     
     case numero === 20:{
       modalPremio.classList.add("modal---mostrar");
         premio = 'Tercer premio: HAS GANADO 1/3 DEL BOTE';
       break;
-    }
-    
+    }    
     default:
-      premio = 'Sin premio';
-      
+      premio = 'Sin premio';      
   }
-
   return premio;
 }
-
-
