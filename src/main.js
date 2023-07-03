@@ -1,9 +1,12 @@
 // import  grupoFiguras  from "./modulo1.js";
 import numAleato from "./modulo1.js";
 import reseteo from "./modulo1.js";
+import  cambiaBote  from "./modulo1.js";
+import { montoTirada } from "./modulo1.js";
+import  asignaciones  from "./modulo1.js";
 // import { cabecera,labelApuesta,montoApuesta,labelResultado,resultado,labelTirada,tiradas } from "./marcadores.js";
 // import {botonera,pasoTiradas,cobrar,nuevaPart } from "./botonera.js";
-import  {botoneras}  from "./botonera.js";
+import  botoneras  from "./botonera.js";
 import { marcadores } from './marcadores.js';
 
 // creación de objeto figuras
@@ -81,55 +84,16 @@ const cuadrosSolitarios=[
 ]
 // variables para enlazar con las etiquetas img que hemos llamado tablero
 
-let imgTablero1 = $("#imgn1");
-let imgTablero2 = $("#imgn2");
-let imgTablero3 = $("#imgn3");
-let imgTablero4 = $("#imgn4");
-let rutaImgTablero1 = imgTablero1.attr("src");
-let rutaImgTablero2 = imgTablero2.attr("src");
-let rutaImgTablero3 = imgTablero3.attr("src");
-let rutaImgTablero4 = imgTablero4.attr("src");
 
-// creacion de objeto tablero. Consta de 4 cajas, donde iran rotando las imagenes que se muestran un tiempo t1 cada imagen,
-// durante un tiempo global t2, el cual cuando termina, se coge el valor de la imagen de cada casillero, y se suma, 
-// guardandose en una variable llamada puntuación, que se usará despues.
-let ObjTablero=[
-  {
-    Id:"#imgn1",
-    "posTablero" : "Posicion 1", 
-    // "Nombre" : "juan",
-    "ruta":  rutaImgTablero1,
-    "valor" : 5
-  },
-  {
-    Id:"#imgn2",
-    "posTablero" : "Posicion 2", 
-    // "Nombre" : "jose",
-    "ruta":  rutaImgTablero2,
-    "valor" : 5
-  },
-  {
-    Id:"#imgn3",
-    "posTablero" : "Posicion 3", 
-    // "Nombre" : "Paco",
-    "ruta": rutaImgTablero3,
-    "valor" : 5
-  },
-  {
-    Id:"#imgn4",
-    "posTablero" : "Posicion 4", 
-    // "Nombre" : "pedro",
-    ruta: imgTablero4,
-    "valor" : 5
-  }
-]
+
+
 
 //IDENTIFICADORES DE LAS ETIQUETA IMG QUE SE MUESTRAN.
 const Tablero=["#imgn1","#imgn2","#imgn3","#imgn4"]
 
 /* ********************************************Creacion de las etiquetas de html****************** */
 // const cuerpo = document.querySelector("#cuerpo");
-
+asignaciones();
 botoneras();
 
 // botoneras();
@@ -225,36 +189,42 @@ let totalizador = function(){
 };
 // funcion para pasar a tiradas el campo resultado.
 // funcion para solo para contar cuanto vale la suma del valor de las figuras
-let montoTirada = function(){
-  let monto = 0;
-  for (let i = 0 ; i < 4 ; i++){
-     ObjTablero[i].ruta = $(Tablero[i]).attr("src");
-    for(let j = 0 ; j < 9 ; j++){
-    
-    if (ObjFiguras[j].ruta == ObjTablero[i].ruta){      
-      ObjTablero[i].valor = ObjFiguras[j].valor;
-          monto += parseFloat(ObjTablero[i].valor);
-      // monto+=i;          
-      }     
-      // console.log(monto)  
-    }
-    
-  }
-  return    monto.toFixed(2);
-} 
+
+
+ function pulsado(){
+   console.log("está pulsad este botn")
+
+  
+
+}
+// pulsado.click()
+// console.log(pulsado) 
+  
+
+
+
+
+ 
+
 // evento click que pone todo en marcha
 /** este es el evento click principal, que inicia la partida. */
 $("#boton").click(function(e){   
-      cambiaBote();
-      reseteo();
-      resultado.value -= montoApuesta.value;
-      if(tiradas.value >= 1){
+      // cambiaBote();
+      // reseteo();
+      //  resultado.value -= montoApuesta.value;
+     
+          if(tiradas.value >= 1){
         temporizadorCiclicoObjetosTablero(25,0.5);   
       }
       else{
         alert("Se te agotaron las tiradas, por favor, renueva saldo para seguir jugando.")
-      }      
-  });
+      }  
+  return (
+
+(console.log("el boton tirar está pulsado"))
+  )
+    }
+  );
 
   // botones individual para mover cada una de las cajas con un boton.
 
@@ -283,12 +253,12 @@ $("#pasoTiradas").click(function(){
 
 /*****************************funcion para relacionar cantidad apostada con bote******************************* */
 //esta funcion la sustituiremos por un modal que sale cuando carga la página y el campo resultado no tiene valor, o es 0.
-function cambiaBote(){
-  if(resultado.value >= montoApuesta.value){
-    resultado.value -= montoApuesta.value
-  }
-  return resultado.value;
-}
+// function cambiaBote(){
+//   if(resultado.value >= montoApuesta.value){
+//     resultado.value -= montoApuesta.value
+//   }
+//   return resultado.value;
+// }
 
 /*******************funcion para convertir el resultado de la tirada principal en tiradas********************** */
 function pasoResultadoaTiradas(){

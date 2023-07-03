@@ -37,13 +37,13 @@ montoApuesta.className= "marcador"
 montoApuesta.required;
 montoApuesta.min = 5;
 montoApuesta.id = "apuesta";
-montoApuesta.className= "is-primary is-rounded";
+montoApuesta.className= "";
 montoApuesta.type =  "number";
 montoApuesta.step = 0.01;
 montoApuesta.value =  5;//provisionalmente en centimos de euro
 //propiedades del label del elemento tiradas
 labelTirada.id = "labelTirada";
-labelTirada.className= "is-primary is-rounded";
+labelTirada.className= "";
 labelTirada.textContent = "Numero de Tiradas";
 labelTirada.for =  "tiradas";
 labelTirada.class = "Etiquetas-class";
