@@ -1,7 +1,7 @@
 import  grupoFiguras  from "./modulo1.js";
 import numAleato from "./modulo1.js";
 import reseteo from "./modulo1.js";
-
+import { cabecera,labelApuesta,montoApuesta,labelResultado,resultado,labelTirada,tiradas, botonera,pasoTiradas,cobrar,nuevaPart } from "./marcadores.js";
 // creación de objeto figuras
  let ObjFiguras = [
       {
@@ -125,18 +125,18 @@ const Tablero=["#imgn1","#imgn2","#imgn3","#imgn4"]
 
 /* ********************************************Creacion de las etiquetas de html****************** */
 // selectores de los elementos que insertamos de forma dinamica en el HTML.
-const cabecera = document.querySelector("#cabecera");
-const labelApuesta = document.createElement("label");
-const montoApuesta = document.createElement("input");//es el control numérico que muestra cuanto quieres apostar.
-const apostar = document.createElement("button");//es el botón que adjudica el valor del control numérico, al campo resultado antes de tirar.
-const labelResultado = document.createElement("label");
-const resultado= document.createElement("input");//es el campo donde se muestra el valor del resultado cuando finaliza la tirada.
-const labelTirada = document.createElement("label");
-const tiradas = document.createElement("input");
-const botonera = document.querySelector("#botonera");
-const pasoTiradas = document.createElement("button");
-const cobrar = document.createElement("button");
-const nuevaPart = document.createElement("button");
+// const cabecera = document.querySelector("#cabecera");
+// const labelApuesta = document.createElement("label");
+// const montoApuesta = document.createElement("input");//es el control numérico que muestra cuanto quieres apostar.
+// const apostar = document.createElement("button");//es el botón que adjudica el valor del control numérico, al campo resultado antes de tirar.
+// const labelResultado = document.createElement("label");
+// const resultado= document.createElement("input");//es el campo donde se muestra el valor del resultado cuando finaliza la tirada.
+// const labelTirada = document.createElement("label");
+// const tiradas = document.createElement("input");
+// const botonera = document.querySelector("#botonera");
+// const pasoTiradas = document.createElement("button");
+// const cobrar = document.createElement("button");
+// const nuevaPart = document.createElement("button");
 
 // boton para hacer una nueva partida
 nuevaPart.id ="nuevaPartida";
@@ -156,14 +156,15 @@ botonera.appendChild(cobrar);
 
 // propiedades del label de resultado
 labelResultado.id ="tituloResultado";
-labelApuesta.class ="Etiquetas-class";
+labelApuesta.className ="Etiquetas-class";
 labelResultado.textContent ="Monto resultante";
 labelResultado.for = "resultado";
 cabecera.appendChild(labelResultado);
 
 // propiedades del elemento elemento resultado
 resultado.id ="resultado";
-name="resultado"
+resultado.className= "marcador"
+
 // resultado.innerHTML="hola";
 resultado.type = "number";
 resultado.textContent =  "resultado de la tirada";
@@ -177,12 +178,14 @@ labelResultado.appendChild(resultado);
 labelApuesta.id="labelApuesta";
 labelApuesta.textContent="Cantidad Apostada (€)";
 labelApuesta.for= "apuesta";
-labelApuesta.class="Etiquetas-class";
+labelApuesta.className="Etiquetas-class";
 labelApuesta.className= "is-primary is-rounded";
 cabecera.appendChild(labelApuesta);
 
 //propiedades del Elemento montoApuesta 
 montoApuesta.readOnly = false;
+montoApuesta.className= "marcador"
+
 montoApuesta.required;
 montoApuesta.min = 5;
 montoApuesta.id = "apuesta";
@@ -202,6 +205,7 @@ cabecera.appendChild(labelTirada);
 
 // atributos de Elemento Tiradas
 tiradas.id = "tiradas";
+tiradas.className="marcador";
 tiradas.type ="number";
 tiradas.defaultValue =3;
 tiradas.value = 3;

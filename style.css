@@ -8,7 +8,7 @@ body {
     background-color: aquamarine;
     height: max-content;
 }
-#cabecera{
+.cabecera{
     display:flex;
     flex-direction: row;
     align-items: center;
@@ -17,6 +17,9 @@ body {
     width: 90%;
     background-color: blueviolet;
     padding: 3%;
+    width: max-content;
+    /* gap:5px; */
+    padding: 3px;;
 }
 header > .marcadores {
     display: flex;
@@ -43,12 +46,13 @@ header > .marcadores > div > .marc-valor {
 main > *  {
     margin:0,10px;
     padding: 20px;
-    width: 100%;
+    width:100%;
     background-color:cadetblue;
-    border-radius: 6 px;
+    border-radius: 20px ;
     display:inline-flex;
     flex-direction: row;
     justify-content:space-evenly;
+
     /* justify-self: auto; */
     /* margin: 0 ; */
 }
@@ -65,6 +69,7 @@ section{
     justify-content: center;
     align-items: center;
     background-color:burlywood;
+    border-radius: 16px;
 }
 section>span {
     background-color: beige;
@@ -114,7 +119,7 @@ footer {
     background-color: burlywood;
     width: 80%;
     height: 80%;
-    border-radius: 50px;
+    border-radius: 50%;
 }
 
 
@@ -185,15 +190,17 @@ height: 40px;
     background-color: hsla(60, 72%, 83%, 0.51);
 } */
 
+header {
+    width: min-content;
+    gap: 5px;
+}
 label{
-    
+    width: min-content;
     background-color:rgb(200, 172, 172) ;
-    margin-right: 2%;
-    margin-left: 2%;
-    margin-bottom: 2%;
+    gap: 10px;
 }
 input{
-    width: fit-content;
+    width: max-content;
     display:flex;
     justify-content: center;
 }
@@ -204,12 +211,17 @@ input{
     margin: 10px;
     color:aliceblue
 }
-@media (width<  720px) {
+@media (width <  720px) {
+    .cabecera{
+        display:flex;
+        flex-direction: column;
+    }
     header {
         display:flex;
     flex-direction:column;
     justify-content:center;
     align-items: center;
+    width: max-content;
     }
 .botones{
     display:flex;
@@ -283,6 +295,10 @@ input{
 .modal__cierre:hover {
     color:#f26250;
     background-color: #fff;
+}
+.marcador{
+    width: max-content;
+    text-align: center;
 }
 
 
