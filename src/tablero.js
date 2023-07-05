@@ -2,7 +2,7 @@
 //IDENTIFICADORES DE LAS ETIQUETA IMG QUE SE MUESTRAN.
 export const Tablero=["#imgn1","#imgn2","#imgn3","#imgn4"];
 // creación de array de elementos Tablero con sus ids
- const idsTablero = ()=>{
+export const  idsTablero = ()=>{
     const salidaIdTablero=[
     document.getElementById("imgn1"),
     document.getElementById("imgn2"),
@@ -24,6 +24,7 @@ export const Tablero=["#imgn1","#imgn2","#imgn3","#imgn4"];
         ]
         return salidaSrcTablero;
     }
+
 // creacion de objeto tablero. Consta de 4 cajas, donde iran rotando las imagenes que se muestran un tiempo t1 cada imagen,
 // durante un tiempo global t2, el cual cuando termina, se coge el valor de la imagen de cada casillero, y se suma, 
 // guardandose en una variable llamada puntuación, que se usará despues.
@@ -63,4 +64,4 @@ export const arrayObjetosTablero=()=>{
 
 export const arrayCompletoTablero=arrayObjetosTablero()
 
-console.log(arrayCompletoTablero[0].Id)
+console.log("valor de array Completo Tablero es " + arrayCompletoTablero[0].Id)

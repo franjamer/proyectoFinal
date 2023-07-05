@@ -55,7 +55,5 @@ export const arrayObjFiguras=()=>{
     "valor":  20
   }
 ]
-return(
-  objFiguras
-)
+return( objFiguras);
 }

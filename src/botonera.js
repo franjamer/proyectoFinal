@@ -18,8 +18,8 @@ export default function botoneras() {
   cobrar.id = "cobrarResultado";
   cobrar.innerHTML = "Pasar bote a mi Tarjeta";
   return (
-  botonera.appendChild(tirada),
-  botonera.appendChild(nuevaPart),
+    botonera.appendChild(tirada),
+    botonera.appendChild(nuevaPart),
     botonera.appendChild(pasoTiradas),
     botonera.appendChild(cobrar)
 

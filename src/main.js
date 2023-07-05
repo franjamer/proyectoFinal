@@ -1,12 +1,11 @@
-import { arrayObjetosTablero, Tablero } from "./tablero.js";
 
-import { arrayObjFiguras } from "./figuras.js";
-import numAleato from "./modulo1.js";
-
-import { montoTirada } from "./modulo1.js";
-import  asignaciones  from "./modulo1.js";
-import  botoneras  from "./botonera.js";
-import { marcadores } from './marcadores.js';
+// import { arrayObjetosTablero, Tablero, srcTablero } from "./tablero.js";
+// import { arrayObjFiguras } from "./figuras.js";
+// import numAleato from "./modulo1.js";
+// import { montoTirada } from "./modulo1.js";
+// import  botoneras  from "./botonera.js";
+// import { marcadores } from './marcadores.js';
+// import { cambiaBote } from "./modulo1.js";
 
 //Creación de array de objetos para manejar los cuadros individualmente
 const cuadrosSolitarios=[
@@ -31,26 +30,63 @@ const cuadrosSolitarios=[
       "fin":4,
     }
 ]
-/
+
 /* ********************************************Creacion de las etiquetas de html****************** */
 // const cuerpo = document.querySelector("#cuerpo");
-asignaciones();
+// asignaciones();
 botoneras();
 
+// 
 // botoneras();
 
 marcadores();
-
+const arraySrcTablero = srcTablero();
 const arrayFiguras = arrayObjFiguras();
 const arrayTablero = arrayObjetosTablero();
+const idDeTablero=Tablero;
 
-console.log(Tablero[0])
 
+let recorridoTablero= function recorreTablero(){
+  for (let i=0; i>=4; i++){
+    console.log(idDeTablero[i])
+    console.log(arrayFiguras[i].ruta)
+  }
+  return( idDeTablero, arrayFiguras[i].ruta)
+}
+console.log(idDeTablero[0])
+console.log(arrayFiguras[1].ruta)
+arraySrcTablero[2].ruta=arrayFiguras[3].ruta
+console.log(arraySrcTablero[2].ruta)
 /* **************************Fin de creacion de html ******************************* */ 
+function reseteo (){
+  for(let i=0; i<4;i++){
+    arrayTablero[i].valor=0;
+  }
+  return 
+}
 
-/** temporizadorCiclicoObjeto  tiene por parametros el tiempo que se muestra cada imagen, 
- * como intervalo, y el tiempo global, que tiene como parametro duracionTotal 
+let totalizador = function(){
+  let operaciones = 0;
+  
+        let apuesta=parseFloat(document.getElementById("apuesta").value);
+        operaciones = (parseInt(montoTirada()/100) * apuesta);//se quita la division por 100 para probar
+        // resultado.value=operaciones;
+        console.log("el valor de la tirada es "+ montoTirada())
+        console.log("el valor de la apuesta es " + apuesta)
+        // resultado.value = (operaciones); 
+    return (operaciones);
+};
+
+console.log(arrayTablero[0].Id)
+
+arrayObjetosTablero();
+
+/** temporizadorCiclicoObjeto  tiene por parametros el tiempo que se muestra 
+ * cada imagen,como intervalo, y el tiempo global, que tiene como parametro 
+ * duracionTotal 
 */
+console.log(idDeTablero[0])
+
   let total=0;
   function temporizadorCiclicoObjetosTablero(intervalo, duracionTotal){  
     let contador = 0;  
@@ -58,28 +94,42 @@ console.log(Tablero[0])
     let totalinterno = 0;
     let i = 0;
     let j = 0;
-
-    $(".cajas").removeAttr("disabled") 
+    
+    // document.getElementsByClassName("cajas").removeAttr("disabled") 
       for(i = 0 ; i < 4 ; i++)
     { 
-           
-      let comparacion = (arrayTablero[i].Id == Tablero[i]);      
+      let marco= document.getElementById(arrayTablero[i])
+      let srcValor= [src]
+      console.log(marco.srcValor);
+      if(idDeTablero[i]=== arrayTablero[i].Id){
+        console.log("la id del arrayTablero "+ arrayTablero[i].Id + " es igual a la idDeTablero "+ idDeTablero[i])
+        
+      }
+
+      // let srcValor=frame.src  
+        console.log(idDeTablero[i])
+        console.log(arrayTablero[i].ruta)
+      let comparacion = (arrayTablero[i].Id == idDeTablero[i]);      
       if(comparacion)
-        {        
-          $(Tablero[i]).attr("src",arrayFiguras[numAleato()].ruta); 
-            arrayTablero[i].ruta = $(Tablero[i]).attr("src");
+        { 
+          // document.querySelector(idDeTablero[i]).attr("src",arrayFiguras[numAleato()].ruta); 
+            // arrayTablero[i].ruta = document.querySelector(idDeTablero[i]).attr("src");
             for (j = 0 ; j < 8 ; j++)
-            {
+            // {
               if ((arrayFiguras[j].ruta == arrayTablero[i].ruta) && (contador == 19))
               {
-                arrayTablero[i].valor = arrayFiguras[j].valor
-            
-              }
+                console.log(arrayTablero[i].valor)
+                console.log(arrayFiguras[j].valor)
+                arrayTablero[i].valor = arrayFiguras[j].valor            
+               
+              // }
+             
             }       
         }
         if(contador == 19){
-          totalinterno += arrayTablero[i].valor;        
-          total = totalinterno;         
+          console.log("penultimo paso del conteo")
+          // totalinterno += arrayTablero[i].valor;        
+          // total = totalinterno;         
         }  
     }       
       contador++;
@@ -108,26 +158,21 @@ console.log(Tablero[0])
  * del paréntesis es jackpot, y es si sale las cuatro figuras iguales, y es multiplicativo, es decir, que lo que
  * se iba ganando, se le suma esa cifra.
  */
-let totalizador = function(){
-  let operaciones = 0;
-  
-  let apuesta=parseFloat(montoApuesta.value);
-        operaciones = (parseFloat(montoTirada()) * apuesta);//se quita la division por 100 para probar
-        // resultado.value=operaciones;
-        console.log("el valor de la tirada es "+ montoTirada())
-        console.log("el valor de la apuesta es " + apuesta)
-        resultado.value = parseInt(operaciones); 
-  return parseInt(operaciones);
-};
+
 // funcion para pasar a tiradas el campo resultado.
 // funcion para solo para contar cuanto vale la suma del valor de las figuras
 
 // evento click que pone todo en marcha
 /** este es el evento click principal, que inicia la partida. */
-document.getElementById("boton").click(function(e){   
-        cambiaBote();
+document.getElementById("superBoton").addEventListener("click", ()=>{
+  // (e).preventDefault();
+  console.log("estoy pulsando el superbotón")
+})
+document.getElementById("boton").addEventListener("click",()=>{   
+    console.log("estoy danto al boton de tirar"); 
+  cambiaBote();
         reseteo();
-        resultado.value -= montoApuesta.value;     
+ document.getElementById("resultado").value -= document.getElementById("apuesta").value;// montoApuesta.value;     
           if(tiradas.value >= 1){
             temporizadorCiclicoObjetosTablero(25,0.5);   
           }
@@ -287,6 +332,8 @@ let controlTiradas = function (valorTiradas){
   }
   return nuevoValorTirada;
 }
+
+
 let evaluarPremio=function(numero) {
   let premio = '';
 
