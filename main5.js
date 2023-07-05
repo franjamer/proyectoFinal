@@ -2,8 +2,7 @@ function numAleato(){
     let aleatorio=Math.random();
     // let numAleatorio= aleatorio * 10;
     let numeroEntero = Math.trunc(aleatorio *10);
-    // let numeroEntero = Math.floor(numAleatorio);
-    // let numeroEntero = Math.ceil(numAleatorio);
+
     numeroEntero= numeroEntero % 9;  
     // console.log("numeroEntero es " + numeroEntero)   
     return numeroEntero;       
@@ -18,9 +17,9 @@ function numAleato3(){
 
 //array maestro de imagenes
 const grupoFiguras=[
-"/imagenes/granpremio.svg","/imagenes/siete.svg","/imagenes/sandia.svg",
-"/imagenes/platanos.svg","/imagenes/limon.svg","/imagenes/naranja.svg",
-"/imagenes/fresa.svg","/imagenes/cereza.svg","/imagenes/ciruela.svg"
+"../imagenes/granpremio.svg","../imagenes/siete.svg","../imagenes/sandia.svg",
+"../imagenes/platanos.svg","../imagenes/limon.svg","../imagenes/naranja.svg",
+"../imagenes/fresa.svg","../imagenes/cereza.svg","../imagenes/ciruela.svg"
 ]
 
 // creación de objeto figuras

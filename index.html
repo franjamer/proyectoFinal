@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Pruebas</title>
+    <link rel="stylesheet" href="/style.css"/>
+    <!-- <link rel="stylesheet" href="../node_modules/bulma/css/bulma.min.css"> -->
+
+</head>
+
+<body id="cuerpo">
+    <header id="cabecera" class="cabecera">
+        <!-- ventana de marcador1 -->
+        <!-- <div id="d1">Coste de una apuesta</div> -->
+        <!-- <input type="number" id="myInput" value="0"> -->
+        <!-- <input type="number" id="apuesta" value=""/> -->
+        <!-- <button id="eliminarElemento">Eliminar Elemento</button> -->
+</header>
+    <main id="principal">
+        <div class="contenedor-img">
+            <section class="imgyboton"><img class="imgn" id="imgn1"  width="50px" height="100px" src="../imagenes/granpremio.svg" alt="imagen de frutas que premian" >
+                <button class="cajas button is-rounded" id="caja1">SPIN               
+                </button>
+            
+            </section>
+            <section class="imgyboton"><img class="imgn" id="imgn2"  width="50px" height="100px" src="../imagenes/granpremio.svg" alt="imagen de frutas que premian" >
+                <button class="cajas button is-rounded" id="caja2">SPIN                
+                </button>
+            </section>
+            <section class="imgyboton"><img class="imgn" id="imgn3"  width="50px" height="100px" src="../imagenes/granpremio.svg" alt="imagen de frutas que premian" >
+                <button class="cajas button is-rounded" id="caja3">SPIN                
+                </button>
+            </section>
+            <section class="imgyboton"><img class="imgn" id="imgn4"  width="50px" height="100px" src="../imagenes/granpremio.svg" alt="imagen de frutas que premian" >
+                <button class="cajas button is-rounded" id="caja4">SPIN                
+                </button>
+            </section>
+        </div>
+    </main> 
+<!-- ventana modal para nueva partida y agregar saldo -->
+<section id="sec-modal" class="modales">
+    <div class="modal__container">
+        <img src="../imagenes/monedas bote.svg" alt="imagen de saco de monedas" class="modal__img" >
+        <h2 class="modal__title">¡Por favor, ingrese una cantidad para jugar</h2>
+        <label id="labelNuevoSaldo" class="modal__parrafo" value="Nuevo Saldo" for="nuevoSaldo">
+        <input id="nuevoSaldo" name="nuevoSaldo" type="number" min="20" step="5">
+        </label> 
+        <a href="#" class="modal__cierre">
+            Agregar Saldo
+        </a>
+    </div>
+    <!-- ventana modal para combinacion premiada  -->
+</section>
+<section id="premio" class="modales">
+    <div class="modal__container">
+        <img class="modal__img" src="../imagenes/premio.svg" alt="imagen de premio">
+        <h2>¡EHHH! ¡TIENES COMBINACION GANADORA!</h2>
+        <h3>Has ganado xxx €</h3>
+        <!-- <a  href="#" class="modal__cierre_premio">Cobrar Premio</a> -->
+    </div>
+</section>
+
+<!-- ventana modal para cobrar con tarjeta de -->
+<section id="tarjeta" class="modales">
+    <div class="modal__container">
+        <h2 class="modal__title">Pasar Saldo a Mi tarjeta</h2>
+        <h3 class="modal__parrafo">En construccion</h3>
+        <h4 class="modal__parrafo">Disculpen las moléstias</h4>
+        <img src="../imagenes/tarjeta-de-credito.png" alt="imagen de tarjeta">        
+    </div>
+</section>
+<div id="botonera" class="botones">     
+    <!-- <button id="boton">Iniciar Tirada</button> -->
+ 
+</div>
+   
+ <!-- <div id="container" class="contenedor"></div> -->
+ <!-- Tabla de Combinaciones. -->
+<aside class="combos">
+    <div class="combos-gan">     
+        <span class="comb-figuras">
+            <img  src="../imagenes/tabla de premios2.png"alt="tabla de premios">        
+            <!-- <img src="/imagenes/granpremio.svg" alt="">
+            <img src="/imagenes/granpremio.svg" alt="">
+            <img src="/imagenes/granpremio.svg" alt="">
+            <img src="/imagenes/granpremio.svg" alt="">
+            <h3>80(20)</h3> -->
+        </span>
+        <!-- <span class="comb-figuras">
+            <img src="/imagenes/siete.svg" alt="">        
+            <img src="/imagenes/siete.svg" alt="">
+            <img src="/imagenes/siete.svg" alt="">
+            <img src="/imagenes/siete.svg" alt="">
+            <h3>40(10)</h3>
+        </span>
+        <span class="comb-figuras">
+            <img src="/imagenes/sandia.svg" alt="">        
+            <img src="/imagenes/sandia.svg" alt="">
+            <img src="/imagenes/sandia.svg" alt="">
+            <img src="/imagenes/sandia.svg" alt="">
+            <h3>20(5)</h3>
+        </span>
+        <span class="comb-figuras">
+            <img src="/imagenes/platanos.svg" alt="">        
+            <img src="/imagenes/platanos.svg" alt="">
+            <img src="/imagenes/platanos.svg" alt="">
+            <img src="/imagenes/platanos.svg" alt="">
+            <h3>8(2)</h3>
+        </span>
+        <span class="comb-figuras">
+            <img src="/imagenes/limon.svg" alt="">        
+            <img src="/imagenes/limon.svg" alt="">
+            <img src="/imagenes/limon.svg" alt="">
+            <img src="/imagenes/limon.svg" alt="">
+            <h3>4(1)</h3>
+        </span>
+        <span class="comb-figuras">
+            <img src="/imagenes/naranja.svg" alt="">        
+            <img src="/imagenes/naranja.svg" alt="">
+            <img src="/imagenes/naranja.svg" alt="">
+            <img src="/imagenes/naranja.svg" alt="">
+            <h3>2(0.5)</h3>
+        </span>
+        <span class="comb-figuras">
+            <img src="/imagenes/fresa.svg" alt="">        
+            <img src="/imagenes/fresa.svg" alt="">
+            <img src="/imagenes/fresa.svg" alt="">
+            <img src="/imagenes/fresa.svg" alt="">
+            <h3>0.8(0.2)</h3>
+        </span>
+        <span class="comb-figuras">
+            <img src="/imagenes/cereza.svg" alt="">        
+            <img src="/imagenes/cereza.svg" alt="">
+            <img src="/imagenes/cereza.svg" alt="">
+            <img src="/imagenes/cereza.svg" alt="">
+            <h3>0.4(0.1)</h3>
+        </span>
+        <span class="comb-figuras">
+            <img src="/imagenes/ciruela.svg" alt="">        
+            <img src="/imagenes/ciruela.svg" alt="">
+            <img src="/imagenes/ciruela.svg" alt="">
+            <img src="/imagenes/ciruela.svg" alt="">
+            <h3>0.2(0.05)</h3>
+        </span> -->
+ </div>
+   
+</aside>
+<script src="https://code.jquery.com/jquery-3.7.0.js" 
+integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+crossorigin="anonymous"></script>
+<script type="module" src="../src/main.js"></script>
+<script type="module" src="../src/modulo1.js"></script>
+</body> 
+
+</html>
+
+ <!-- <section>
+    <form id="formulario">
+        Escribe un numero
+        <input  id="number1"type="number" value="" name="number1"></input>
+        Escribe otro numero
+        <input id="number2" type="number" value="" name="number2"></input>
+        <input type="submit" value ="Enviar"/>
+    </form>
+    <h2></h2>
+ </section> -->
+ <!-- <form action=""></form> -->
